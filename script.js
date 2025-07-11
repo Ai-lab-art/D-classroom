@@ -1,5 +1,5 @@
 // Welcome message
-console.log('Welcome to Education Hub\'s personal website!');
+console.log('Welcome to D classroom\'s personal website!');
 
 // Interactive effect: highlight header on click
 const header = document.querySelector('header');
