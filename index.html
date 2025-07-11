@@ -80,6 +80,9 @@
     <footer>
         <div class="container footer-container">
             <p>&copy; 2025 D classroom. All rights reserved.</p>
+            <div class="share-section" style="margin-top:1rem; text-align:center;">
+                <button id="share-btn" style="background:#2563eb;color:#fff;padding:0.5rem 1.5rem;border:none;border-radius:6px;font-size:1rem;cursor:pointer;">Share</button>
+            </div>
             <div class="social-links">
                 <!-- YouTube link removed -->
             </div>
@@ -106,6 +109,20 @@
                 reader.readAsDataURL(files[0]);
             }
         });
+    </script>
+    <script>
+        document.getElementById('share-btn').onclick = function() {
+            if (navigator.share) {
+                navigator.share({
+                    title: document.title,
+                    text: 'Check out D classroom!',
+                    url: window.location.href
+                });
+            } else {
+                navigator.clipboard.writeText(window.location.href);
+                alert('Link copied to clipboard!');
+            }
+        };
     </script>
 </body>
 </html> 
