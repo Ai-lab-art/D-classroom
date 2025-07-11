@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Notice - Education Hub</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .notice-container {
+            max-width: 900px;
+            margin: 2rem auto;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(37,99,235,0.07);
+            padding: 2rem;
+        }
+        .notice-embed {
+            width: 100%;
+            min-height: 500px;
+            border: 2px solid #bcd0ee;
+            border-radius: 8px;
+        }
+        .notice-instructions {
+            color: #2563eb;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Removed the navigation bar so the title menu only appears on the home page -->
+    <main class="notice-container">
+        <h2 style="color:#2563eb;">Notices</h2>
+        <div style="text-align:right; margin-bottom:1rem;">
+            <a href="index.html" style="background:#2563eb;color:#fff;padding:0.5rem 1.2rem;border-radius:6px;text-decoration:none;font-weight:500;">Go to Main Menu</a>
+        </div>
+        <div style="text-align:right; margin-bottom:1rem;">
+            <button id="add-notice-btn" style="background:#2563eb; color:#fff; border:none; border-radius:50%; width:36px; height:36px; font-size:1.3rem; cursor:pointer;">+</button>
+        </div>
+        <form id="notice-form" style="display:none; margin-bottom:2rem;">
+            <input type="text" id="notice-title" placeholder="Title" required style="width:100%;padding:0.7rem;margin-bottom:0.7rem;font-size:1.1rem;border:1px solid #bcd0ee;border-radius:5px;">
+            <textarea id="notice-content" placeholder="Write your notice here..." required style="width:100%;padding:0.7rem;height:120px;font-size:1.1rem;border:1px solid #bcd0ee;border-radius:5px;"></textarea>
+            <button type="submit" style="background:#2563eb;color:#fff;border:none;padding:0.7rem 2rem;border-radius:5px;font-size:1rem;cursor:pointer;margin-top:0.5rem;">Add Notice</button>
+        </form>
+        <div id="notices-list"></div>
+    </main>
+    <script>
+    const addBtn = document.getElementById('add-notice-btn');
+    const form = document.getElementById('notice-form');
+    const noticesList = document.getElementById('notices-list');
+    addBtn.onclick = () => { form.style.display = form.style.display === 'none' ? 'block' : 'none'; };
+
+    function createNoticeElement(title, content) {
+        const noticeDiv = document.createElement('div');
+        noticeDiv.style.marginBottom = '1.5rem';
+        noticeDiv.style.padding = '1rem';
+        noticeDiv.style.background = '#f4f8fb';
+        noticeDiv.style.borderRadius = '8px';
+        noticeDiv.style.boxShadow = '0 2px 8px rgba(37,99,235,0.07)';
+        noticeDiv.innerHTML = `
+            <div style='display:flex;justify-content:space-between;align-items:center;'>
+                <h3 style='color:#2563eb;margin:0 0 0.5rem 0;flex:1;'>${title}</h3>
+                <div class='notice-menu' style='position:relative;display:flex;align-items:center;'>
+                    <button class='notice-menu-btn' style='background:none;border:none;font-size:1.5rem;cursor:pointer;padding:0 8px;'>⋮</button>
+                    <div class='notice-menu-dropdown' style='display:none;position:absolute;right:0;top:28px;background:#fff;border:1px solid #bcd0ee;border-radius:6px;box-shadow:0 2px 8px rgba(0,0,0,0.08);z-index:10;'>
+                        <button class='notice-edit' style='display:block;width:100%;background:none;border:none;padding:0.5rem 1.2rem;text-align:left;cursor:pointer;color:#2563eb;'>Edit</button>
+                        <button class='notice-remove' style='display:block;width:100%;background:none;border:none;padding:0.5rem 1.2rem;text-align:left;cursor:pointer;color:#e74c3c;'>Remove</button>
+                        <button class='notice-share' style='display:block;width:100%;background:none;border:none;padding:0.5rem 1.2rem;text-align:left;cursor:pointer;color:#2563eb;'>Share</button>
+                        <button class='notice-insert-file' style='display:block;width:100%;background:none;border:none;padding:0.5rem 1.2rem;text-align:left;cursor:pointer;color:#2563eb;'>Insert File</button>
+                        <button class='notice-insert-image' style='display:block;width:100%;background:none;border:none;padding:0.5rem 1.2rem;text-align:left;cursor:pointer;color:#2563eb;'>Insert Image</button>
+                    </div>
+                    <input type='file' class='notice-file-input' style='display:none;' accept='.pdf,.doc,.docx,.ppt,.pptx,.txt,.xls,.xlsx,.odt,.ods,.odp'>
+                    <input type='file' class='notice-image-input' style='display:none;' accept='image/*'>
+                </div>
+            </div>
+            <div class='notice-content' style='font-size:1.1rem;'>${content}</div>
+            <div class='notice-attachments'></div>
+        `;
+        // Menu logic
+        const menuBtn = noticeDiv.querySelector('.notice-menu-btn');
+        const menuDropdown = noticeDiv.querySelector('.notice-menu-dropdown');
+        menuBtn.onclick = (e) => {
+            e.stopPropagation();
+            menuDropdown.style.display = menuDropdown.style.display === 'block' ? 'none' : 'block';
+            document.addEventListener('click', closeMenu);
+        };
+        function closeMenu(ev) {
+            if (!menuDropdown.contains(ev.target) && ev.target !== menuBtn) {
+                menuDropdown.style.display = 'none';
+                document.removeEventListener('click', closeMenu);
+            }
+        }
+        // Remove
+        menuDropdown.querySelector('.notice-remove').onclick = () => {
+            noticeDiv.remove();
+        };
+        // Share
+        menuDropdown.querySelector('.notice-share').onclick = () => {
+            const text = `Title: ${title}\nNotice: ${content}`;
+            navigator.clipboard.writeText(text).then(() => {
+                menuDropdown.style.display = 'none';
+                alert('Notice copied to clipboard!');
+            });
+        };
+        // Edit
+        menuDropdown.querySelector('.notice-edit').onclick = () => {
+            menuDropdown.style.display = 'none';
+            // Replace content with editable form
+            const editForm = document.createElement('form');
+            editForm.innerHTML = `
+                <input type='text' value='${title}' required style='width:100%;padding:0.7rem;margin-bottom:0.7rem;font-size:1.1rem;border:1px solid #bcd0ee;border-radius:5px;'>
+                <textarea required style='width:100%;padding:0.7rem;height:120px;font-size:1.1rem;border:1px solid #bcd0ee;border-radius:5px;'>${content}</textarea>
+                <button type='submit' style='background:#2563eb;color:#fff;border:none;padding:0.7rem 2rem;border-radius:5px;font-size:1rem;cursor:pointer;margin-top:0.5rem;'>Save</button>
+            `;
+            const noticeContent = noticeDiv.querySelector('.notice-content');
+            noticeContent.style.display = 'none';
+            noticeDiv.appendChild(editForm);
+            editForm.onsubmit = function(ev) {
+                ev.preventDefault();
+                const newTitle = editForm.querySelector('input').value.trim();
+                const newContent = editForm.querySelector('textarea').value.trim();
+                if (newTitle && newContent) {
+                    noticeDiv.querySelector('h3').textContent = newTitle;
+                    noticeContent.textContent = newContent;
+                    noticeContent.style.display = '';
+                    editForm.remove();
+                }
+            };
+        };
+        // Insert File
+        const fileInput = noticeDiv.querySelector('.notice-file-input');
+        menuDropdown.querySelector('.notice-insert-file').onclick = () => {
+            fileInput.click();
+            menuDropdown.style.display = 'none';
+        };
+        fileInput.addEventListener('change', function(event) {
+            const files = event.target.files;
+            if (files && files[0]) {
+                const fileLink = document.createElement('a');
+                fileLink.href = URL.createObjectURL(files[0]);
+                fileLink.download = files[0].name;
+                fileLink.textContent = '📄 ' + files[0].name;
+                fileLink.style.display = 'block';
+                fileLink.style.margin = '0.5rem 0';
+                fileLink.style.color = '#2563eb';
+                fileLink.style.fontWeight = '500';
+                noticeDiv.querySelector('.notice-attachments').appendChild(fileLink);
+            }
+        });
+        // Insert Image
+        const imageInput = noticeDiv.querySelector('.notice-image-input');
+        menuDropdown.querySelector('.notice-insert-image').onclick = () => {
+            imageInput.click();
+            menuDropdown.style.display = 'none';
+        };
+        imageInput.addEventListener('change', function(event) {
+            const files = event.target.files;
+            if (files && files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const img = document.createElement('img');
+                    img.src = e.target.result;
+                    img.style.width = '120px';
+                    img.style.height = '90px';
+                    img.style.objectFit = 'cover';
+                    img.style.borderRadius = '6px';
+                    img.style.margin = '0.5rem 0.5rem 0.5rem 0';
+                    img.style.boxShadow = '0 2px 8px rgba(37,99,235,0.10)';
+                    noticeDiv.querySelector('.notice-attachments').appendChild(img);
+                };
+                reader.readAsDataURL(files[0]);
+            }
+        });
+        return noticeDiv;
+    }
+    form.onsubmit = function(e) {
+        e.preventDefault();
+        const title = document.getElementById('notice-title').value.trim();
+        const content = document.getElementById('notice-content').value.trim();
+        if (title && content) {
+            const noticeDiv = createNoticeElement(title, content);
+            noticesList.prepend(noticeDiv);
+            form.reset();
+            form.style.display = 'none';
+        }
+    };
+    </script>
+</body>
+</html> 

@@ -7,67 +7,118 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Header with navigation -->
-    <header>
-        <div class="container nav-container">
-            <div class="logo">Education Hub</div>
-            <nav id="navbar">
-                <ul class="nav-links">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="resources.html" class="active">Resources</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-                <div class="menu-toggle" id="menu-toggle" aria-label="Open menu">
-                    <span></span><span></span><span></span>
-                </div>
-            </nav>
-        </div>
-    </header>
+    <!-- Removed the navigation bar so the title menu only appears on the home page -->
     <main class="main-content">
-        <h1>Nepal Government Educational Resources</h1>
+        <div style="text-align:right; margin-bottom:1rem;">
+            <a href="index.html" style="background:#2563eb;color:#fff;padding:0.5rem 1.2rem;border-radius:6px;text-decoration:none;font-weight:500;">Go to Main Menu</a>
+        </div>
+        <div style="text-align:right; margin-bottom:1rem;">
+            <button id="add-resource-btn" style="background:#2563eb;color:#fff;border:none;border-radius:50%;width:36px;height:36px;font-size:1.3rem;cursor:pointer;">+</button>
+        </div>
+        <form id="resource-form" style="display:none; margin-bottom:2rem;">
+            <input type="text" id="resource-title" placeholder="Title" required style="width:100%;padding:0.7rem;margin-bottom:0.7rem;font-size:1.1rem;border:1px solid #bcd0ee;border-radius:5px;">
+            <input type="text" id="resource-desc" placeholder="Description" required style="width:100%;padding:0.7rem;margin-bottom:0.7rem;font-size:1.1rem;border:1px solid #bcd0ee;border-radius:5px;">
+            <input type="url" id="resource-link" placeholder="Link (URL)" required style="width:100%;padding:0.7rem;margin-bottom:0.7rem;font-size:1.1rem;border:1px solid #bcd0ee;border-radius:5px;">
+            <button type="submit" style="background:#2563eb;color:#fff;border:none;padding:0.7rem 2rem;border-radius:5px;font-size:1rem;cursor:pointer;margin-top:0.5rem;">Add Resource</button>
+        </form>
+        <h1>शैक्षिक स्रोतहरू (Educational Resources)</h1>
         <div class="resources-grid">
-            <div class="resource-card">
+            <div class="resource-card" style="position:relative;">
+                <button class="resource-menu-btn" style="position:absolute;top:10px;right:14px;background:rgba(255,255,255,0.85);border:none;border-radius:50%;font-size:1.2rem;cursor:pointer;width:28px;height:28px;display:flex;align-items:center;justify-content:center;box-shadow:0 1px 4px rgba(0,0,0,0.08);z-index:10;">⋮</button>
+                <div class="resource-menu-dropdown" style="display:none;position:absolute;right:0;top:38px;background:#fff;border:1px solid #bcd0ee;border-radius:6px;box-shadow:0 2px 8px rgba(0,0,0,0.08);z-index:20;min-width:120px;">
+                    <button class="resource-remove" style="display:block;width:100%;background:none;border:none;padding:0.5rem 1.2rem;text-align:left;cursor:pointer;color:#e74c3c;">Remove</button>
+                    <button class="resource-hyperlink" style="display:block;width:100%;background:none;border:none;padding:0.5rem 1.2rem;text-align:left;cursor:pointer;color:#2563eb;">Hyperlink</button>
+                    <button class="resource-insert" style="display:block;width:100%;background:none;border:none;padding:0.5rem 1.2rem;text-align:left;cursor:pointer;color:#2563eb;">Insert</button>
+                    <button class="resource-change" style="display:block;width:100%;background:none;border:none;padding:0.5rem 1.2rem;text-align:left;cursor:pointer;color:#2563eb;">Change</button>
+                </div>
                 <h3>National Curriculum Framework</h3>
                 <p>Access the official curriculum framework for school education in Nepal.</p>
                 <a href="https://moecdc.gov.np/curriculum" target="_blank">View Curriculum</a>
             </div>
-            <div class="resource-card">
+            <div class="resource-card" style="position:relative;">
+                <button class="resource-menu-btn" style="position:absolute;top:10px;right:14px;background:rgba(255,255,255,0.85);border:none;border-radius:50%;font-size:1.2rem;cursor:pointer;width:28px;height:28px;display:flex;align-items:center;justify-content:center;box-shadow:0 1px 4px rgba(0,0,0,0.08);z-index:10;">⋮</button>
+                <div class="resource-menu-dropdown" style="display:none;position:absolute;right:0;top:38px;background:#fff;border:1px solid #bcd0ee;border-radius:6px;box-shadow:0 2px 8px rgba(0,0,0,0.08);z-index:20;min-width:120px;">
+                    <button class="resource-remove" style="display:block;width:100%;background:none;border:none;padding:0.5rem 1.2rem;text-align:left;cursor:pointer;color:#e74c3c;">Remove</button>
+                    <button class="resource-hyperlink" style="display:block;width:100%;background:none;border:none;padding:0.5rem 1.2rem;text-align:left;cursor:pointer;color:#2563eb;">Hyperlink</button>
+                    <button class="resource-insert" style="display:block;width:100%;background:none;border:none;padding:0.5rem 1.2rem;text-align:left;cursor:pointer;color:#2563eb;">Insert</button>
+                    <button class="resource-change" style="display:block;width:100%;background:none;border:none;padding:0.5rem 1.2rem;text-align:left;cursor:pointer;color:#2563eb;">Change</button>
+                </div>
                 <h3>SEE Exam Resources</h3>
                 <p>Find past papers, model questions, and exam guidelines for the Secondary Education Examination (SEE).</p>
                 <a href="https://see.gov.np/" target="_blank">SEE Resources</a>
             </div>
-            <div class="resource-card">
+            <div class="resource-card" style="position:relative;">
+                <button class="resource-menu-btn" style="position:absolute;top:10px;right:14px;background:rgba(255,255,255,0.85);border:none;border-radius:50%;font-size:1.2rem;cursor:pointer;width:28px;height:28px;display:flex;align-items:center;justify-content:center;box-shadow:0 1px 4px rgba(0,0,0,0.08);z-index:10;">⋮</button>
+                <div class="resource-menu-dropdown" style="display:none;position:absolute;right:0;top:38px;background:#fff;border:1px solid #bcd0ee;border-radius:6px;box-shadow:0 2px 8px rgba(0,0,0,0.08);z-index:20;min-width:120px;">
+                    <button class="resource-remove" style="display:block;width:100%;background:none;border:none;padding:0.5rem 1.2rem;text-align:left;cursor:pointer;color:#e74c3c;">Remove</button>
+                    <button class="resource-hyperlink" style="display:block;width:100%;background:none;border:none;padding:0.5rem 1.2rem;text-align:left;cursor:pointer;color:#2563eb;">Hyperlink</button>
+                    <button class="resource-insert" style="display:block;width:100%;background:none;border:none;padding:0.5rem 1.2rem;text-align:left;cursor:pointer;color:#2563eb;">Insert</button>
+                    <button class="resource-change" style="display:block;width:100%;background:none;border:none;padding:0.5rem 1.2rem;text-align:left;cursor:pointer;color:#2563eb;">Change</button>
+                </div>
                 <h3>Teacher Guides & Training</h3>
                 <p>Access teacher training materials and guides from the Nepal Government.</p>
                 <a href="https://moecdc.gov.np/teacher-guide" target="_blank">Teacher Guides</a>
             </div>
-            <div class="resource-card">
+            <div class="resource-card" style="position:relative;">
+                <button class="resource-menu-btn" style="position:absolute;top:10px;right:14px;background:rgba(255,255,255,0.85);border:none;border-radius:50%;font-size:1.2rem;cursor:pointer;width:28px;height:28px;display:flex;align-items:center;justify-content:center;box-shadow:0 1px 4px rgba(0,0,0,0.08);z-index:10;">⋮</button>
+                <div class="resource-menu-dropdown" style="display:none;position:absolute;right:0;top:38px;background:#fff;border:1px solid #bcd0ee;border-radius:6px;box-shadow:0 2px 8px rgba(0,0,0,0.08);z-index:20;min-width:120px;">
+                    <button class="resource-remove" style="display:block;width:100%;background:none;border:none;padding:0.5rem 1.2rem;text-align:left;cursor:pointer;color:#e74c3c;">Remove</button>
+                    <button class="resource-hyperlink" style="display:block;width:100%;background:none;border:none;padding:0.5rem 1.2rem;text-align:left;cursor:pointer;color:#2563eb;">Hyperlink</button>
+                    <button class="resource-insert" style="display:block;width:100%;background:none;border:none;padding:0.5rem 1.2rem;text-align:left;cursor:pointer;color:#2563eb;">Insert</button>
+                    <button class="resource-change" style="display:block;width:100%;background:none;border:none;padding:0.5rem 1.2rem;text-align:left;cursor:pointer;color:#2563eb;">Change</button>
+                </div>
                 <h3>Ministry of Education, Science and Technology</h3>
                 <p>Visit the official portal for news, notices, and educational updates from the Nepal Government.</p>
                 <a href="https://moest.gov.np/" target="_blank">MoEST Portal</a>
             </div>
-            <div class="resource-card">
+            <div class="resource-card" style="position:relative;">
+                <button class="resource-menu-btn" style="position:absolute;top:10px;right:14px;background:rgba(255,255,255,0.85);border:none;border-radius:50%;font-size:1.2rem;cursor:pointer;width:28px;height:28px;display:flex;align-items:center;justify-content:center;box-shadow:0 1px 4px rgba(0,0,0,0.08);z-index:10;">⋮</button>
+                <div class="resource-menu-dropdown" style="display:none;position:absolute;right:0;top:38px;background:#fff;border:1px solid #bcd0ee;border-radius:6px;box-shadow:0 2px 8px rgba(0,0,0,0.08);z-index:20;min-width:120px;">
+                    <button class="resource-remove" style="display:block;width:100%;background:none;border:none;padding:0.5rem 1.2rem;text-align:left;cursor:pointer;color:#e74c3c;">Remove</button>
+                    <button class="resource-hyperlink" style="display:block;width:100%;background:none;border:none;padding:0.5rem 1.2rem;text-align:left;cursor:pointer;color:#2563eb;">Hyperlink</button>
+                    <button class="resource-insert" style="display:block;width:100%;background:none;border:none;padding:0.5rem 1.2rem;text-align:left;cursor:pointer;color:#2563eb;">Insert</button>
+                    <button class="resource-change" style="display:block;width:100%;background:none;border:none;padding:0.5rem 1.2rem;text-align:left;cursor:pointer;color:#2563eb;">Change</button>
+                </div>
                 <h3>Curriculum Development Centre (CDC) Nepal</h3>
                 <p>Visit the official CDC website for curriculum, textbooks, notices, and educational resources from the Nepal Government.</p>
                 <a href="https://moecdc.gov.np/" target="_blank">moecdc.gov.np</a>
             </div>
-            <div class="resource-card">
+            <div class="resource-card" style="position:relative;">
+                <button class="resource-menu-btn" style="position:absolute;top:10px;right:14px;background:rgba(255,255,255,0.85);border:none;border-radius:50%;font-size:1.2rem;cursor:pointer;width:28px;height:28px;display:flex;align-items:center;justify-content:center;box-shadow:0 1px 4px rgba(0,0,0,0.08);z-index:10;">⋮</button>
+                <div class="resource-menu-dropdown" style="display:none;position:absolute;right:0;top:38px;background:#fff;border:1px solid #bcd0ee;border-radius:6px;box-shadow:0 2px 8px rgba(0,0,0,0.08);z-index:20;min-width:120px;">
+                    <button class="resource-remove" style="display:block;width:100%;background:none;border:none;padding:0.5rem 1.2rem;text-align:left;cursor:pointer;color:#e74c3c;">Remove</button>
+                    <button class="resource-hyperlink" style="display:block;width:100%;background:none;border:none;padding:0.5rem 1.2rem;text-align:left;cursor:pointer;color:#2563eb;">Hyperlink</button>
+                    <button class="resource-insert" style="display:block;width:100%;background:none;border:none;padding:0.5rem 1.2rem;text-align:left;cursor:pointer;color:#2563eb;">Insert</button>
+                    <button class="resource-change" style="display:block;width:100%;background:none;border:none;padding:0.5rem 1.2rem;text-align:left;cursor:pointer;color:#2563eb;">Change</button>
+                </div>
                 <h3>CDC Homepage (Textbooks & Resources)</h3>
                 <p>Access all textbooks, curriculum, notices, and educational resources directly from the official CDC homepage.</p>
                 <a href="https://moecdc.gov.np/" target="_blank">Go to CDC Homepage</a>
             </div>
-            <div class="resource-card">
+            <div class="resource-card" style="position:relative;">
+                <button class="resource-menu-btn" style="position:absolute;top:10px;right:14px;background:rgba(255,255,255,0.85);border:none;border-radius:50%;font-size:1.2rem;cursor:pointer;width:28px;height:28px;display:flex;align-items:center;justify-content:center;box-shadow:0 1px 4px rgba(0,0,0,0.08);z-index:10;">⋮</button>
+                <div class="resource-menu-dropdown" style="display:none;position:absolute;right:0;top:38px;background:#fff;border:1px solid #bcd0ee;border-radius:6px;box-shadow:0 2px 8px rgba(0,0,0,0.08);z-index:20;min-width:120px;">
+                    <button class="resource-remove" style="display:block;width:100%;background:none;border:none;padding:0.5rem 1.2rem;text-align:left;cursor:pointer;color:#e74c3c;">Remove</button>
+                    <button class="resource-hyperlink" style="display:block;width:100%;background:none;border:none;padding:0.5rem 1.2rem;text-align:left;cursor:pointer;color:#2563eb;">Hyperlink</button>
+                    <button class="resource-insert" style="display:block;width:100%;background:none;border:none;padding:0.5rem 1.2rem;text-align:left;cursor:pointer;color:#2563eb;">Insert</button>
+                    <button class="resource-change" style="display:block;width:100%;background:none;border:none;padding:0.5rem 1.2rem;text-align:left;cursor:pointer;color:#2563eb;">Change</button>
+                </div>
                 <h3>e-Pustakalaya</h3>
                 <p>A free and open digital library with thousands of books, teaching materials, and learning resources for students and teachers in Nepal.</p>
                 <a href="https://www.pustakalaya.org/" target="_blank">Visit e-Pustakalaya</a>
             </div>
-            <div class="resource-card">
+            <div class="resource-card" style="position:relative;">
+                <button class="resource-menu-btn" style="position:absolute;top:10px;right:14px;background:rgba(255,255,255,0.85);border:none;border-radius:50%;font-size:1.2rem;cursor:pointer;width:28px;height:28px;display:flex;align-items:center;justify-content:center;box-shadow:0 1px 4px rgba(0,0,0,0.08);z-index:10;">⋮</button>
+                <div class="resource-menu-dropdown" style="display:none;position:absolute;right:0;top:38px;background:#fff;border:1px solid #bcd0ee;border-radius:6px;box-shadow:0 2px 8px rgba(0,0,0,0.08);z-index:20;min-width:120px;">
+                    <button class="resource-remove" style="display:block;width:100%;background:none;border:none;padding:0.5rem 1.2rem;text-align:left;cursor:pointer;color:#e74c3c;">Remove</button>
+                    <button class="resource-hyperlink" style="display:block;width:100%;background:none;border:none;padding:0.5rem 1.2rem;text-align:left;cursor:pointer;color:#2563eb;">Hyperlink</button>
+                    <button class="resource-insert" style="display:block;width:100%;background:none;border:none;padding:0.5rem 1.2rem;text-align:left;cursor:pointer;color:#2563eb;">Insert</button>
+                    <button class="resource-change" style="display:block;width:100%;background:none;border:none;padding:0.5rem 1.2rem;text-align:left;cursor:pointer;color:#2563eb;">Change</button>
+                </div>
                 <h3>Looma</h3>
                 <p>An interactive educational platform offering multimedia lessons, activities, and resources for Nepali schools and learners.</p>
                 <a href="https://www.looma.website/" target="_blank">Visit Looma</a>
             </div>
-            <!-- Add more official resources as needed -->
         </div>
     </main>
     <!-- Footer -->
@@ -80,5 +131,128 @@
         </div>
     </footer>
     <script src="script.js"></script>
+    <script>
+document.querySelectorAll('.resource-menu-btn').forEach(btn => {
+    btn.onclick = function(e) {
+        e.stopPropagation();
+        const dropdown = this.nextElementSibling;
+        dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+        document.addEventListener('click', closeMenu);
+        function closeMenu(ev) {
+            if (!dropdown.contains(ev.target) && ev.target !== btn) {
+                dropdown.style.display = 'none';
+                document.removeEventListener('click', closeMenu);
+            }
+        }
+    };
+});
+document.querySelectorAll('.resource-remove').forEach(btn => {
+    btn.onclick = function() {
+        this.closest('.resource-card').remove();
+    };
+});
+document.querySelectorAll('.resource-hyperlink').forEach(btn => {
+    btn.onclick = function() {
+        const link = prompt('Enter a new hyperlink (URL):');
+        if (link) {
+            const a = this.closest('.resource-card').querySelector('a');
+            if (a) { a.href = link; a.textContent = 'Visit Link'; }
+        }
+        this.parentElement.style.display = 'none';
+    };
+});
+document.querySelectorAll('.resource-insert').forEach(btn => {
+    btn.onclick = function() {
+        const text = prompt('Enter text to insert:');
+        if (text) {
+            const p = document.createElement('p');
+            p.textContent = text;
+            this.closest('.resource-card').appendChild(p);
+        }
+        this.parentElement.style.display = 'none';
+    };
+});
+document.querySelectorAll('.resource-change').forEach(btn => {
+    btn.onclick = function() {
+        const newTitle = prompt('Enter new title:');
+        if (newTitle) {
+            this.closest('.resource-card').querySelector('h3').textContent = newTitle;
+        }
+        this.parentElement.style.display = 'none';
+    };
+});
+document.getElementById('add-resource-btn').onclick = function() {
+    var form = document.getElementById('resource-form');
+    form.style.display = form.style.display === 'none' ? 'block' : 'none';
+};
+document.getElementById('resource-form').onsubmit = function(e) {
+    e.preventDefault();
+    var title = document.getElementById('resource-title').value.trim();
+    var desc = document.getElementById('resource-desc').value.trim();
+    var link = document.getElementById('resource-link').value.trim();
+    if (title && desc && link) {
+        var grid = document.querySelector('.resources-grid');
+        var card = document.createElement('div');
+        card.className = 'resource-card';
+        card.style.position = 'relative';
+        card.innerHTML = `
+            <button class="resource-menu-btn" style="position:absolute;top:10px;right:14px;background:rgba(255,255,255,0.85);border:none;border-radius:50%;font-size:1.2rem;cursor:pointer;width:28px;height:28px;display:flex;align-items:center;justify-content:center;box-shadow:0 1px 4px rgba(0,0,0,0.08);z-index:10;">⋮</button>
+            <div class="resource-menu-dropdown" style="display:none;position:absolute;right:0;top:38px;background:#fff;border:1px solid #bcd0ee;border-radius:6px;box-shadow:0 2px 8px rgba(0,0,0,0.08);z-index:20;min-width:120px;">
+                <button class="resource-remove" style="display:block;width:100%;background:none;border:none;padding:0.5rem 1.2rem;text-align:left;cursor:pointer;color:#e74c3c;">Remove</button>
+                <button class="resource-hyperlink" style="display:block;width:100%;background:none;border:none;padding:0.5rem 1.2rem;text-align:left;cursor:pointer;color:#2563eb;">Hyperlink</button>
+                <button class="resource-insert" style="display:block;width:100%;background:none;border:none;padding:0.5rem 1.2rem;text-align:left;cursor:pointer;color:#2563eb;">Insert</button>
+                <button class="resource-change" style="display:block;width:100%;background:none;border:none;padding:0.5rem 1.2rem;text-align:left;cursor:pointer;color:#2563eb;">Change</button>
+            </div>
+            <h3>${title}</h3>
+            <p>${desc}</p>
+            <a href="${link}" target="_blank">Visit Link</a>
+        `;
+        grid.appendChild(card);
+        // Re-attach menu logic for the new card
+        var btn = card.querySelector('.resource-menu-btn');
+        var dropdown = card.querySelector('.resource-menu-dropdown');
+        btn.onclick = function(e) {
+            e.stopPropagation();
+            dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+            document.addEventListener('click', closeMenu);
+            function closeMenu(ev) {
+                if (!dropdown.contains(ev.target) && ev.target !== btn) {
+                    dropdown.style.display = 'none';
+                    document.removeEventListener('click', closeMenu);
+                }
+            }
+        };
+        dropdown.querySelector('.resource-remove').onclick = function() {
+            card.remove();
+        };
+        dropdown.querySelector('.resource-hyperlink').onclick = function() {
+            var newLink = prompt('Enter a new hyperlink (URL):');
+            if (newLink) {
+                var a = card.querySelector('a');
+                if (a) { a.href = newLink; a.textContent = 'Visit Link'; }
+            }
+            dropdown.style.display = 'none';
+        };
+        dropdown.querySelector('.resource-insert').onclick = function() {
+            var text = prompt('Enter text to insert:');
+            if (text) {
+                var p = document.createElement('p');
+                p.textContent = text;
+                card.appendChild(p);
+            }
+            dropdown.style.display = 'none';
+        };
+        dropdown.querySelector('.resource-change').onclick = function() {
+            var newTitle = prompt('Enter new title:');
+            if (newTitle) {
+                card.querySelector('h3').textContent = newTitle;
+            }
+            dropdown.style.display = 'none';
+        };
+        this.reset();
+        this.style.display = 'none';
+    }
+};
+</script>
 </body>
 </html> 

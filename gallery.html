@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Gallery - Education Hub</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .gallery-list {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            min-height: 120px;
+            border: 2px dashed #bcd0ee;
+            border-radius: 10px;
+            padding: 1.5rem;
+            background: #f4f8fb;
+            align-items: center;
+        }
+        .gallery-img-container {
+            position: relative;
+            width: 220px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(37,99,235,0.07);
+            padding: 1rem 1rem 1.5rem 1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .gallery-img {
+            width: 180px;
+            height: 130px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 0.7rem;
+        }
+        .gallery-caption {
+            width: 100%;
+            text-align: center;
+            color: #2563eb;
+            font-size: 1.05rem;
+            margin-top: 0.3rem;
+            min-height: 1.2em;
+        }
+        .gallery-menu-btn {
+            position: absolute;
+            top: 10px;
+            right: 14px;
+            background: rgba(255,255,255,0.85);
+            border: none;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            cursor: pointer;
+            width: 28px;
+            height: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+            z-index: 10;
+        }
+        .gallery-menu-dropdown {
+            display: none;
+            position: absolute;
+            right: 0;
+            top: 38px;
+            background: #fff;
+            border: 1px solid #bcd0ee;
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            z-index: 20;
+            min-width: 120px;
+        }
+        .gallery-menu-dropdown button {
+            display: block;
+            width: 100%;
+            background: none;
+            border: none;
+            padding: 0.5rem 1.2rem;
+            text-align: left;
+            cursor: pointer;
+            color: #2563eb;
+            font-size: 1rem;
+        }
+        .gallery-menu-dropdown .delete-btn {
+            color: #e74c3c;
+        }
+    </style>
+</head>
+<body>
+    <!-- Removed the navigation bar so the title menu only appears on the home page -->
+    <main class="main-content">
+        <div style="text-align:right; margin-bottom:1rem;">
+            <a href="index.html" style="background:#2563eb;color:#fff;padding:0.5rem 1.2rem;border-radius:6px;text-decoration:none;font-weight:500;">Go to Main Menu</a>
+        </div>
+        <h2 style="color:#2563eb;">Gallery</h2>
+        <div style="text-align:right; margin-bottom:0.7rem;">
+            <input type="file" id="add-image-input" accept="image/*" style="display:none;">
+            <button id="gallery-add-btn" onclick="document.getElementById('add-image-input').click();" style="background:#2563eb; color:#fff; border:none; padding:0.5rem 1.2rem; border-radius:50%; font-size:1.7rem; cursor:pointer;">+</button>
+        </div>
+        <div id="gallery-list" class="gallery-list">
+            <span style="color:#888;">No images yet. Add your images below!</span>
+        </div>
+    </main>
+    <script>
+    const galleryList = document.getElementById('gallery-list');
+    document.getElementById('add-image-input').addEventListener('change', function(event) {
+        const files = event.target.files;
+        if (files && files[0]) {
+            addGalleryImage(files[0]);
+        }
+    });
+    function addGalleryImage(file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            const container = document.createElement('div');
+            container.className = 'gallery-img-container';
+            // Image
+            const img = document.createElement('img');
+            img.src = e.target.result;
+            img.className = 'gallery-img';
+            // Caption
+            const captionDiv = document.createElement('div');
+            captionDiv.className = 'gallery-caption';
+            captionDiv.textContent = '';
+            // Three dots menu
+            const menuBtn = document.createElement('button');
+            menuBtn.className = 'gallery-menu-btn';
+            menuBtn.innerHTML = '⋮';
+            // Dropdown
+            const dropdown = document.createElement('div');
+            dropdown.className = 'gallery-menu-dropdown';
+            // Change option
+            const changeBtn = document.createElement('button');
+            changeBtn.textContent = 'Change Image';
+            // Edit caption option
+            const editCaptionBtn = document.createElement('button');
+            editCaptionBtn.textContent = 'Edit Caption';
+            // Delete caption option
+            const deleteCaptionBtn = document.createElement('button');
+            deleteCaptionBtn.textContent = 'Delete Caption';
+            deleteCaptionBtn.className = 'delete-btn';
+            // Insert caption option
+            const insertCaptionBtn = document.createElement('button');
+            insertCaptionBtn.textContent = 'Insert Caption';
+            // Delete option
+            const deleteBtn = document.createElement('button');
+            deleteBtn.textContent = 'Delete Image';
+            deleteBtn.className = 'delete-btn';
+            // Hidden file input for change
+            const changeInput = document.createElement('input');
+            changeInput.type = 'file';
+            changeInput.accept = 'image/*';
+            changeInput.style.display = 'none';
+            // Dropdown logic
+            menuBtn.onclick = (e) => {
+                e.stopPropagation();
+                dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+                document.addEventListener('click', closeMenu);
+            };
+            function closeMenu(ev) {
+                if (!dropdown.contains(ev.target) && ev.target !== menuBtn) {
+                    dropdown.style.display = 'none';
+                    document.removeEventListener('click', closeMenu);
+                }
+            }
+            deleteBtn.onclick = () => {
+                container.remove();
+                if (!galleryList.querySelector('.gallery-img-container')) {
+                    galleryList.innerHTML = '<span style="color:#888;">No images yet. Add your images below!</span>';
+                }
+            };
+            changeBtn.onclick = () => {
+                changeInput.click();
+                dropdown.style.display = 'none';
+            };
+            changeInput.addEventListener('change', function(event) {
+                const files = event.target.files;
+                if (files && files[0]) {
+                    const reader2 = new FileReader();
+                    reader2.onload = function(e2) {
+                        img.src = e2.target.result;
+                    };
+                    reader2.readAsDataURL(files[0]);
+                }
+            });
+            editCaptionBtn.onclick = () => {
+                dropdown.style.display = 'none';
+                const input = document.createElement('input');
+                input.type = 'text';
+                input.value = captionDiv.textContent;
+                input.style.width = '100%';
+                input.style.padding = '0.4rem';
+                input.style.marginTop = '0.3rem';
+                input.style.fontSize = '1rem';
+                input.style.border = '1px solid #bcd0ee';
+                input.style.borderRadius = '5px';
+                captionDiv.replaceWith(input);
+                input.focus();
+                input.onblur = function() {
+                    captionDiv.textContent = input.value;
+                    input.replaceWith(captionDiv);
+                };
+                input.onkeydown = function(ev) {
+                    if (ev.key === 'Enter') {
+                        input.blur();
+                    }
+                };
+            };
+            insertCaptionBtn.onclick = () => {
+                dropdown.style.display = 'none';
+                const input = document.createElement('input');
+                input.type = 'text';
+                input.value = '';
+                input.style.width = '100%';
+                input.style.padding = '0.4rem';
+                input.style.marginTop = '0.3rem';
+                input.style.fontSize = '1rem';
+                input.style.border = '1px solid #bcd0ee';
+                input.style.borderRadius = '5px';
+                captionDiv.replaceWith(input);
+                input.focus();
+                input.onblur = function() {
+                    captionDiv.textContent = input.value;
+                    input.replaceWith(captionDiv);
+                };
+                input.onkeydown = function(ev) {
+                    if (ev.key === 'Enter') {
+                        input.blur();
+                    }
+                };
+            };
+            deleteCaptionBtn.onclick = () => {
+                captionDiv.textContent = '';
+                dropdown.style.display = 'none';
+            };
+            function updateDropdownButtons() {
+                insertCaptionBtn.style.display = captionDiv.textContent ? 'none' : 'block';
+                editCaptionBtn.style.display = captionDiv.textContent ? 'block' : 'none';
+                deleteCaptionBtn.style.display = captionDiv.textContent ? 'block' : 'none';
+            }
+            updateDropdownButtons();
+            captionDiv.addEventListener('DOMSubtreeModified', updateDropdownButtons);
+            dropdown.appendChild(changeBtn);
+            dropdown.appendChild(insertCaptionBtn);
+            dropdown.appendChild(editCaptionBtn);
+            dropdown.appendChild(deleteCaptionBtn);
+            dropdown.appendChild(deleteBtn);
+            menuBtn.appendChild(dropdown);
+            container.appendChild(img);
+            container.appendChild(menuBtn);
+            container.appendChild(changeInput);
+            container.appendChild(captionDiv);
+            galleryList.appendChild(container);
+            galleryList.querySelector('span')?.remove();
+        };
+        reader.readAsDataURL(file);
+    }
+    </script>
+</body>
+</html> 

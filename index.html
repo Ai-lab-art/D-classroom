@@ -11,12 +11,31 @@
     <header>
         <div class="container nav-container">
             <div class="logo">Education Hub</div>
+            <img src="Image1.jpg" alt="Profile Picture" class="nava-profile-pic">
             <nav id="navbar">
                 <ul class="nav-links">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="resources.html">Resources</a></li>
-                    <li><a href="contact.html">Contact</a></li>
+                    <li class="dropdown">
+                        <a href="about.html">About Us <span class="dropdown-arrow">▼</span></a>
+                        <ul class="dropdown-menu"><li><a href="#">Our Team</a></li></ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="gallery.html">Gallery <span class="dropdown-arrow">▼</span></a>
+                        <ul class="dropdown-menu"><li><a href="#">Photos</a></li></ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="notice.html">Notice <span class="dropdown-arrow">▼</span></a>
+                        <ul class="dropdown-menu"><li><a href="#">Latest Notices</a></li></ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="resources.html">Resources <span class="dropdown-arrow">▼</span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Children Stories</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="contact.html">Contact <span class="dropdown-arrow">▼</span></a>
+                        <ul class="dropdown-menu"><li><a href="#">Email Us</a></li></ul>
+                    </li>
                 </ul>
                 <div class="menu-toggle" id="menu-toggle" aria-label="Open menu">
                     <span></span><span></span><span></span>
@@ -33,6 +52,9 @@
     </section>
     <!-- Main content (can add announcements or highlights here) -->
     <main class="main-content">
+        <div style="text-align:right; margin-bottom:1rem;">
+            <a href="index.html" style="background:#2563eb;color:#fff;padding:0.5rem 1.2rem;border-radius:6px;text-decoration:none;font-weight:500;">Go to Main Menu</a>
+        </div>
         <section class="announcements">
             <h2>Latest Announcements</h2>
             <ul>
@@ -53,5 +75,26 @@
         </div>
     </footer>
     <script src="script.js"></script>
+    <script>
+        document.getElementById('add-image-input').addEventListener('change', function(event) {
+            const files = event.target.files;
+            if (files && files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const img = document.createElement('img');
+                    img.src = e.target.result;
+                    img.style.width = '160px';
+                    img.style.height = '120px';
+                    img.style.objectFit = 'cover';
+                    img.style.borderRadius = '8px';
+                    img.style.boxShadow = '0 2px 8px rgba(37,99,235,0.10)';
+                    img.style.margin = '0.5rem';
+                    document.getElementById('gallery-placeholder').appendChild(img);
+                    document.getElementById('gallery-placeholder').querySelector('span')?.remove();
+                };
+                reader.readAsDataURL(files[0]);
+            }
+        });
+    </script>
 </body>
 </html> 
