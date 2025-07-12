@@ -5,6 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>D classroom - Resource Materials</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* Smooth color-cycling animation for the hero h1 (no dim, no blink) */
+        .hero-content h1 {
+            font-weight: 900;
+            font-size: 2.5rem;
+            text-shadow: 0 2px 8px rgba(37,99,235,0.15);
+            animation: colorCycle 15s linear infinite;
+        }
+        @keyframes colorCycle {
+            0%   { color: #2563eb; }
+            10%  { color: #e1306c; }
+            20%  { color: #25d366; }
+            30%  { color: #fbbc05; }
+            40%  { color: #1877f3; }
+            50%  { color: #0077b5; }
+            60%  { color: #2563eb; }
+            70%  { color: #e1306c; }
+            80%  { color: #25d366; }
+            90%  { color: #fbbc05; }
+            100% { color: #2563eb; }
+        }
+    </style>
 </head>
 <body>
     <!-- Header with logo and navigation menu -->
