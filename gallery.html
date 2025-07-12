@@ -159,15 +159,17 @@
             menuBtn.onclick = (e) => {
                 e.stopPropagation();
                 dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
-                document.addEventListener('click', closeMenu);
+                if (dropdown.style.display === 'block') {
+                    document.addEventListener('click', closeMenu, { once: true });
+                }
             };
             function closeMenu(ev) {
                 if (!dropdown.contains(ev.target) && ev.target !== menuBtn) {
                     dropdown.style.display = 'none';
-                    document.removeEventListener('click', closeMenu);
                 }
             }
             deleteBtn.onclick = () => {
+                observer.disconnect();
                 container.remove();
                 if (!galleryList.querySelector('.gallery-img-container')) {
                     galleryList.innerHTML = '<span style="color:#888;">No images yet. Add your images below!</span>';
@@ -201,7 +203,9 @@
                 captionDiv.replaceWith(input);
                 input.focus();
                 input.onblur = function() {
-                    captionDiv.textContent = input.value;
+                    // Sanitize input to prevent XSS
+                    const sanitizedValue = input.value.replace(/[<>]/g, '');
+                    captionDiv.textContent = sanitizedValue;
                     input.replaceWith(captionDiv);
                 };
                 input.onkeydown = function(ev) {
@@ -224,7 +228,9 @@
                 captionDiv.replaceWith(input);
                 input.focus();
                 input.onblur = function() {
-                    captionDiv.textContent = input.value;
+                    // Sanitize input to prevent XSS
+                    const sanitizedValue = input.value.replace(/[<>]/g, '');
+                    captionDiv.textContent = sanitizedValue;
                     input.replaceWith(captionDiv);
                 };
                 input.onkeydown = function(ev) {
@@ -243,7 +249,12 @@
                 deleteCaptionBtn.style.display = captionDiv.textContent ? 'block' : 'none';
             }
             updateDropdownButtons();
-            captionDiv.addEventListener('DOMSubtreeModified', updateDropdownButtons);
+            
+            // Use MutationObserver instead of deprecated DOMSubtreeModified
+            const observer = new MutationObserver(updateDropdownButtons);
+            observer.observe(captionDiv, { childList: true, subtree: true, characterData: true });
+            
+
             dropdown.appendChild(changeBtn);
             dropdown.appendChild(insertCaptionBtn);
             dropdown.appendChild(editCaptionBtn);

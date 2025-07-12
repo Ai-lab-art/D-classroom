@@ -81,27 +81,7 @@
         </div>
     </footer>
     <script src="script.js"></script>
-    <script>
-        document.getElementById('add-image-input').addEventListener('change', function(event) {
-            const files = event.target.files;
-            if (files && files[0]) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    const img = document.createElement('img');
-                    img.src = e.target.result;
-                    img.style.width = '160px';
-                    img.style.height = '120px';
-                    img.style.objectFit = 'cover';
-                    img.style.borderRadius = '8px';
-                    img.style.boxShadow = '0 2px 8px rgba(37,99,235,0.10)';
-                    img.style.margin = '0.5rem';
-                    document.getElementById('gallery-placeholder').appendChild(img);
-                    document.getElementById('gallery-placeholder').querySelector('span')?.remove();
-                };
-                reader.readAsDataURL(files[0]);
-            }
-        });
-    </script>
+    <!-- Removed gallery-related script as it belongs in gallery.html -->
     <script>
         document.getElementById('share-btn').onclick = function() {
             if (navigator.share) {
