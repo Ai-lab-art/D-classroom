@@ -31,7 +31,7 @@
 <body>
     <!-- Header with logo and navigation menu -->
     <header>
-        <div class="container nav-container" style="display:flex;flex-direction:column;align-items:flex-start;">
+        <div class="container nav-container" style="display:flex;flex-direction:column;align-items:flex-start;position:relative;">
             <img src="Screenshot 2025-02-27 194654.png" alt="Profile Picture" style="width:88px;height:88px;border-radius:50%;object-fit:cover;box-shadow:0 2px 8px rgba(37,99,235,0.10);margin-bottom:0.5rem;">
             <div class="logo">D classroom</div>
             <nav id="navbar">
@@ -135,7 +135,8 @@
     <footer>
         <div class="container footer-container">
             <p>&copy; 2025 D classroom. All rights reserved.</p>
-            <div class="share-section" style="margin-top:1rem; text-align:center; display:flex; justify-content:center; gap:0.5rem; flex-wrap:wrap;">
+            <div style="text-align:center;font-weight:500;margin-bottom:0.5rem;">Share this page on:</div>
+            <div class="share-section" style="margin-top:0;text-align:center;display:flex;justify-content:center;gap:0.5rem;flex-wrap:wrap;">
                 <button class="share-btn" id="facebook-share" title="Share on Facebook" style="background:#1877f3;color:#fff;padding:0.5rem 1rem;border:none;border-radius:6px;display:flex;align-items:center;gap:0.5rem;cursor:pointer;">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M22.675 0h-21.35C.595 0 0 .592 0 1.326v21.348C0 23.408.595 24 1.325 24h11.495v-9.294H9.692v-3.622h3.128V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.797.143v3.24l-1.918.001c-1.504 0-1.797.715-1.797 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116C23.406 24 24 23.408 24 22.674V1.326C24 .592 23.406 0 22.675 0"/></svg>
                 </button>
@@ -161,6 +162,12 @@
             <div class="social-links">
                 <!-- YouTube link removed -->
             </div>
+        </div>
+        <div style="text-align:center;margin-top:1.2rem;">
+            <a href="https://facebook.com/" target="_blank" style="display:inline-flex;align-items:center;gap:0.5rem;text-decoration:none;font-weight:500;color:#fff;font-size:1.1rem;">
+                <img src="Screenshot 2025-02-27 194654.png" alt="D classroom Facebook" style="width:36px;height:36px;border-radius:50%;object-fit:cover;box-shadow:0 2px 8px rgba(37,99,235,0.10);vertical-align:middle;">
+                Follow our Facebook page
+            </a>
         </div>
     </footer>
     <script src="script.js"></script>
