@@ -63,8 +63,15 @@
                 <li><b>e-Pustakalaya (Digital Library):</b> <a href="https://www.pustakalaya.org/" target="_blank">pustakalaya.org</a></li>
                 <li><b>Looma (Educational Platform):</b> <a href="https://www.looma.website/" target="_blank">looma.website</a></li>
                 <li><b>Nepal Government Portal (Education Section):</b> <a href="https://nepal.gov.np/" target="_blank">nepal.gov.np</a></li>
+                <li><b>National Library (NNL):</b> <a href="https://nnl.gov.np/" target="_blank">nnl.gov.np</a></li>
             </ul>
             <div style="font-size:0.97em; color:#444;">Only education-related official notices from these portals are highlighted here for your convenience.</div>
+        </section>
+        <!-- Latest Educational Subnotices from All Provinces -->
+        <section id="province-notices-section" style="background:#f4f8fb; border-radius:10px; box-shadow:0 2px 8px rgba(37,99,235,0.07); padding:1.2rem 1.5rem 1.2rem 1.5rem; margin-bottom:2rem;">
+            <h3 style="color:#2563eb; margin-top:0;">Latest Educational Subnotices from All Provinces</h3>
+            <ul id="province-notices-list" style="padding-left:1.2rem; margin-bottom:0.7rem;"></ul>
+            <div style="font-size:0.97em; color:#444;">This section auto-updates with the latest educational notice from each province. If a notice cannot be fetched, a link to the portal is shown.</div>
         </section>
         <div style="text-align:right; margin-bottom:1rem;">
             <button id="add-notice-btn" style="background:#2563eb; color:#fff; border:none; border-radius:50%; width:36px; height:36px; font-size:1.3rem; cursor:pointer;">+</button>
@@ -376,6 +383,81 @@
         };
     });
     // --- End Subnotice Share Buttons ---
+
+    // --- Province Notices Auto-fetch ---
+    const provinceNoticesList = document.getElementById('province-notices-list');
+    const provinceNoticeSources = [
+        {
+            name: 'Koshi Province',
+            portal: 'https://ocmcm.koshi.gov.np/category/notice-publication/',
+            rss: null // No known RSS feed
+        },
+        {
+            name: 'Madhesh Province',
+            portal: 'https://ocmcm.madhesh.gov.np/',
+            rss: null // No direct notice link provided
+        },
+        {
+            name: 'Bagmati Province',
+            portal: 'https://ocmcm.bagamati.gov.np/category/notices-releases/',
+            rss: null // No known RSS feed
+        },
+        {
+            name: 'Gandaki Province',
+            portal: 'https://ocmcm.gandaki.gov.np/list/news',
+            rss: null // No known RSS feed
+        },
+        {
+            name: 'Lumbini Province',
+            portal: 'https://ocmcm.lumbini.gov.np/notice/',
+            rss: null // No known RSS feed
+        },
+        {
+            name: 'Karnali Province',
+            portal: 'https://ocmcm.karnali.gov.np/node',
+            rss: null // No known RSS feed
+        },
+        {
+            name: 'Sudurpashchim Province',
+            portal: 'https://ocmcm.sudurpashchim.gov.np/pages/Notice-Information/',
+            rss: null // No known RSS feed
+        }
+    ];
+    function fetchProvinceNotices() {
+        provinceNoticesList.innerHTML = '';
+        provinceNoticeSources.forEach((province, idx) => {
+            // For now, just show a loading message for each
+            const li = document.createElement('li');
+            li.id = `province-notice-${idx}`;
+            li.innerHTML = `<b>${province.name}:</b> <span style='color:#888;'>Loading...</span>`;
+            provinceNoticesList.appendChild(li);
+            // Try to fetch the latest notice (HTML scraping via CORS is usually blocked, so fallback to portal link)
+            // If RSS is available, use rss2json.com
+            if (province.rss) {
+                const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(province.rss)}`;
+                fetch(apiUrl)
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.status === 'ok' && data.items && data.items.length > 0) {
+                            const item = data.items[0];
+                            li.innerHTML = `<b>${province.name}:</b> <a href="${item.link}" target="_blank">${item.title}</a>`;
+                        } else {
+                            li.innerHTML = `<b>${province.name}:</b> <a href="${province.portal}" target="_blank">View Notices</a>`;
+                        }
+                    })
+                    .catch(() => {
+                        li.innerHTML = `<b>${province.name}:</b> <a href="${province.portal}" target="_blank">View Notices</a>`;
+                    });
+            } else {
+                // No RSS, fallback to portal link
+                li.innerHTML = `<b>${province.name}:</b> <a href="${province.portal}" target="_blank">View Latest Notice</a>`;
+            }
+        });
+    }
+    fetchProvinceNotices();
+    // Optionally, refresh every 10 minutes
+    setInterval(fetchProvinceNotices, 10 * 60 * 1000);
+    // --- End Province Notices Auto-fetch ---
     </script>
 </body>
 </html> 
