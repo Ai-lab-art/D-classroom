@@ -26,6 +26,23 @@
             90%  { color: #fbbc05; }
             100% { color: #2563eb; }
         }
+        .dclassroom-title {
+            font-size: 2.8rem;
+            font-weight: 900;
+            color: #FFD700;
+            letter-spacing: 2px;
+            text-shadow: 0 2px 12px rgba(0,0,0,0.18),0 1px 0 #bfa100;
+        }
+        .dclassroom-float {
+            font-size: 2.8rem;
+            font-weight: 900;
+            color: #FFD700;
+            letter-spacing: 2px;
+            text-shadow: 0 2px 12px rgba(0,0,0,0.18),0 1px 0 #bfa100;
+            margin-bottom: 0.7rem;
+            display: block;
+            text-align: center;
+        }
     </style>
     <!-- Open Graph Meta Tags for Social Media Sharing -->
     <meta property="og:title" content="D classroom - Resource Materials" />
@@ -40,12 +57,19 @@
     <meta name="twitter:image" content="Screenshot%202025-02-27%20194654.png" />
 </head>
 <body>
+    <div id="floating-ktm-clock" style="position:fixed;top:18px;right:18px;z-index:1000;background:#b8860b;border-radius:50%;box-shadow:0 8px 32px 0 rgba(0,0,0,0.18),0 2px 8px 0 #222;border:8px solid #222;width:170px;height:170px;display:flex;align-items:center;justify-content:center;">
+        <div id="ktm-analog-clock" style="width:140px;height:140px;"></div>
+    </div>
+    <div id="floating-calendar" style="position:fixed;top:18px;left:18px;z-index:1000;background:#fff;border-radius:18px;box-shadow:0 8px 32px 0 rgba(0,0,0,0.13),0 2px 8px 0 #2563eb;border:3px solid #2563eb;width:180px;min-height:140px;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding:10px 6px 6px 6px;">
+        <iframe src="https://www.hamropatro.com/widgets/calender-small.php" frameborder="0" scrolling="no" marginwidth="0" marginheight="0" style="border:none; overflow:hidden; width:100%; height:110px; border-radius:10px; background:#fff; box-shadow:0 2px 8px rgba(37,99,235,0.10);" allowtransparency="true"></iframe>
+        <div style="text-align:center;font-size:0.7em;color:#888;margin-top:0.1em;">© <a href="https://www.hamropatro.com/" target="_blank" style="color:#888;text-decoration:none;">Hamro Patro</a></div>
+    </div>
     <!-- Header with logo and navigation menu -->
     <header>
         <div class="container nav-container" style="display:flex;flex-direction:column;align-items:center;position:relative;">
             <img src="Screenshot 2025-02-27 194654.png" alt="Profile Picture" style="width:88px;height:88px;border-radius:50%;object-fit:cover;box-shadow:0 2px 8px rgba(37,99,235,0.10);margin-bottom:0.5rem;">
-            <div style="background:linear-gradient(90deg,#FFD700 0%,#FFB300 100%);border-radius:18px;box-shadow:0 4px 24px rgba(37,99,235,0.10);padding:1.2rem 2.5rem;margin-bottom:0.7rem;display:flex;align-items:center;justify-content:center;">
-                <span style="font-size:2.8rem;font-weight:900;color:#fff;text-shadow:0 2px 12px rgba(0,0,0,0.18),0 1px 0 #bfa100;letter-spacing:2px;">D classroom</span>
+            <div class="dclassroom-float">
+                <span class="dclassroom-title">D classroom</span>
             </div>
             <nav id="navbar">
                 <ul class="nav-links">
@@ -151,19 +175,46 @@
         </div>
     </section>
     <!-- Main content (can add announcements or highlights here) -->
-    <main class="main-content">
-        <div style="text-align:right; margin-bottom:1rem;">
-            <a href="index.html" style="background:#2563eb;color:#fff;padding:0.5rem 1.2rem;border-radius:6px;text-decoration:none;font-weight:500;">Go to Main Menu</a>
-        </div>
-        <section class="announcements">
-            <h2>Latest Announcements</h2>
-            <ul>
-                <li>Get educational materials in <a href="resources.html">Resource Materials</a> section.</li>
-                <li>SEE exam model questions and past papers now available.</li>
-                <li>Stay tuned for updates on curriculum changes and teacher training programs.</li>
-            </ul>
+    <main class="main-content" style="display: flex; flex-direction: column; gap: 2.5rem;">
+        <section class="top-section" style="display: flex; flex-wrap: wrap; gap: 2.5rem; align-items: flex-start; justify-content: space-between;">
+            <div style="flex: 1 1 320px; min-width: 280px; max-width: 600px;">
+                <div style="text-align:right; margin-bottom:1rem;">
+                    <a href="index.html" style="background:#2563eb;color:#fff;padding:0.5rem 1.2rem;border-radius:6px;text-decoration:none;font-weight:500;">Go to Main Menu</a>
+                </div>
+                <section class="announcements">
+                    <h2>Latest Announcements</h2>
+                    <ul>
+                        <li>Get educational materials in <a href="resources.html">Resource Materials</a> section.</li>
+                        <li>SEE exam model questions and past papers now available.</li>
+                        <li>Stay tuned for updates on curriculum changes and teacher training programs.</li>
+                    </ul>
+                </section>
+            </div>
+            <aside class="nepali-calendar-widget" style="min-width:260px;max-width:340px;width:100%;">
+                <h3 style="color:#2563eb;text-align:center;margin-bottom:0.5rem;">Nepali Calendar</h3>
+                <iframe src="https://www.hamropatro.com/widgets/calender-small.php" frameborder="0" scrolling="no" marginwidth="0" marginheight="0" style="border:none; overflow:hidden; width:100%; height:290px; border-radius:8px; background:#fff; box-shadow:0 2px 8px rgba(37,99,235,0.10);" allowtransparency="true"></iframe>
+                <div style="text-align:center;font-size:0.8em;color:#888;margin-top:0.2em;">© <a href="https://www.hamropatro.com/" target="_blank" style="color:#888;text-decoration:none;">Hamro Patro</a></div>
+            </aside>
         </section>
     </main>
+    <style>
+        @media (max-width: 900px) {
+            .top-section {
+                flex-direction: column !important;
+                gap: 2rem !important;
+            }
+            .nepali-calendar-widget {
+                max-width: 100% !important;
+                margin: 2rem 0 0 0 !important;
+            }
+            #ktm-analog-clock {
+                width: 98vw !important;
+                max-width: 320px !important;
+                height: 98vw !important;
+                max-height: 320px !important;
+            }
+        }
+    </style>
     <!-- Footer with copyright and social links -->
     <footer>
         <div class="container footer-container">
@@ -284,5 +335,143 @@
         // Optionally, refresh every 5 minutes
         setInterval(fetchNotices, 5 * 60 * 1000);
     </script>
+    <script>
+        // Kathmandu Analog Clock styled like the provided image
+        function drawAnalogClock() {
+            const clock = document.getElementById('ktm-analog-clock');
+            if (!clock) return;
+            clock.innerHTML = '';
+            const size = 140;
+            const center = size / 2;
+            const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+            svg.setAttribute('width', size);
+            svg.setAttribute('height', size);
+            svg.setAttribute('viewBox', `0 0 ${size} ${size}`);
+            // Golden brown ring between face and border
+            const ring = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+            ring.setAttribute('cx', center);
+            ring.setAttribute('cy', center);
+            ring.setAttribute('r', center - 6);
+            ring.setAttribute('fill', '#b8860b');
+            svg.appendChild(ring);
+            // Face (white, black border)
+            const face = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+            face.setAttribute('cx', center);
+            face.setAttribute('cy', center);
+            face.setAttribute('r', center - 8);
+            face.setAttribute('fill', '#fff');
+            face.setAttribute('stroke', '#222');
+            face.setAttribute('stroke-width', '4');
+            svg.appendChild(face);
+            // Minute ticks (fine black)
+            for (let i = 0; i < 60; i++) {
+                const angle = (i * 6 - 90) * Math.PI / 180;
+                const x1 = center + Math.cos(angle) * (center - 10);
+                const y1 = center + Math.sin(angle) * (center - 10);
+                const x2 = center + Math.cos(angle) * (center - (i % 5 === 0 ? 22 : 16));
+                const y2 = center + Math.sin(angle) * (center - (i % 5 === 0 ? 22 : 16));
+                const tick = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+                tick.setAttribute('x1', x1);
+                tick.setAttribute('y1', y1);
+                tick.setAttribute('x2', x2);
+                tick.setAttribute('y2', y2);
+                tick.setAttribute('stroke', '#222');
+                tick.setAttribute('stroke-width', i % 5 === 0 ? '2' : '1');
+                svg.appendChild(tick);
+            }
+            // Hour numbers (bold, black)
+            for (let i = 1; i <= 12; i++) {
+                const angle = (i * 30 - 90) * Math.PI / 180;
+                const numX = center + Math.cos(angle) * (center - 30);
+                const numY = center + Math.sin(angle) * (center - 30) + 8;
+                const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+                text.setAttribute('x', numX);
+                text.setAttribute('y', numY);
+                text.setAttribute('text-anchor', 'middle');
+                text.setAttribute('font-size', '1.2rem');
+                text.setAttribute('font-family', 'Arial, sans-serif');
+                text.setAttribute('fill', '#222');
+                text.setAttribute('font-weight', 'bold');
+                text.textContent = i;
+                svg.appendChild(text);
+            }
+            // Kathmandu time
+            const now = new Date();
+            const utc = now.getTime() + (now.getTimezoneOffset() * 60000);
+            const kathmandu = new Date(utc + (5 * 60 + 45) * 60000);
+            let h = kathmandu.getHours();
+            let m = kathmandu.getMinutes();
+            let s = kathmandu.getSeconds();
+            // Hour hand (black)
+            const hourAngle = ((h % 12) + m / 60) * 30 * Math.PI / 180 - Math.PI / 2;
+            const hourHand = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+            hourHand.setAttribute('x1', center);
+            hourHand.setAttribute('y1', center);
+            hourHand.setAttribute('x2', center + Math.cos(hourAngle) * 32);
+            hourHand.setAttribute('y2', center + Math.sin(hourAngle) * 32);
+            hourHand.setAttribute('stroke', '#222');
+            hourHand.setAttribute('stroke-width', '6');
+            hourHand.setAttribute('stroke-linecap', 'round');
+            svg.appendChild(hourHand);
+            // Minute hand (black)
+            const minAngle = (m + s / 60) * 6 * Math.PI / 180 - Math.PI / 2;
+            const minHand = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+            minHand.setAttribute('x1', center);
+            minHand.setAttribute('y1', center);
+            minHand.setAttribute('x2', center + Math.cos(minAngle) * 50);
+            minHand.setAttribute('y2', center + Math.sin(minAngle) * 50);
+            minHand.setAttribute('stroke', '#222');
+            minHand.setAttribute('stroke-width', '4');
+            minHand.setAttribute('stroke-linecap', 'round');
+            svg.appendChild(minHand);
+            // Second hand (thin, red)
+            const secAngle = s * 6 * Math.PI / 180 - Math.PI / 2;
+            const secHand = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+            secHand.setAttribute('x1', center);
+            secHand.setAttribute('y1', center);
+            secHand.setAttribute('x2', center + Math.cos(secAngle) * 56);
+            secHand.setAttribute('y2', center + Math.sin(secAngle) * 56);
+            secHand.setAttribute('stroke', '#e53935');
+            secHand.setAttribute('stroke-width', '2');
+            secHand.setAttribute('stroke-linecap', 'round');
+            svg.appendChild(secHand);
+            // Center hub (black)
+            const hub = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+            hub.setAttribute('cx', center);
+            hub.setAttribute('cy', center);
+            hub.setAttribute('r', 6);
+            hub.setAttribute('fill', '#222');
+            svg.appendChild(hub);
+            clock.appendChild(svg);
+        }
+        setInterval(drawAnalogClock, 1000);
+        drawAnalogClock();
+    </script>
+    <style>
+        @media (max-width: 600px) {
+            #floating-ktm-clock {
+                width: 100px !important;
+                height: 100px !important;
+                border-width: 6px !important;
+                right: 6px !important;
+                top: 6px !important;
+            }
+            #floating-ktm-clock #ktm-analog-clock {
+                width: 70px !important;
+                height: 70px !important;
+            }
+            #floating-calendar {
+                width: 98vw !important;
+                min-width: 0 !important;
+                left: 2px !important;
+                top: 2px !important;
+                border-radius: 10px !important;
+                padding: 2px 2px 2px 2px !important;
+            }
+            #floating-calendar iframe {
+                height: 80px !important;
+            }
+        }
+    </style>
 </body>
 </html> 
