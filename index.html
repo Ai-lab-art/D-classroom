@@ -57,69 +57,49 @@
     <meta name="twitter:image" content="Screenshot%202025-02-27%20194654.png" />
 </head>
 <body>
-    <div id="floating-ktm-clock" style="position:fixed;top:18px;right:18px;z-index:1000;background:#b8860b;border-radius:50%;box-shadow:0 8px 32px 0 rgba(0,0,0,0.18),0 2px 8px 0 #222;border:8px solid #222;width:170px;height:170px;display:flex;align-items:center;justify-content:center;">
+    <div id="floating-ktm-clock" style="position:fixed;bottom:18px;right:18px;z-index:1000;background:#b8860b;border-radius:50%;box-shadow:0 8px 32px 0 rgba(0,0,0,0.18),0 2px 8px 0 #222;border:8px solid #222;width:170px;height:170px;display:flex;align-items:center;justify-content:center;">
         <div id="ktm-analog-clock" style="width:140px;height:140px;"></div>
     </div>
-    <div id="floating-calendar" style="position:fixed;top:18px;left:18px;z-index:1000;background:#fff;border-radius:18px;box-shadow:0 8px 32px 0 rgba(0,0,0,0.13),0 2px 8px 0 #2563eb;border:3px solid #2563eb;width:180px;min-height:140px;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding:10px 6px 6px 6px;">
+    <div id="floating-calendar" style="position:fixed;bottom:18px;left:18px;z-index:1000;background:#fff;border-radius:18px;box-shadow:0 8px 32px 0 rgba(0,0,0,0.13),0 2px 8px 0 #2563eb;border:3px solid #2563eb;width:180px;min-height:140px;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding:10px 6px 6px 6px;">
         <iframe src="https://www.hamropatro.com/widgets/calender-small.php" frameborder="0" scrolling="no" marginwidth="0" marginheight="0" style="border:none; overflow:hidden; width:100%; height:110px; border-radius:10px; background:#fff; box-shadow:0 2px 8px rgba(37,99,235,0.10);" allowtransparency="true"></iframe>
         <div style="text-align:center;font-size:0.7em;color:#888;margin-top:0.1em;">© <a href="https://www.hamropatro.com/" target="_blank" style="color:#888;text-decoration:none;">Hamro Patro</a></div>
     </div>
     <!-- Header with logo and navigation menu -->
     <header>
+        <div class="hamburger-menu" id="hamburger-menu" style="position:fixed;top:24px;left:18px;z-index:2001;cursor:pointer;width:44px;height:44px;display:flex;flex-direction:column;justify-content:center;align-items:center;background:rgba(255,255,255,0.95);border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,0.10);">
+            <span style="display:block;width:28px;height:4px;background:#222;border-radius:2px;margin:3px 0;"></span>
+            <span style="display:block;width:28px;height:4px;background:#222;border-radius:2px;margin:3px 0;"></span>
+            <span style="display:block;width:28px;height:4px;background:#222;border-radius:2px;margin:3px 0;"></span>
+        </div>
+        <button id="lang-toggle" style="position:fixed;top:24px;right:24px;z-index:2100;background:#444;color:#fff;border:none;border-radius:8px;padding:0.5em 1.2em;font-size:1rem;font-weight:600;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,0.10);">नेपाली</button>
+        <div class="sidebar-menu" id="sidebar-menu" style="position:fixed;top:0;left:-260px;width:240px;height:100vh;background:#fff;box-shadow:2px 0 16px rgba(37,99,235,0.10);z-index:2002;transition:left 0.3s cubic-bezier(.4,0,.2,1);padding-top:48px;display:flex;flex-direction:column;">
+            <nav id="navbar-sidebar">
+                <ul class="nav-links" style="flex-direction:column;gap:0.5rem;padding:0 1.2rem;">
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="notice.html">Notice</a></li>
+                    <li><a href="resources.html">Resources Materials</a></li>
+                    <li><a href="https://nepal.gov.np/" target="_blank">Governmental Website</a></li>
+                </ul>
+            </nav>
+        </div>
         <div class="container nav-container" style="display:flex;flex-direction:column;align-items:center;position:relative;">
             <img src="Screenshot 2025-02-27 194654.png" alt="Profile Picture" style="width:88px;height:88px;border-radius:50%;object-fit:cover;box-shadow:0 2px 8px rgba(37,99,235,0.10);margin-bottom:0.5rem;">
-            <div class="dclassroom-float">
-                <span class="dclassroom-title">D classroom</span>
-            </div>
-            <nav id="navbar">
-                <ul class="nav-links">
-                    <li class="dropdown">
-                        <a href="about.html">About Us <span class="dropdown-arrow">▼</span></a>
-                        <ul class="dropdown-menu"><li><a href="#">Our Team</a></li></ul>
-                    </li>
-                    <li class="dropdown">
-                        <a href="notice.html">Notice <span class="dropdown-arrow">▼</span></a>
-                        <ul class="dropdown-menu"><li><a href="#">Latest Notices</a></li></ul>
-                    </li>
-                    <li class="dropdown">
-                        <a href="resources.html">Resources materials <span class="dropdown-arrow">▼</span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="resources.html#grammar-guru">Grammar Guru</a></li>
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#">Governmental Website Portal <span class="dropdown-arrow">▼</span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="https://moest.gov.np/" target="_blank">Ministry of Education, Science and Technology (MoEST)</a></li>
-                            <li><a href="https://moecdc.gov.np/" target="_blank">Curriculum Development Centre (CDC)</a></li>
-                            <li><a href="https://see.gov.np/" target="_blank">SEE Examination Board</a></li>
-                            <li><a href="https://www.pustakalaya.org/" target="_blank">e-Pustakalaya</a></li>
-                            <li><a href="https://www.looma.website/" target="_blank">Looma</a></li>
-                            <li><a href="https://doe.gov.np/" target="_blank">Department of Education (DoE)</a></li>
-                            <li><a href="https://cehrd.gov.np/" target="_blank">Center for Education and Human Resource Development (CEHRD)</a></li>
-                            <li><a href="https://tudoms.tu.edu.np/" target="_blank">Tribhuvan University (TU)</a></li>
-                            <li><a href="https://nepal.gov.np/" target="_blank">Nepal Government Portal</a></li>
-                        </ul>
-                    </li>
-                </ul>
-                <div class="menu-toggle" id="menu-toggle" aria-label="Open menu">
-                    <span></span><span></span><span></span>
-                </div>
-            </nav>
+            <span class="dclassroom-title" style="display:block;text-align:center;margin-bottom:0.7rem;">D classroom</span>
+            <!-- Main nav bar is now in sidebar -->
         </div>
     </header>
     <!-- Hero section with welcome message and background image -->
-    <section class="hero">
+    <section class="hero" id="hero-section">
         <div class="hero-content">
-            <h1>Welcome to D classroom</h1>
-            <p>Your source for school education materials, official resources, and updates. Access textbooks, curriculum, exam resources, and more—empowering students and teachers across Nepal.</p>
+            <h1 id="hero-title">Welcome to D classroom</h1>
+            <p id="hero-desc">Your source for school education materials, official resources, and updates. Access textbooks, curriculum, exam resources, and more—empowering students and teachers across Nepal.</p>
         </div>
     </section>
     <!-- Resource Materials Preface Section -->
-    <section class="resource-preface">
+    <section class="resource-preface" id="resource-preface">
         <div class="container">
-            <h2 style="color:#2563eb;text-align:center;margin-bottom:0.5rem;">Highlights of Resource Materials</h2>
-            <p style="text-align:center;margin-bottom:1.5rem;font-size:1.1rem;color:#333;">Explore our top recommended digital resources for students and teachers in Nepal.</p>
+            <h2 id="resource-title" style="color:#2563eb;text-align:center;margin-bottom:0.5rem;">Highlights of Resource Materials</h2>
+            <p id="resource-desc" style="text-align:center;margin-bottom:1.5rem;font-size:1.1rem;color:#fff;">Explore our top recommended digital resources for students and teachers in Nepal.</p>
             <div class="resources-grid" style="margin-bottom:2rem;">
                 <a class="resource-card" href="https://english-grammar-tutor.lovable.app/" target="_blank" rel="noopener" style="background:linear-gradient(135deg,#a8edea 0%,#fed6e3 100%);border-radius:16px;box-shadow:0 2px 12px rgba(37,99,235,0.10);padding:0;text-align:left;transition:transform 0.15s;cursor:pointer;display:block;text-decoration:none;overflow:hidden;position:relative;">
                     <img src="https://images.unsplash.com/photo-1513258496099-48168024aec0?auto=format&fit=crop&w=400&q=80" alt="Grammar Guru Cover" style="width:100%;height:100%;object-fit:cover;display:block;position:absolute;top:0;left:0;z-index:1;">
@@ -182,8 +162,8 @@
                     <a href="index.html" style="background:#2563eb;color:#fff;padding:0.5rem 1.2rem;border-radius:6px;text-decoration:none;font-weight:500;">Go to Main Menu</a>
                 </div>
                 <section class="announcements">
-                    <h2>Latest Announcements</h2>
-                    <ul>
+                    <h2 id="announcements-title">Latest Announcements</h2>
+                    <ul id="announcements-list">
                         <li>Get educational materials in <a href="resources.html">Resource Materials</a> section.</li>
                         <li>SEE exam model questions and past papers now available.</li>
                         <li>Stay tuned for updates on curriculum changes and teacher training programs.</li>
@@ -198,6 +178,53 @@
         </section>
     </main>
     <style>
+        /* Sidebar menu: gray background and white text on hover */
+        #sidebar-menu {
+            background: #222; /* default dark gray */
+        }
+        #sidebar-menu .nav-links li a {
+            color: #fff !important;
+            font-weight: 500;
+            font-size: 1.08rem;
+            letter-spacing: 0.01em;
+            transition: background 0.2s, color 0.2s;
+            border-radius: 8px;
+            padding: 0.5em 0.8em;
+            display: block;
+        }
+        #sidebar-menu .nav-links li a:hover {
+            background: #444;
+            color: #ffd700 !important;
+        }
+        /* Hamburger hover: sidebar background becomes lighter gray */
+        #hamburger-menu:hover ~ #sidebar-menu {
+            background: #444;
+        }
+        /* Beautiful, realistic homepage background */
+        body {
+            min-height: 100vh;
+            background: #f4f4f7;
+            color: #222;
+        }
+        header, .container, .main-content, .footer-container {
+            background: #fff !important;
+            border-radius: 16px;
+            box-shadow: 0 2px 12px rgba(37,99,235,0.10);
+            color: #222 !important;
+        }
+        .resource-card, .resource-card h3, .resource-card p {
+            background: #fff !important;
+            color: #222 !important;
+        }
+        .hero-content h1, .hero-content p, .announcements h2, .announcements ul, .announcements li {
+            color: #222 !important;
+        }
+        .nav-links li a {
+            color: #222 !important;
+        }
+        .footer-container, .footer-container p, .footer-container a {
+            color: #222 !important;
+        }
         @media (max-width: 900px) {
             .top-section {
                 flex-direction: column !important;
@@ -450,28 +477,107 @@
     <style>
         @media (max-width: 600px) {
             #floating-ktm-clock {
-                width: 100px !important;
-                height: 100px !important;
-                border-width: 6px !important;
+                width: 90px !important;
+                height: 90px !important;
+                border-width: 5px !important;
                 right: 6px !important;
-                top: 6px !important;
+                bottom: 6px !important;
             }
             #floating-ktm-clock #ktm-analog-clock {
-                width: 70px !important;
-                height: 70px !important;
+                width: 60px !important;
+                height: 60px !important;
             }
             #floating-calendar {
-                width: 98vw !important;
+                width: 96vw !important;
                 min-width: 0 !important;
                 left: 2px !important;
-                top: 2px !important;
+                bottom: 2px !important;
                 border-radius: 10px !important;
                 padding: 2px 2px 2px 2px !important;
             }
             #floating-calendar iframe {
-                height: 80px !important;
+                height: 70px !important;
             }
         }
     </style>
+    <script>
+        // Hamburger menu hover for sidebar
+        const hamburger = document.getElementById('hamburger-menu');
+        const sidebar = document.getElementById('sidebar-menu');
+        let sidebarOpen = false;
+        let hoverTimeout;
+        function openSidebar() {
+            sidebar.style.left = '0';
+            sidebarOpen = true;
+        }
+        function closeSidebar() {
+            sidebar.style.left = '-260px';
+            sidebarOpen = false;
+        }
+        hamburger.addEventListener('mouseenter', () => {
+            clearTimeout(hoverTimeout);
+            openSidebar();
+        });
+        hamburger.addEventListener('mouseleave', () => {
+            hoverTimeout = setTimeout(() => {
+                if (!sidebar.matches(':hover')) closeSidebar();
+            }, 200);
+        });
+        sidebar.addEventListener('mouseenter', () => {
+            clearTimeout(hoverTimeout);
+            openSidebar();
+        });
+        sidebar.addEventListener('mouseleave', () => {
+            hoverTimeout = setTimeout(() => {
+                if (!hamburger.matches(':hover')) closeSidebar();
+            }, 200);
+        });
+        // Remove click-to-open and click-outside-to-close logic
+    </script>
+    <script>
+        // Language toggle logic
+        const langToggle = document.getElementById('lang-toggle');
+        let isNepali = false;
+        const translations = {
+            en: {
+                heroTitle: 'Welcome to D classroom',
+                heroDesc: 'Your source for school education materials, official resources, and updates. Access textbooks, curriculum, exam resources, and more—empowering students and teachers across Nepal.',
+                resourceTitle: 'Highlights of Resource Materials',
+                resourceDesc: 'Explore our top recommended digital resources for students and teachers in Nepal.',
+                announcementsTitle: 'Latest Announcements',
+                announcementsList: [
+                    'Get educational materials in <a href="resources.html">Resource Materials</a> section.',
+                    'SEE exam model questions and past papers now available.',
+                    'Stay tuned for updates on curriculum changes and teacher training programs.'
+                ],
+                langBtn: 'नेपाली'
+            },
+            np: {
+                heroTitle: 'डी कक्षामा स्वागत छ',
+                heroDesc: 'तपाईंको शैक्षिक सामग्री, सरकारी स्रोतहरू, र अद्यावधिकहरूको स्रोत। पाठ्यपुस्तक, पाठ्यक्रम, परीक्षा सामग्री, र थप पहुँच गर्नुहोस्—नेपालका विद्यार्थी र शिक्षकहरूलाई सशक्त बनाउँदै।',
+                resourceTitle: 'स्रोत सामग्रीका मुख्य आकर्षणहरू',
+                resourceDesc: 'नेपालका विद्यार्थी र शिक्षकहरूका लागि हाम्रो शीर्ष सिफारिस गरिएका डिजिटल स्रोतहरू अन्वेषण गर्नुहोस्।',
+                announcementsTitle: 'नवीनतम सूचना',
+                announcementsList: [
+                    '<a href="resources.html">स्रोत सामग्री</a> खण्डमा शैक्षिक सामग्री प्राप्त गर्नुहोस्।',
+                    'एसईई परीक्षा मोडेल प्रश्नपत्र र विगतका प्रश्नपत्रहरू उपलब्ध छन्।',
+                    'पाठ्यक्रम परिवर्तन र शिक्षक तालिम कार्यक्रमहरूको अद्यावधिकको लागि प्रतीक्षा गर्नुहोस्।'
+                ],
+                langBtn: 'English'
+            }
+        };
+        langToggle.addEventListener('click', () => {
+            isNepali = !isNepali;
+            const lang = isNepali ? 'np' : 'en';
+            document.getElementById('hero-title').innerHTML = translations[lang].heroTitle;
+            document.getElementById('hero-desc').innerHTML = translations[lang].heroDesc;
+            document.getElementById('resource-title').innerHTML = translations[lang].resourceTitle;
+            document.getElementById('resource-desc').innerHTML = translations[lang].resourceDesc;
+            document.getElementById('announcements-title').innerHTML = translations[lang].announcementsTitle;
+            const annList = document.getElementById('announcements-list');
+            annList.innerHTML = translations[lang].announcementsList.map(item => `<li>${item}</li>`).join('');
+            langToggle.textContent = translations[lang].langBtn;
+        });
+    </script>
 </body>
 </html> 
