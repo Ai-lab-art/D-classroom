@@ -43,6 +43,88 @@
             display: block;
             text-align: center;
         }
+        .resources-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2.2rem 2.2rem;
+            justify-content: center;
+        }
+        .resource-card {
+            max-width: 180px !important;
+            min-width: 140px !important;
+            width: 160px !important;
+            height: 240px !important;
+            padding: 0 !important;
+            margin: 0 !important;
+            border-radius: 14px !important;
+            box-shadow: 0 2px 8px rgba(37,99,235,0.10);
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            position: relative;
+            overflow: hidden;
+        }
+        .resource-card img {
+            width: 100% !important;
+            height: 100% !important;
+            object-fit: cover !important;
+            border-radius: 14px !important;
+            box-shadow: none;
+            margin-bottom: 0;
+            position: absolute;
+            top: 0; left: 0;
+        }
+        .resource-card h3, .resource-card p {
+            position: absolute;
+            left: 0;
+            right: 0;
+            color: #fff !important;
+            margin: 0;
+            padding: 0 0.5em;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.38);
+            background: none !important;
+            z-index: 2;
+        }
+        .resource-card h3 {
+            font-size: 1.02rem !important;
+            bottom: 2.7em;
+            font-weight: 700;
+        }
+        .resource-card p {
+            font-size: 0.82rem !important;
+            bottom: 1em;
+            font-weight: 400;
+        }
+        .resource-card h3, .resource-card p {
+            pointer-events: none;
+        }
+        @keyframes magicalColorCycle {
+            0% { color: #2563eb; }
+            14% { color: #e1306c; }
+            28% { color: #25d366; }
+            42% { color: #fbbc05; }
+            57% { color: #6c5ce7; }
+            71% { color: #00b894; }
+            85% { color: #e17055; }
+            100% { color: #2563eb; }
+        }
+        .resource-card h3 {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 0.92rem !important;
+            font-weight: 600;
+            text-align: center;
+            background: none !important;
+            color: #2563eb !important;
+            text-shadow: none !important;
+            z-index: 2;
+            pointer-events: none;
+        }
+        .resource-card p {
+            display: none;
+        }
     </style>
     <!-- Open Graph Meta Tags for Social Media Sharing -->
     <meta property="og:title" content="D classroom - Resource Materials" />
@@ -55,16 +137,19 @@
     <meta name="twitter:title" content="D classroom - Resource Materials" />
     <meta name="twitter:description" content="Your source for school education materials, official resources, and updates. Access textbooks, curriculum, exam resources, and more—empowering students and teachers across Nepal." />
     <meta name="twitter:image" content="Screenshot%202025-02-27%20194654.png" />
+    <style>
+        .resource-card img {
+            width: 140px !important;
+            height: 200px !important;
+            object-fit: cover !important;
+            border-radius: 10px !important;
+            box-shadow: 0 4px 16px rgba(37,99,235,0.13), 0 2px 8px rgba(0,0,0,0.10);
+            margin-bottom: 0.7rem;
+            position: relative;
+        }
+    </style>
 </head>
 <body>
-    <div id="floating-ktm-clock" style="position:fixed;bottom:18px;right:18px;z-index:1000;background:#b8860b;border-radius:50%;box-shadow:0 8px 32px 0 rgba(0,0,0,0.18),0 2px 8px 0 #222;border:8px solid #222;width:170px;height:170px;display:flex;align-items:center;justify-content:center;">
-        <div id="ktm-analog-clock" style="width:140px;height:140px;"></div>
-    </div>
-    <div id="floating-calendar" style="position:fixed;bottom:18px;left:18px;z-index:1000;background:#fff;border-radius:18px;box-shadow:0 8px 32px 0 rgba(0,0,0,0.13),0 2px 8px 0 #2563eb;border:3px solid #2563eb;width:180px;min-height:140px;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding:10px 6px 6px 6px;">
-        <iframe src="https://www.hamropatro.com/widgets/calender-small.php" frameborder="0" scrolling="no" marginwidth="0" marginheight="0" style="border:none; overflow:hidden; width:100%; height:110px; border-radius:10px; background:#fff; box-shadow:0 2px 8px rgba(37,99,235,0.10);" allowtransparency="true"></iframe>
-        <div style="text-align:center;font-size:0.7em;color:#888;margin-top:0.1em;">© <a href="https://www.hamropatro.com/" target="_blank" style="color:#888;text-decoration:none;">Hamro Patro</a></div>
-    </div>
-    <!-- Header with logo and navigation menu -->
     <header>
         <div class="hamburger-menu" id="hamburger-menu" style="position:fixed;top:24px;left:18px;z-index:2001;cursor:pointer;width:44px;height:44px;display:flex;flex-direction:column;justify-content:center;align-items:center;background:rgba(255,255,255,0.95);border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,0.10);">
             <span style="display:block;width:28px;height:4px;background:#222;border-radius:2px;margin:3px 0;"></span>
@@ -78,7 +163,7 @@
                     <li><a href="about.html">About Us</a></li>
                     <li><a href="notice.html">Notice</a></li>
                     <li><a href="resources.html">Resources Materials</a></li>
-                    <li><a href="https://nepal.gov.np/" target="_blank">Governmental Website</a></li>
+                    <li><a href="https://nepal.gov.np/" target="_blank">Governmental Websites</a></li>
                 </ul>
             </nav>
         </div>
@@ -101,54 +186,52 @@
             <h2 id="resource-title" style="color:#2563eb;text-align:center;margin-bottom:0.5rem;">Highlights of Resource Materials</h2>
             <p id="resource-desc" style="text-align:center;margin-bottom:1.5rem;font-size:1.1rem;color:#fff;">Explore our top recommended digital resources for students and teachers in Nepal.</p>
             <div class="resources-grid" style="margin-bottom:2rem;">
-                <a class="resource-card" href="https://english-grammar-tutor.lovable.app/" target="_blank" rel="noopener" style="background:linear-gradient(135deg,#a8edea 0%,#fed6e3 100%);border-radius:16px;box-shadow:0 2px 12px rgba(37,99,235,0.10);padding:0;text-align:left;transition:transform 0.15s;cursor:pointer;display:block;text-decoration:none;overflow:hidden;position:relative;">
-                    <img src="https://images.unsplash.com/photo-1513258496099-48168024aec0?auto=format&fit=crop&w=400&q=80" alt="Grammar Guru Cover" style="width:100%;height:100%;object-fit:cover;display:block;position:absolute;top:0;left:0;z-index:1;">
-                    <div style="position:relative;z-index:2;padding:2.5rem 1.2rem 1.2rem 1.2rem;min-height:180px;display:flex;flex-direction:column;justify-content:flex-end;height:100%;background:linear-gradient(180deg,rgba(37,99,235,0.10) 0%,rgba(0,0,0,0.55) 100%);">
-                        <h3 style="color:#2563eb;background:rgba(255,255,255,0.85);border-radius:6px;padding:0.2em 0.6em 0.2em 0.6em;border-bottom:3px solid #00b894;display:inline-block;font-size:1.5rem;margin-bottom:0.5rem;">Grammar Guru</h3>
-                        <p style="color:#fff;text-shadow:0 2px 8px rgba(0,0,0,0.25);font-size:1.05rem;">Practice and improve your English grammar skills online with interactive exercises and explanations.</p>
-                    </div>
+                <a class="resource-card" href="https://english-grammar-tutor.lovable.app/" target="_blank" rel="noopener">
+                    <img src="https://images.unsplash.com/photo-1513258496099-48168024aec0?auto=format&fit=crop&w=400&q=80" alt="Grammar Guru Cover">
+                    <h3 style="color:#2563eb;">Grammar Guru</h3>
+                    <p>Practice and improve your English grammar skills online with interactive exercises and explanations.</p>
                 </a>
                 <a class="resource-card" href="https://english-compositions-for-secondary-level.lovable.app/" target="_blank" rel="noopener" style="background:linear-gradient(135deg,#fbc2eb 0%,#a6c1ee 100%);border-radius:16px;box-shadow:0 2px 12px rgba(37,99,235,0.10);padding:0;text-align:left;transition:transform 0.15s;cursor:pointer;display:block;text-decoration:none;overflow:hidden;position:relative;">
                     <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=400&q=80" alt="English Composition Cover" style="width:100%;height:100%;object-fit:cover;display:block;position:absolute;top:0;left:0;z-index:1;">
                     <div style="position:relative;z-index:2;padding:2.5rem 1.2rem 1.2rem 1.2rem;min-height:180px;display:flex;flex-direction:column;justify-content:flex-end;height:100%;background:linear-gradient(180deg,rgba(37,99,235,0.10) 0%,rgba(0,0,0,0.55) 100%);">
-                        <h3 style="color:#2563eb;background:rgba(255,255,255,0.85);border-radius:6px;padding:0.2em 0.6em 0.2em 0.6em;border-bottom:3px solid #0984e3;display:inline-block;font-size:1.5rem;margin-bottom:0.5rem;">English Composition</h3>
+                        <h3 style="color:#e1306c;">English Composition</h3>
                         <p style="color:#fff;text-shadow:0 2px 8px rgba(0,0,0,0.25);font-size:1.05rem;">Access a curated collection of English compositions for secondary level students, available online for easy reading and reference.</p>
                     </div>
                 </a>
                 <a class="resource-card" href="https://mitho-katha-nepal.lovable.app/" target="_blank" rel="noopener" style="background:linear-gradient(135deg,#fddb92 0%,#d1fdff 100%);border-radius:16px;box-shadow:0 2px 12px rgba(37,99,235,0.10);padding:0;text-align:left;transition:transform 0.15s;cursor:pointer;display:block;text-decoration:none;overflow:hidden;position:relative;">
                     <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80" alt="बाल कथाहरु Cover" style="width:100%;height:100%;object-fit:cover;display:block;position:absolute;top:0;left:0;z-index:1;">
                     <div style="position:relative;z-index:2;padding:2.5rem 1.2rem 1.2rem 1.2rem;min-height:180px;display:flex;flex-direction:column;justify-content:flex-end;height:100%;background:linear-gradient(180deg,rgba(37,99,235,0.10) 0%,rgba(0,0,0,0.55) 100%);">
-                        <h3 style="color:#2563eb;background:rgba(255,255,255,0.85);border-radius:6px;padding:0.2em 0.6em 0.2em 0.6em;border-bottom:3px solid #fdcb6e;display:inline-block;font-size:1.5rem;margin-bottom:0.5rem;">बाल कथाहरु</h3>
+                        <h3 style="color:#25d366;">बाल कथाहरु</h3>
                         <p style="color:#fff;text-shadow:0 2px 8px rgba(0,0,0,0.25);font-size:1.05rem;">नेपाली बालबालिकाका लागि रमाइला, शिक्षाप्रद र सिर्जनात्मक बाल कथाहरुको संग्रह।</p>
                     </div>
                 </a>
                 <a class="resource-card" href="https://tales-for-kids.lovable.app/" target="_blank" rel="noopener" style="background:linear-gradient(135deg,#fddb92 0%,#a1c4fd 100%);border-radius:16px;box-shadow:0 2px 12px rgba(37,99,235,0.10);padding:0;text-align:left;transition:transform 0.15s;cursor:pointer;display:block;text-decoration:none;overflow:hidden;position:relative;">
                     <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80" alt="Magical Children Stories Cover" style="width:100%;height:100%;object-fit:cover;display:block;position:absolute;top:0;left:0;z-index:1;">
                     <div style="position:relative;z-index:2;padding:2.5rem 1.2rem 1.2rem 1.2rem;min-height:180px;display:flex;flex-direction:column;justify-content:flex-end;height:100%;background:linear-gradient(180deg,rgba(37,99,235,0.10) 0%,rgba(0,0,0,0.55) 100%);">
-                        <h3 style="color:#fff;text-shadow:0 2px 8px rgba(0,0,0,0.25);border-bottom:3px solid #fdcb6e;display:inline-block;padding-bottom:0.2em;font-size:1.5rem;margin-bottom:0.5rem;">Magical Children Stories</h3>
+                        <h3 style="color:#fbbc05;">Magical Children Stories</h3>
                         <p style="color:#fff;text-shadow:0 2px 8px rgba(0,0,0,0.25);font-size:1.05rem;">Discover a world of magical and enchanting stories for children. Dive into creative tales that spark imagination and wonder.</p>
                     </div>
                 </a>
                 <a class="resource-card" href="https://www.supercoloring.com/" target="_blank" rel="noopener" style="background:linear-gradient(135deg,#f6d365 0%,#fda085 100%);border-radius:16px;box-shadow:0 2px 12px rgba(37,99,235,0.10);padding:1.5rem;text-align:left;transition:transform 0.15s;cursor:pointer;display:block;text-decoration:none;">
                     <img src="https://www.supercoloring.com/sites/all/themes/supercoloring/logo.png" alt="SuperColoring.com Logo" style="width:100%;max-width:320px;height:90px;object-fit:contain;background:#fff;border-radius:12px 12px 0 0;box-shadow:0 2px 8px rgba(37,99,235,0.10);margin-bottom:0.7rem;">
-                    <h3 style="color:#2563eb;border-bottom:3px solid #e17055;display:inline-block;padding-bottom:0.2em;">SuperColoring.com</h3>
+                    <h3 style="color:#e17055;">SuperColoring.com</h3>
                     <p style="color:#222;">Free coloring pages, drawing tutorials, and printable activities for children and teachers.</p>
                 </a>
                 <a class="resource-card" href="https://www.pustakalaya.org/" target="_blank" rel="noopener" style="background:linear-gradient(135deg,#cfd9df 0%,#e2ebf0 100%);border-radius:16px;box-shadow:0 2px 12px rgba(37,99,235,0.10);padding:1.5rem;text-align:left;transition:transform 0.15s;cursor:pointer;display:block;text-decoration:none;">
-                    <h3 style="color:#2563eb;border-bottom:3px solid #fbc531;display:inline-block;padding-bottom:0.2em;">e-Pustakalaya</h3>
+                    <h3 style="color:#fbc531;">e-Pustakalaya</h3>
                     <p style="color:#222;">Digital library with thousands of free books, educational resources, and learning materials for students and teachers in Nepal.</p>
                 </a>
                 <a class="resource-card" href="https://www.looma.website/" target="_blank" rel="noopener" style="background:linear-gradient(135deg,#a1c4fd 0%,#c2e9fb 100%);border-radius:16px;box-shadow:0 2px 12px rgba(37,99,235,0.10);padding:1.5rem;text-align:left;transition:transform 0.15s;cursor:pointer;display:block;text-decoration:none;">
-                    <h3 style="color:#2563eb;border-bottom:3px solid #00b894;display:inline-block;padding-bottom:0.2em;">Looma</h3>
+                    <h3 style="color:#00b894;">Looma</h3>
                     <p style="color:#222;">Interactive educational platform offering multimedia lessons, activities, and resources for Nepali classrooms.</p>
                 </a>
                 <a class="resource-card" href="https://epaath.olenepal.org/" target="_blank" rel="noopener" style="background:linear-gradient(135deg,#fbc2eb 0%,#f7d9c4 100%);border-radius:16px;box-shadow:0 2px 12px rgba(37,99,235,0.10);padding:1.5rem;text-align:left;transition:transform 0.15s;cursor:pointer;display:block;text-decoration:none;">
-                    <h3 style="color:#2563eb;border-bottom:3px solid #e17055;display:inline-block;padding-bottom:0.2em;">ePaath</h3>
+                    <h3 style="color:#e17055;">ePaath</h3>
                     <p style="color:#222;">Interactive digital learning platform with updated educational content for Nepali students and teachers. Available in Nepali and English.</p>
                 </a>
                 <a class="resource-card" href="https://learning.cehrd.gov.np/course/index.php?categoryid=3" target="_blank" rel="noopener" style="background:linear-gradient(135deg,#d4fc79 0%,#96e6a1 100%);border-radius:16px;box-shadow:0 2px 12px rgba(37,99,235,0.10);padding:1.5rem;text-align:left;transition:transform 0.15s;cursor:pointer;display:block;text-decoration:none;">
                     <img src="https://learning.cehrd.gov.np/theme/image.php/boost/theme/1709193847/favicon" alt="CHERD Learning Portal Logo" style="width:100%;max-width:320px;height:90px;object-fit:contain;background:#fff;border-radius:12px 12px 0 0;box-shadow:0 2px 8px rgba(37,99,235,0.10);margin-bottom:0.7rem;">
-                    <h3 style="color:#2563eb;border-bottom:3px solid #6c5ce7;display:inline-block;padding-bottom:0.2em;">CHERD Learning Portal</h3>
+                    <h3 style="color:#6c5ce7;">CHERD Learning Portal</h3>
                     <p style="color:#222;">Direct access to CHERD's curated digital learning resources for Nepali students and teachers.</p>
                 </a>
             </div>
@@ -158,16 +241,16 @@
     <main class="main-content" style="display: flex; flex-direction: column; gap: 2.5rem;">
         <section class="top-section" style="display: flex; flex-wrap: wrap; gap: 2.5rem; align-items: flex-start; justify-content: space-between;">
             <div style="flex: 1 1 320px; min-width: 280px; max-width: 600px;">
-                <div style="text-align:right; margin-bottom:1rem;">
-                    <a href="index.html" style="background:#2563eb;color:#fff;padding:0.5rem 1.2rem;border-radius:6px;text-decoration:none;font-weight:500;">Go to Main Menu</a>
-                </div>
-                <section class="announcements">
+        <div style="text-align:right; margin-bottom:1rem;">
+            <a href="index.html" style="background:#2563eb;color:#fff;padding:0.5rem 1.2rem;border-radius:6px;text-decoration:none;font-weight:500;">Go to Main Menu</a>
+        </div>
+        <section class="announcements">
                     <h2 id="announcements-title">Latest Announcements</h2>
                     <ul id="announcements-list">
-                        <li>Get educational materials in <a href="resources.html">Resource Materials</a> section.</li>
-                        <li>SEE exam model questions and past papers now available.</li>
-                        <li>Stay tuned for updates on curriculum changes and teacher training programs.</li>
-                    </ul>
+                <li>Get educational materials in <a href="resources.html">Resource Materials</a> section.</li>
+                <li>SEE exam model questions and past papers now available.</li>
+                <li>Stay tuned for updates on curriculum changes and teacher training programs.</li>
+            </ul>
                 </section>
             </div>
             <aside class="nepali-calendar-widget" style="min-width:260px;max-width:340px;width:100%;">
@@ -203,7 +286,7 @@
         /* Beautiful, realistic homepage background */
         body {
             min-height: 100vh;
-            background: #f4f4f7;
+            background: linear-gradient(135deg, #fffbe6 0%, #ffe7ba 60%, #ffd580 100%);
             color: #222;
         }
         header, .container, .main-content, .footer-container {
@@ -211,6 +294,16 @@
             border-radius: 16px;
             box-shadow: 0 2px 12px rgba(37,99,235,0.10);
             color: #222 !important;
+        }
+        #sidebar-menu {
+            background: #222 !important;
+        }
+        #sidebar-menu .nav-links li a {
+            color: #fff !important;
+        }
+        #sidebar-menu .nav-links li a:hover {
+            background: #444;
+            color: #ffd700 !important;
         }
         .resource-card, .resource-card h3, .resource-card p {
             background: #fff !important;
@@ -550,7 +643,13 @@
                     'SEE exam model questions and past papers now available.',
                     'Stay tuned for updates on curriculum changes and teacher training programs.'
                 ],
-                langBtn: 'नेपाली'
+                langBtn: 'नेपाली',
+                menu: [
+                    'About Us',
+                    'Notice',
+                    'Resources Materials',
+                    'Governmental Websites'
+                ]
             },
             np: {
                 heroTitle: 'डी कक्षामा स्वागत छ',
@@ -563,7 +662,13 @@
                     'एसईई परीक्षा मोडेल प्रश्नपत्र र विगतका प्रश्नपत्रहरू उपलब्ध छन्।',
                     'पाठ्यक्रम परिवर्तन र शिक्षक तालिम कार्यक्रमहरूको अद्यावधिकको लागि प्रतीक्षा गर्नुहोस्।'
                 ],
-                langBtn: 'English'
+                langBtn: 'English',
+                menu: [
+                    'हाम्रो बारेमा',
+                    'सूचना',
+                    'स्रोत सामग्री',
+                    'सरकारी वेबसाइटहरू'
+                ]
             }
         };
         langToggle.addEventListener('click', () => {
@@ -577,6 +682,11 @@
             const annList = document.getElementById('announcements-list');
             annList.innerHTML = translations[lang].announcementsList.map(item => `<li>${item}</li>`).join('');
             langToggle.textContent = translations[lang].langBtn;
+            // Sidebar menu translation
+            const menuLinks = document.querySelectorAll('#sidebar-menu .nav-links li a');
+            translations[lang].menu.forEach((label, i) => {
+                if (menuLinks[i]) menuLinks[i].textContent = label;
+            });
         });
     </script>
 </body>
