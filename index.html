@@ -187,6 +187,131 @@
             letter-spacing: 0.01em;
             text-shadow: 0 2px 8px rgba(0,0,0,0.18);
         }
+        .download-btn {
+            background: linear-gradient(90deg, #2563eb 0%, #1e90ff 100%);
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            padding: 0.7em 1.6em;
+            font-size: 1.08rem;
+            font-weight: 700;
+            margin: 1em auto 0.7em auto;
+            display: block;
+            cursor: pointer;
+            box-shadow: 0 4px 16px rgba(37,99,235,0.13), 0 2px 8px rgba(0,0,0,0.10);
+            transition: background 0.2s, transform 0.2s;
+            width: 80%;
+            max-width: 220px;
+            letter-spacing: 0.01em;
+        }
+        .download-btn:hover {
+            background: linear-gradient(90deg, #1746a0 0%, #2563eb 100%);
+            transform: translateY(-2px) scale(1.04);
+        }
+        .payment-modal {
+            display: none;
+            position: fixed;
+            z-index: 3000;
+            left: 0; top: 0; width: 100vw; height: 100vh;
+            background: rgba(0,0,0,0.35);
+            justify-content: center;
+            align-items: center;
+        }
+        .payment-modal.active {
+            display: flex;
+        }
+        .payment-modal-content {
+            background: #fff;
+            border-radius: 14px;
+            padding: 2em 2.5em;
+            box-shadow: 0 4px 24px rgba(37,99,235,0.18);
+            text-align: center;
+            min-width: 260px;
+            max-width: 90vw;
+        }
+        .payment-modal-content h2 {
+            color: #2563eb;
+            margin-bottom: 1em;
+        }
+        .payment-options {
+            display: flex;
+            gap: 1.5em;
+            justify-content: center;
+            margin-bottom: 1.2em;
+        }
+        .payment-option-btn {
+            background: #f5faff;
+            border: 2px solid #2563eb;
+            color: #2563eb;
+            border-radius: 8px;
+            padding: 0.7em 1.5em;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background 0.2s, color 0.2s;
+        }
+        .payment-option-btn:hover {
+            background: #2563eb;
+            color: #fff;
+        }
+        .close-modal-btn {
+            background: none;
+            border: none;
+            color: #888;
+            font-size: 1.5rem;
+            position: absolute;
+            top: 1.2em;
+            right: 1.5em;
+            cursor: pointer;
+        }
+        .resource-hero-cover {
+            width: 100%;
+            min-height: 320px;
+            background: linear-gradient(120deg, #2563eb 0%, #a6c1ee 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 3.5rem 1rem 2.5rem 1rem;
+            border-radius: 0 0 32px 32px;
+            box-shadow: 0 4px 24px rgba(37,99,235,0.10);
+            margin-bottom: 2.5rem;
+        }
+        .resource-hero-content {
+            text-align: center;
+            color: #fff;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        .resource-hero-title {
+            font-size: 2.8rem;
+            font-weight: 900;
+            margin-bottom: 0.7rem;
+            letter-spacing: 1.5px;
+            text-shadow: 0 2px 12px rgba(0,0,0,0.18);
+        }
+        .resource-hero-desc {
+            font-size: 1.25rem;
+            font-weight: 400;
+            margin-bottom: 1.7rem;
+            color: #e3eaff;
+            text-shadow: 0 2px 8px rgba(37,99,235,0.10);
+        }
+        .resource-hero-cta {
+            display: inline-block;
+            background: #ffd700;
+            color: #2563eb;
+            font-weight: 700;
+            font-size: 1.1rem;
+            padding: 0.7em 2.2em;
+            border-radius: 8px;
+            text-decoration: none;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+            transition: background 0.2s, color 0.2s;
+        }
+        .resource-hero-cta:hover {
+            background: #2563eb;
+            color: #ffd700;
+        }
     </style>
     <!-- Open Graph Meta Tags for Social Media Sharing -->
     <meta property="og:title" content="D classroom - Resource Materials" />
@@ -242,8 +367,16 @@
             <p id="hero-desc">Your source for school education materials, official resources, and updates. Access textbooks, curriculum, exam resources, and more—empowering students and teachers across Nepal.</p>
         </div>
     </section>
+    <!-- Resource Materials Cover Page / Hero Section -->
+    <section class="resource-hero-cover">
+        <div class="resource-hero-content">
+            <h1 class="resource-hero-title">Resource Materials</h1>
+            <p class="resource-hero-desc">Access top educational resources for students and teachers in Nepal. Explore digital textbooks, creative content, and official learning materials to empower your learning journey.</p>
+            <button id="explore-resources-btn" class="resource-hero-cta" type="button">Explore Resources</button>
+        </div>
+    </section>
     <!-- Resource Materials Preface Section -->
-    <section class="resource-preface" id="resource-preface">
+    <section class="resource-preface" id="resource-preface" style="display:none;opacity:0;max-height:0;overflow:hidden;transition:opacity 0.5s, max-height 0.5s;">
         <div class="container">
             <h2 id="resource-title" style="color:#2563eb;text-align:center;margin-bottom:0.5rem;">Highlights of Resource Materials</h2>
             <p id="resource-desc" style="text-align:center;margin-bottom:1.5rem;font-size:1.1rem;color:#fff;">Explore our top recommended digital resources for students and teachers in Nepal.</p>
@@ -253,6 +386,7 @@
                     <img src="https://images.unsplash.com/photo-1513258496099-48168024aec0?auto=format&fit=crop&w=400&q=80" alt="Grammar Guru Cover">
                     <h3 class="resource-title">Grammar Guru</h3>
                     <p>Practice and improve your English grammar skills online with interactive exercises and explanations.</p>
+                    <button class="download-btn" data-resource="grammar">Download</button>
                 </a>
                 <a class="resource-card" href="https://english-compositions-for-secondary-level.lovable.app/" target="_blank" rel="noopener" style="background:linear-gradient(135deg,#fbc2eb 0%,#a6c1ee 100%);border-radius:16px;box-shadow:0 2px 12px rgba(37,99,235,0.10);padding:0;text-align:left;transition:transform 0.15s;cursor:pointer;display:block;text-decoration:none;overflow:hidden;position:relative;">
                     <div class="resource-name-overlay">English Composition</div>
@@ -261,6 +395,7 @@
                     <div style="position:relative;z-index:2;padding:2.5rem 1.2rem 1.2rem 1.2rem;min-height:180px;display:flex;flex-direction:column;justify-content:flex-end;height:100%;background:linear-gradient(180deg,rgba(37,99,235,0.10) 0%,rgba(0,0,0,0.55) 100%);">
                         <p style="color:#fff;text-shadow:0 2px 8px rgba(0,0,0,0.25);font-size:1.05rem;">Access a curated collection of English compositions for secondary level students, available online for easy reading and reference.</p>
                     </div>
+                    <button class="download-btn" data-resource="composition">Download</button>
                 </a>
                 <a class="resource-card" href="https://mitho-katha-nepal.lovable.app/" target="_blank" rel="noopener" style="background:linear-gradient(135deg,#fddb92 0%,#d1fdff 100%);border-radius:16px;box-shadow:0 2px 12px rgba(37,99,235,0.10);padding:0;text-align:left;transition:transform 0.15s;cursor:pointer;display:block;text-decoration:none;overflow:hidden;position:relative;">
                     <div class="resource-name-overlay">बाल कथाहरु</div>
@@ -445,7 +580,19 @@
             </a>
         </div>
     </footer>
+    <div id="payment-modal" class="payment-modal">
+        <div class="payment-modal-content">
+            <button class="close-modal-btn" id="close-payment-modal" title="Close">&times;</button>
+            <h2>Choose Payment Method</h2>
+            <div class="payment-options">
+                <button class="payment-option-btn" id="pay-esewa">Pay with eSewa</button>
+                <button class="payment-option-btn" id="pay-khalti">Pay with Khalti</button>
+            </div>
+            <div id="payment-info" style="color:#888;font-size:0.98em;"></div>
+        </div>
+    </div>
     <script src="script.js"></script>
+    <script src="https://khalti.com/static/khalti-checkout.js"></script>
     <script>
         document.getElementById('add-image-input').addEventListener('change', function(event) {
             const files = event.target.files;
@@ -758,6 +905,123 @@
             translations[lang].menu.forEach((label, i) => {
                 if (menuLinks[i]) menuLinks[i].textContent = label;
             });
+        });
+    </script>
+    <script>
+        // Payment modal logic
+        let selectedResource = null;
+        const downloadLinks = {
+            grammar: 'YOUR_GRAMMAR_FILE_URL.pdf', // TODO: Replace with your actual file URL
+            composition: 'YOUR_COMPOSITION_FILE_URL.pdf' // TODO: Replace with your actual file URL
+        };
+        document.querySelectorAll('.download-btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                selectedResource = btn.getAttribute('data-resource');
+                document.getElementById('payment-modal').classList.add('active');
+            });
+        });
+        document.getElementById('close-payment-modal').onclick = function() {
+            document.getElementById('payment-modal').classList.remove('active');
+        };
+        // eSewa payment
+        document.getElementById('pay-esewa').onclick = function() {
+            // Replace with your real eSewa merchant code and URLs
+            const amt = selectedResource === 'grammar' ? '100' : '120'; // Example prices
+            const pid = selectedResource + '-' + Date.now();
+            const esewaUrl = 'https://rc-epay.esewa.com.np/api/epay/main'; // Test URL
+            const params = {
+                amt: amt,
+                psc: 0,
+                pdc: 0,
+                txAmt: 0,
+                tAmt: amt,
+                pid: pid,
+                scd: 'EPAYTEST', // Your merchant code
+                su: window.location.origin + '/?success=true&resource=' + selectedResource,
+                fu: window.location.origin + '/?success=false'
+            };
+            // Create and submit form
+            const form = document.createElement('form');
+            form.method = 'POST';
+            form.action = esewaUrl;
+            for (const key in params) {
+                const input = document.createElement('input');
+                input.type = 'hidden';
+                input.name = key;
+                input.value = params[key];
+                form.appendChild(input);
+            }
+            document.body.appendChild(form);
+            form.submit();
+        };
+        // Khalti JS SDK integration
+        const khaltiConfig = {
+            publicKey: "test_public_key_dc74b7a5b9b34e5b8e6e7e7e7e7e7e7e", // TODO: Replace with your real public key
+            productIdentity: "",
+            productName: "",
+            productUrl: window.location.href,
+            eventHandler: {
+                onSuccess(payload) {
+                    // Payment successful, trigger download
+                    if (selectedResource && downloadLinks[selectedResource]) {
+                        alert('Payment successful! Your download will start.');
+                        window.location.href = downloadLinks[selectedResource];
+                    }
+                },
+                onError(error) {
+                    alert('Payment failed or cancelled.');
+                },
+                onClose() {
+                    // Optional: handle modal close
+                }
+            }
+        };
+        const checkout = new KhaltiCheckout(khaltiConfig);
+        document.getElementById('pay-khalti').onclick = function () {
+            let amt = selectedResource === 'grammar' ? 100 : 120; // In NPR
+            // Set product details
+            checkout.config.productIdentity = selectedResource;
+            checkout.config.productName = selectedResource === 'grammar' ? 'English Grammar' : 'English Composition';
+            // Khalti expects amount in paisa
+            checkout.show({ amount: amt * 100 });
+        };
+        // Download after payment (demo)
+        window.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.get('success') === 'true' && urlParams.get('resource')) {
+                const res = urlParams.get('resource');
+                if (downloadLinks[res]) {
+                    setTimeout(() => {
+                        alert('Payment successful! Your download will start.');
+                        window.location.href = downloadLinks[res];
+                    }, 500);
+                }
+            }
+        });
+    </script>
+    <script>
+        // Toggle highlights section on Explore Resources button click
+        const exploreBtn = document.getElementById('explore-resources-btn');
+        const highlightsSection = document.getElementById('resource-preface');
+        let highlightsVisible = false;
+        exploreBtn.addEventListener('click', function() {
+            highlightsVisible = !highlightsVisible;
+            if (highlightsVisible) {
+                highlightsSection.style.display = 'block';
+                setTimeout(() => {
+                    highlightsSection.style.opacity = '1';
+                    highlightsSection.style.maxHeight = '3000px';
+                }, 10);
+                exploreBtn.textContent = 'Hide Resources';
+            } else {
+                highlightsSection.style.opacity = '0';
+                highlightsSection.style.maxHeight = '0';
+                setTimeout(() => {
+                    highlightsSection.style.display = 'none';
+                }, 500);
+                exploreBtn.textContent = 'Explore Resources';
+            }
         });
     </script>
 </body>
