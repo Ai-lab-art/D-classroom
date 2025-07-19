@@ -8,9 +8,10 @@
     <style>
         /* Smooth color-cycling animation for the hero h1 (no dim, no blink) */
         .hero-content h1 {
-            font-weight: 900;
-            font-size: 2.5rem;
-            text-shadow: 0 2px 8px rgba(37,99,235,0.15);
+            font-weight: 700;
+            font-size: 1.08rem;
+            line-height: 1.1;
+            text-shadow: 0 1px 2px rgba(37,99,235,0.08);
             animation: colorCycle 15s linear infinite;
         }
         @keyframes colorCycle {
@@ -50,10 +51,10 @@
             justify-content: center;
         }
         .resource-card {
-            max-width: 180px !important;
-            min-width: 140px !important;
-            width: 160px !important;
-            height: 240px !important;
+            max-width: 220px !important;
+            min-width: 160px !important;
+            width: 200px !important;
+            height: 320px !important;
             padding: 0 !important;
             margin: 0 !important;
             border-radius: 14px !important;
@@ -63,6 +64,7 @@
             align-items: stretch;
             position: relative;
             overflow: hidden;
+            background: none !important;
         }
         .resource-card img {
             width: 100% !important;
@@ -174,18 +176,18 @@
             top: 10px;
             left: 50%;
             transform: translateX(-50%);
-            background: rgba(30, 41, 59, 0.72);
-            color: #fff;
+            background: none !important;
+            color: #b8860b;
             font-size: 1.08rem;
             font-weight: 700;
             padding: 0.25em 1.2em;
             border-radius: 8px;
             z-index: 3;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.13);
+            box-shadow: none;
             text-align: center;
             pointer-events: none;
             letter-spacing: 0.01em;
-            text-shadow: 0 2px 8px rgba(0,0,0,0.18);
+            text-shadow: 0 2px 8px rgba(255,255,255,0.18);
         }
         .download-btn {
             background: linear-gradient(90deg, #2563eb 0%, #1e90ff 100%);
@@ -271,7 +273,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 3.5rem 1rem 2.5rem 1rem;
+            padding: 0.1rem 0 0.1rem 0;
             border-radius: 0 0 32px 32px;
             box-shadow: 0 4px 24px rgba(37,99,235,0.10);
             margin-bottom: 2.5rem;
@@ -312,6 +314,70 @@
             background: #2563eb;
             color: #ffd700;
         }
+        /* Modal styles for English Grammar */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(0,0,0,0.35);
+            z-index: 4000;
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-overlay.active {
+            display: flex;
+        }
+        .modal-content {
+            background: #fff;
+            border-radius: 16px;
+            max-width: 540px;
+            width: 96vw;
+            max-height: 90vh;
+            padding: 2.2em 2em 1.5em 2em;
+            box-shadow: 0 4px 24px rgba(37,99,235,0.18);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        .modal-close {
+            position: absolute;
+            top: 1em;
+            right: 1.2em;
+            background: none;
+            border: none;
+            font-size: 2rem;
+            color: #888;
+            cursor: pointer;
+            z-index: 10;
+        }
+        .modal-content h2 {
+            color: #2563eb;
+            margin-bottom: 0.7em;
+            font-size: 2rem;
+            text-align: center;
+        }
+        .modal-scroll {
+            overflow-y: auto;
+            max-height: 60vh;
+            padding-right: 0.5em;
+        }
+        .modal-scroll h3 {
+            color: #b8860b;
+            margin-top: 1.2em;
+            margin-bottom: 0.5em;
+        }
+        .modal-scroll ul {
+            margin-bottom: 1em;
+            padding-left: 1.2em;
+        }
+        .modal-scroll li {
+            margin-bottom: 0.4em;
+        }
+        .hero {
+            padding: 0.1rem 0 0.1rem 0;
+            background: #fff !important;
+        }
     </style>
     <!-- Open Graph Meta Tags for Social Media Sharing -->
     <meta property="og:title" content="D classroom - Resource Materials" />
@@ -343,7 +409,10 @@
             <span style="display:block;width:28px;height:4px;background:#222;border-radius:2px;margin:3px 0;"></span>
             <span style="display:block;width:28px;height:4px;background:#222;border-radius:2px;margin:3px 0;"></span>
         </div>
-        <button id="lang-toggle" style="position:fixed;top:24px;right:24px;z-index:2100;background:#444;color:#fff;border:none;border-radius:8px;padding:0.5em 1.2em;font-size:1rem;font-weight:600;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,0.10);">नेपाली</button>
+        <button id="lang-toggle" style="position:fixed;top:24px;right:24px;z-index:2100;background:#444;color:#fff;border:none;border-radius:8px;padding:0.5em 1.2em;font-size:1rem;font-weight:600;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,0.10);display:flex;align-items:center;gap:0.5em;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24"><path fill="#fff" d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2Zm7.938 9h-3.09c-.13-2.33-.99-4.36-2.23-5.74A8.03 8.03 0 0 1 19.938 11ZM12 20c-1.47-1.36-2.5-3.98-2.68-7h5.36C14.5 16.02 13.47 18.64 12 20Zm-2.93-9c.13-2.52 1.01-4.7 2.23-6.03C12.7 4.98 13.8 7.1 13.93 11h-5.86Zm0 2h5.86c-.13 3.9-1.23 6.02-2.23 7.03C10.08 17.7 9.2 15.52 9.07 13Zm-1.07-2c.13-3.9 1.23-6.02 2.23-7.03C13.92 6.3 14.8 8.48 14.93 11h-5.86Zm-1.07 2c-.13 2.33-.99 4.36-2.23 5.74A8.03 8.03 0 0 0 4.062 13h3.09Zm13.876 0c-.13 2.33-.99 4.36-2.23 5.74A8.03 8.03 0 0 0 19.938 13h-3.09Z"/></svg>
+            <span id="lang-toggle-label">नेपाली</span>
+        </button>
         <div class="sidebar-menu" id="sidebar-menu" style="position:fixed;top:0;left:-260px;width:240px;height:100vh;background:#fff;box-shadow:2px 0 16px rgba(37,99,235,0.10);z-index:2002;transition:left 0.3s cubic-bezier(.4,0,.2,1);padding-top:48px;display:flex;flex-direction:column;">
             <nav id="navbar-sidebar">
                 <ul class="nav-links" style="flex-direction:column;gap:0.5rem;padding:0 1.2rem;">
@@ -384,34 +453,25 @@
                 <a class="resource-card" href="https://english-grammar-tutor.lovable.app/" target="_blank" rel="noopener">
                     <div class="resource-name-overlay">Grammar Guru</div>
                     <img src="https://images.unsplash.com/photo-1513258496099-48168024aec0?auto=format&fit=crop&w=400&q=80" alt="Grammar Guru Cover">
-                    <h3 class="resource-title">Grammar Guru</h3>
                     <p>Practice and improve your English grammar skills online with interactive exercises and explanations.</p>
-                    <button class="download-btn" data-resource="grammar">Download</button>
                 </a>
-                <a class="resource-card" href="https://english-compositions-for-secondary-level.lovable.app/" target="_blank" rel="noopener" style="background:linear-gradient(135deg,#fbc2eb 0%,#a6c1ee 100%);border-radius:16px;box-shadow:0 2px 12px rgba(37,99,235,0.10);padding:0;text-align:left;transition:transform 0.15s;cursor:pointer;display:block;text-decoration:none;overflow:hidden;position:relative;">
+                <a class="resource-card" href="https://english-compositions-for-secondary-level.lovable.app/" target="_blank" rel="noopener" style="background:linear-gradient(135deg,#fbc2eb 0%,#a6c1ee 100%);border-radius:16px;box-shadow:0 2px 12px rgba(37,99,235,0.10);padding:0;text-align:left;transition:transform 0.15s;display:block;text-decoration:none;overflow:hidden;position:relative;">
                     <div class="resource-name-overlay">English Composition</div>
                     <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=400&q=80" alt="English Composition Cover" style="width:100%;height:100%;object-fit:cover;display:block;position:absolute;top:0;left:0;z-index:1;">
                     <h3 class="resource-title">English Composition</h3>
-                    <div style="position:relative;z-index:2;padding:2.5rem 1.2rem 1.2rem 1.2rem;min-height:180px;display:flex;flex-direction:column;justify-content:flex-end;height:100%;background:linear-gradient(180deg,rgba(37,99,235,0.10) 0%,rgba(0,0,0,0.55) 100%);">
-                        <p style="color:#fff;text-shadow:0 2px 8px rgba(0,0,0,0.25);font-size:1.05rem;">Access a curated collection of English compositions for secondary level students, available online for easy reading and reference.</p>
-                    </div>
-                    <button class="download-btn" data-resource="composition">Download</button>
+                    <p style="color:#222;font-size:1.08rem;margin:1.2em 0 0.7em 0;line-height:1.5;">Access a curated collection of English compositions for secondary level students, available online for easy reading and reference.</p>
                 </a>
-                <a class="resource-card" href="https://mitho-katha-nepal.lovable.app/" target="_blank" rel="noopener" style="background:linear-gradient(135deg,#fddb92 0%,#d1fdff 100%);border-radius:16px;box-shadow:0 2px 12px rgba(37,99,235,0.10);padding:0;text-align:left;transition:transform 0.15s;cursor:pointer;display:block;text-decoration:none;overflow:hidden;position:relative;">
+                <a class="resource-card" href="https://mitho-katha-nepal-69.lovable.app/" target="_blank" rel="noopener" style="background:linear-gradient(135deg,#fddb92 0%,#d1fdff 100%);border-radius:16px;box-shadow:0 2px 12px rgba(37,99,235,0.10);padding:0;text-align:left;transition:transform 0.15s;display:block;text-decoration:none;overflow:hidden;position:relative;">
                     <div class="resource-name-overlay">बाल कथाहरु</div>
                     <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80" alt="बाल कथाहरु Cover" style="width:100%;height:100%;object-fit:cover;display:block;position:absolute;top:0;left:0;z-index:1;">
                     <h3 class="resource-title">बाल कथाहरु</h3>
-                    <div style="position:relative;z-index:2;padding:2.5rem 1.2rem 1.2rem 1.2rem;min-height:180px;display:flex;flex-direction:column;justify-content:flex-end;height:100%;background:linear-gradient(180deg,rgba(37,99,235,0.10) 0%,rgba(0,0,0,0.55) 100%);">
-                        <p style="color:#fff;text-shadow:0 2px 8px rgba(0,0,0,0.25);font-size:1.05rem;">नेपाली बालबालिकाका लागि रमाइला, शिक्षाप्रद र सिर्जनात्मक बाल कथाहरुको संग्रह।</p>
-                    </div>
+                    <p style="color:#222;font-size:1.08rem;margin:1.2em 0 0.7em 0;line-height:1.5;">नेपाली बालबालिकाका लागि रमाइला, शिक्षाप्रद र सिर्जनात्मक बाल कथाहरुको संग्रह।</p>
                 </a>
-                <a class="resource-card" href="https://tales-for-kids.lovable.app/" target="_blank" rel="noopener" style="background:linear-gradient(135deg,#fddb92 0%,#a1c4fd 100%);border-radius:16px;box-shadow:0 2px 12px rgba(37,99,235,0.10);padding:0;text-align:left;transition:transform 0.15s;cursor:pointer;display:block;text-decoration:none;overflow:hidden;position:relative;">
+                <a class="resource-card" href="https://tales-for-kids.lovable.app/" target="_blank" rel="noopener" style="background:linear-gradient(135deg,#fddb92 0%,#a1c4fd 100%);border-radius:16px;box-shadow:0 2px 12px rgba(37,99,235,0.10);padding:0;text-align:left;transition:transform 0.15s;display:block;text-decoration:none;overflow:hidden;position:relative;">
                     <div class="resource-name-overlay">Magical Children Stories</div>
                     <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80" alt="Magical Children Stories Cover" style="width:100%;height:100%;object-fit:cover;display:block;position:absolute;top:0;left:0;z-index:1;">
                     <h3 class="resource-title">Magical Children Stories</h3>
-                    <div style="position:relative;z-index:2;padding:2.5rem 1.2rem 1.2rem 1.2rem;min-height:180px;display:flex;flex-direction:column;justify-content:flex-end;height:100%;background:linear-gradient(180deg,rgba(37,99,235,0.10) 0%,rgba(0,0,0,0.55) 100%);">
-                        <p style="color:#fff;text-shadow:0 2px 8px rgba(0,0,0,0.25);font-size:1.05rem;">Discover a world of magical and enchanting stories for children. Dive into creative tales that spark imagination and wonder.</p>
-                    </div>
+                    <p style="color:#222;font-size:1.08rem;margin:1.2em 0 0.7em 0;line-height:1.5;">Discover a world of magical and enchanting stories for children. Dive into creative tales that spark imagination and wonder.</p>
                 </a>
                 <a class="resource-card" href="https://www.supercoloring.com/" target="_blank" rel="noopener" style="background:linear-gradient(135deg,#f6d365 0%,#fda085 100%);border-radius:16px;box-shadow:0 2px 12px rgba(37,99,235,0.10);padding:1.5rem;text-align:left;transition:transform 0.15s;cursor:pointer;display:block;text-decoration:none;">
                     <div class="resource-name-overlay">SuperColoring.com</div>
@@ -589,6 +649,42 @@
                 <button class="payment-option-btn" id="pay-khalti">Pay with Khalti</button>
             </div>
             <div id="payment-info" style="color:#888;font-size:0.98em;"></div>
+        </div>
+    </div>
+    <!-- English Grammar Modal -->
+    <div id="grammar-modal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="modal-close" id="close-grammar-modal">&times;</button>
+            <h2>English Grammar</h2>
+            <div class="modal-scroll">
+                <h3>Parts of Speech</h3>
+                <ul>
+                    <li><b>Noun:</b> Names a person, place, thing, or idea.</li>
+                    <li><b>Pronoun:</b> Replaces a noun (he, she, it, they).</li>
+                    <li><b>Verb:</b> Shows action or state of being.</li>
+                    <li><b>Adjective:</b> Describes a noun or pronoun.</li>
+                    <li><b>Adverb:</b> Describes a verb, adjective, or another adverb.</li>
+                    <li><b>Preposition:</b> Shows relationship between a noun/pronoun and another word.</li>
+                    <li><b>Conjunction:</b> Connects words, phrases, or clauses.</li>
+                    <li><b>Interjection:</b> Expresses emotion (Wow!, Oh!).</li>
+                </ul>
+                <h3>Tenses</h3>
+                <ul>
+                    <li><b>Present Simple:</b> I eat.</li>
+                    <li><b>Past Simple:</b> I ate.</li>
+                    <li><b>Future Simple:</b> I will eat.</li>
+                    <li><b>Present Continuous:</b> I am eating.</li>
+                    <li><b>Past Continuous:</b> I was eating.</li>
+                    <li><b>Future Continuous:</b> I will be eating.</li>
+                </ul>
+                <h3>Sample Sentences</h3>
+                <ul>
+                    <li>The cat <b>sits</b> on the mat.</li>
+                    <li>She <b>is reading</b> a book.</li>
+                    <li>They <b>will go</b> to school tomorrow.</li>
+                </ul>
+                <p style="margin-top:1.5em;color:#888;font-size:0.98em;">(This is a sample. You can add more grammar content here.)</p>
+            </div>
         </div>
     </div>
     <script src="script.js"></script>
@@ -867,7 +963,10 @@
                     'Notice',
                     'Resources Materials',
                     'Governmental Websites'
-                ]
+                ],
+                resourceHeroTitle: 'Resource Materials',
+                resourceHeroDesc: 'Access top educational resources for students and teachers in Nepal. Explore digital textbooks, creative content, and official learning materials to empower your learning journey.',
+                resourceHeroBtn: 'Explore Resources'
             },
             np: {
                 heroTitle: 'डी कक्षामा स्वागत छ',
@@ -886,7 +985,10 @@
                     'सूचना',
                     'स्रोत सामग्री',
                     'सरकारी वेबसाइटहरू'
-                ]
+                ],
+                resourceHeroTitle: 'स्रोत सामग्री',
+                resourceHeroDesc: 'नेपालका विद्यार्थी र शिक्षकहरूका लागि शीर्ष शैक्षिक स्रोतहरूमा पहुँच गर्नुहोस्। डिजिटल पाठ्यपुस्तक, सिर्जनात्मक सामग्री, र आधिकारिक शैक्षिक सामग्रीहरू अन्वेषण गर्नुहोस्।',
+                resourceHeroBtn: 'स्रोतहरू हेर्नुहोस्'
             }
         };
         langToggle.addEventListener('click', () => {
@@ -899,7 +1001,11 @@
             document.getElementById('announcements-title').innerHTML = translations[lang].announcementsTitle;
             const annList = document.getElementById('announcements-list');
             annList.innerHTML = translations[lang].announcementsList.map(item => `<li>${item}</li>`).join('');
-            langToggle.textContent = translations[lang].langBtn;
+            document.getElementById('lang-toggle-label').textContent = translations[lang].langBtn;
+            // Resource hero section
+            document.querySelector('.resource-hero-title').textContent = translations[lang].resourceHeroTitle;
+            document.querySelector('.resource-hero-desc').textContent = translations[lang].resourceHeroDesc;
+            document.querySelector('.resource-hero-cta').textContent = translations[lang].resourceHeroBtn;
             // Sidebar menu translation
             const menuLinks = document.querySelectorAll('#sidebar-menu .nav-links li a');
             translations[lang].menu.forEach((label, i) => {
@@ -1023,6 +1129,15 @@
                 exploreBtn.textContent = 'Explore Resources';
             }
         });
+    </script>
+    <script>
+        // English Grammar modal logic
+        document.getElementById('grammar-card').onclick = function() {
+            document.getElementById('grammar-modal').classList.add('active');
+        };
+        document.getElementById('close-grammar-modal').onclick = function() {
+            document.getElementById('grammar-modal').classList.remove('active');
+        };
     </script>
 </body>
 </html> 
