@@ -399,6 +399,14 @@
     <meta name="twitter:title" content="D classroom - Resource Materials" />
     <meta name="twitter:description" content="Your source for school education materials, official resources, and updates. Access textbooks, curriculum, exam resources, and more—empowering students and teachers across Nepal." />
     <meta name="twitter:image" content="Screenshot%202025-02-27%20194654.png" />
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-M61XVFZ9LW"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-M61XVFZ9LW');
+    </script>
     <style>
         .resource-card img {
             width: 140px !important;
@@ -1138,6 +1146,23 @@
         document.getElementById('close-grammar-modal').onclick = function() {
             document.getElementById('grammar-modal').classList.remove('active');
         };
+    </script>
+    <!-- Page Views Counter (floating right) -->
+    <div id="page-views-counter" style="position:fixed;top:110px;right:24px;z-index:3000;background:#fffbe6;border:2px solid #ffd700;border-radius:12px;padding:0.7em 1.5em;box-shadow:0 2px 8px rgba(37,99,235,0.10);font-size:1.08rem;font-weight:700;color:#2563eb;display:flex;align-items:center;gap:0.6em;">
+        <span style="font-size:1.3em;">👁️</span>
+        <span>Total Page Views:</span>
+        <span id="page-views-count">0</span>
+    </div>
+    <script>
+    // Page Views Counter Logic
+    (function() {
+        // Use localStorage for demo; for real use, connect to a backend
+        let count = localStorage.getItem('dclassroom_page_views');
+        if (!count) count = 0;
+        count = parseInt(count, 10) + 1;
+        localStorage.setItem('dclassroom_page_views', count);
+        document.getElementById('page-views-count').textContent = count;
+    })();
     </script>
 </body>
 </html> 
