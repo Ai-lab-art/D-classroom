@@ -378,6 +378,15 @@
             padding: 0.1rem 0 0.1rem 0;
             background: #fff !important;
         }
+        @keyframes langColorCycle {
+            0% { background: #444; }
+            33% { background: #2563eb; }
+            66% { background: #e1306c; }
+            100% { background: #444; }
+        }
+        #lang-toggle {
+            animation: langColorCycle 9s linear infinite;
+        }
     </style>
     <!-- Open Graph Meta Tags for Social Media Sharing -->
     <meta property="og:title" content="D classroom - Resource Materials" />
@@ -440,7 +449,7 @@
     <section class="resource-hero-cover">
         <div class="resource-hero-content">
             <h1 class="resource-hero-title">Resource Materials</h1>
-            <p class="resource-hero-desc">Access top educational resources for students and teachers in Nepal. Explore digital textbooks, creative content, and official learning materials to empower your learning journey.</p>
+            <p class="resource-hero-desc">Access top educational resources for students and teachers. Explore digital textbooks, creative content, and official learning materials to empower your learning journey.</p>
             <button id="explore-resources-btn" class="resource-hero-cta" type="button">Explore Resources</button>
         </div>
     </section>
@@ -450,55 +459,39 @@
             <h2 id="resource-title" style="color:#2563eb;text-align:center;margin-bottom:0.5rem;">Highlights of Resource Materials</h2>
             <p id="resource-desc" style="text-align:center;margin-bottom:1.5rem;font-size:1.1rem;color:#fff;">Explore our top recommended digital resources for students and teachers in Nepal.</p>
             <div class="resources-grid" style="margin-bottom:2rem;">
+                <!-- 1 -->
                 <a class="resource-card" href="https://english-grammar-tutor.lovable.app/" target="_blank" rel="noopener">
                     <div class="resource-name-overlay">Grammar Guru</div>
                     <img src="https://images.unsplash.com/photo-1513258496099-48168024aec0?auto=format&fit=crop&w=400&q=80" alt="Grammar Guru Cover">
                     <p>Practice and improve your English grammar skills online with interactive exercises and explanations.</p>
                 </a>
+                <!-- 2 -->
                 <a class="resource-card" href="https://english-compositions-for-secondary-level.lovable.app/" target="_blank" rel="noopener" style="background:linear-gradient(135deg,#fbc2eb 0%,#a6c1ee 100%);border-radius:16px;box-shadow:0 2px 12px rgba(37,99,235,0.10);padding:0;text-align:left;transition:transform 0.15s;display:block;text-decoration:none;overflow:hidden;position:relative;">
                     <div class="resource-name-overlay">English Composition</div>
                     <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=400&q=80" alt="English Composition Cover" style="width:100%;height:100%;object-fit:cover;display:block;position:absolute;top:0;left:0;z-index:1;">
                     <h3 class="resource-title">English Composition</h3>
                     <p style="color:#222;font-size:1.08rem;margin:1.2em 0 0.7em 0;line-height:1.5;">Access a curated collection of English compositions for secondary level students, available online for easy reading and reference.</p>
                 </a>
+                <!-- 3 -->
                 <a class="resource-card" href="https://mitho-katha-nepal-69.lovable.app/" target="_blank" rel="noopener" style="background:linear-gradient(135deg,#fddb92 0%,#d1fdff 100%);border-radius:16px;box-shadow:0 2px 12px rgba(37,99,235,0.10);padding:0;text-align:left;transition:transform 0.15s;display:block;text-decoration:none;overflow:hidden;position:relative;">
                     <div class="resource-name-overlay">बाल कथाहरु</div>
                     <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80" alt="बाल कथाहरु Cover" style="width:100%;height:100%;object-fit:cover;display:block;position:absolute;top:0;left:0;z-index:1;">
                     <h3 class="resource-title">बाल कथाहरु</h3>
                     <p style="color:#222;font-size:1.08rem;margin:1.2em 0 0.7em 0;line-height:1.5;">नेपाली बालबालिकाका लागि रमाइला, शिक्षाप्रद र सिर्जनात्मक बाल कथाहरुको संग्रह।</p>
                 </a>
+                <!-- 4 -->
                 <a class="resource-card" href="https://tales-for-kids.lovable.app/" target="_blank" rel="noopener" style="background:linear-gradient(135deg,#fddb92 0%,#a1c4fd 100%);border-radius:16px;box-shadow:0 2px 12px rgba(37,99,235,0.10);padding:0;text-align:left;transition:transform 0.15s;display:block;text-decoration:none;overflow:hidden;position:relative;">
                     <div class="resource-name-overlay">Magical Children Stories</div>
                     <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80" alt="Magical Children Stories Cover" style="width:100%;height:100%;object-fit:cover;display:block;position:absolute;top:0;left:0;z-index:1;">
                     <h3 class="resource-title">Magical Children Stories</h3>
                     <p style="color:#222;font-size:1.08rem;margin:1.2em 0 0.7em 0;line-height:1.5;">Discover a world of magical and enchanting stories for children. Dive into creative tales that spark imagination and wonder.</p>
                 </a>
-                <a class="resource-card" href="https://www.supercoloring.com/" target="_blank" rel="noopener" style="background:linear-gradient(135deg,#f6d365 0%,#fda085 100%);border-radius:16px;box-shadow:0 2px 12px rgba(37,99,235,0.10);padding:1.5rem;text-align:left;transition:transform 0.15s;cursor:pointer;display:block;text-decoration:none;">
-                    <div class="resource-name-overlay">SuperColoring.com</div>
-                    <img src="https://www.supercoloring.com/sites/all/themes/supercoloring/logo.png" alt="SuperColoring.com Logo" style="width:100%;max-width:320px;height:90px;object-fit:contain;background:#fff;border-radius:12px 12px 0 0;box-shadow:0 2px 8px rgba(37,99,235,0.10);margin-bottom:0.7rem;">
-                    <h3 class="resource-title">SuperColoring.com</h3>
-                    <p style="color:#222;">Free coloring pages, drawing tutorials, and printable activities for children and teachers.</p>
-                </a>
-                <a class="resource-card" href="https://www.pustakalaya.org/" target="_blank" rel="noopener" style="background:linear-gradient(135deg,#cfd9df 0%,#e2ebf0 100%);border-radius:16px;box-shadow:0 2px 12px rgba(37,99,235,0.10);padding:1.5rem;text-align:left;transition:transform 0.15s;cursor:pointer;display:block;text-decoration:none;">
-                    <div class="resource-name-overlay">e-Pustakalaya</div>
-                    <h3 class="resource-title">e-Pustakalaya</h3>
-                    <p style="color:#222;">Digital library with thousands of free books, educational resources, and learning materials for students and teachers in Nepal.</p>
-                </a>
-                <a class="resource-card" href="https://www.looma.website/" target="_blank" rel="noopener" style="background:linear-gradient(135deg,#a1c4fd 0%,#c2e9fb 100%);border-radius:16px;box-shadow:0 2px 12px rgba(37,99,235,0.10);padding:1.5rem;text-align:left;transition:transform 0.15s;cursor:pointer;display:block;text-decoration:none;">
-                    <div class="resource-name-overlay">Looma</div>
-                    <h3 class="resource-title">Looma</h3>
-                    <p style="color:#222;">Interactive educational platform offering multimedia lessons, activities, and resources for Nepali classrooms.</p>
-                </a>
-                <a class="resource-card" href="https://epaath.olenepal.org/" target="_blank" rel="noopener" style="background:linear-gradient(135deg,#fbc2eb 0%,#f7d9c4 100%);border-radius:16px;box-shadow:0 2px 12px rgba(37,99,235,0.10);padding:1.5rem;text-align:left;transition:transform 0.15s;cursor:pointer;display:block;text-decoration:none;">
-                    <div class="resource-name-overlay">ePaath</div>
-                    <h3 class="resource-title">ePaath</h3>
-                    <p style="color:#222;">Interactive digital learning platform with updated educational content for Nepali students and teachers. Available in Nepali and English.</p>
-                </a>
-                <a class="resource-card" href="https://learning.cehrd.gov.np/course/index.php?categoryid=3" target="_blank" rel="noopener" style="background:linear-gradient(135deg,#d4fc79 0%,#96e6a1 100%);border-radius:16px;box-shadow:0 2px 12px rgba(37,99,235,0.10);padding:1.5rem;text-align:left;transition:transform 0.15s;cursor:pointer;display:block;text-decoration:none;">
-                    <div class="resource-name-overlay">CHERD Learning Portal</div>
-                    <img src="https://learning.cehrd.gov.np/theme/image.php/boost/theme/1709193847/favicon" alt="CHERD Learning Portal Logo" style="width:100%;max-width:320px;height:90px;object-fit:contain;background:#fff;border-radius:12px 12px 0 0;box-shadow:0 2px 8px rgba(37,99,235,0.10);margin-bottom:0.7rem;">
-                    <h3 class="resource-title">CHERD Learning Portal</h3>
-                    <p style="color:#222;">Direct access to CHERD's curated digital learning resources for Nepali students and teachers.</p>
+                <!-- 5: Naming Pictures -->
+                <a class="resource-card" href="https://naming-pictures.lovable.app/" target="_blank" rel="noopener" style="background:linear-gradient(135deg,#e0f7fa 0%,#b2ebf2 100%);border-radius:16px;box-shadow:0 2px 12px rgba(37,99,235,0.10);padding:0;text-align:left;transition:transform 0.15s;display:block;text-decoration:none;overflow:hidden;position:relative;">
+                    <div class="resource-name-overlay">Naming Pictures</div>
+                    <img src="https://images.unsplash.com/photo-1508672019048-805c876b67e2?auto=format&fit=crop&w=400&q=80" alt="Wildlife Collage" style="width:100%;height:140px;object-fit:cover;display:block;position:relative;z-index:1;">
+                    <h3 class="resource-title">Naming Pictures</h3>
+                    <p style="color:#222;font-size:1.08rem;margin:1.2em 0 0.7em 0;line-height:1.5;">Explore and learn the names of animals, birds, insects, and sea animals with a fun visual guide for kids!</p>
                 </a>
             </div>
         </div>
@@ -944,7 +937,8 @@
     <script>
         // Language toggle logic
         const langToggle = document.getElementById('lang-toggle');
-        let isNepali = false;
+        let langIndex = 0;
+        const langOrder = ['en', 'np'];
         const translations = {
             en: {
                 heroTitle: 'Welcome to D classroom',
@@ -965,7 +959,7 @@
                     'Governmental Websites'
                 ],
                 resourceHeroTitle: 'Resource Materials',
-                resourceHeroDesc: 'Access top educational resources for students and teachers in Nepal. Explore digital textbooks, creative content, and official learning materials to empower your learning journey.',
+                resourceHeroDesc: 'Access top educational resources for students and teachers. Explore digital textbooks, creative content, and official learning materials to empower your learning journey.',
                 resourceHeroBtn: 'Explore Resources'
             },
             np: {
@@ -987,13 +981,13 @@
                     'सरकारी वेबसाइटहरू'
                 ],
                 resourceHeroTitle: 'स्रोत सामग्री',
-                resourceHeroDesc: 'नेपालका विद्यार्थी र शिक्षकहरूका लागि शीर्ष शैक्षिक स्रोतहरूमा पहुँच गर्नुहोस्। डिजिटल पाठ्यपुस्तक, सिर्जनात्मक सामग्री, र आधिकारिक शैक्षिक सामग्रीहरू अन्वेषण गर्नुहोस्।',
+                resourceHeroDesc: 'विद्यार्थी र शिक्षकहरूका लागि शीर्ष शैक्षिक स्रोतहरूमा पहुँच गर्नुहोस्। डिजिटल पाठ्यपुस्तक, सिर्जनात्मक सामग्री, र आधिकारिक शैक्षिक सामग्रीहरू अन्वेषण गर्नुहोस्।',
                 resourceHeroBtn: 'स्रोतहरू हेर्नुहोस्'
             }
         };
         langToggle.addEventListener('click', () => {
-            isNepali = !isNepali;
-            const lang = isNepali ? 'np' : 'en';
+            langIndex = (langIndex + 1) % langOrder.length;
+            const lang = langOrder[langIndex];
             document.getElementById('hero-title').innerHTML = translations[lang].heroTitle;
             document.getElementById('hero-desc').innerHTML = translations[lang].heroDesc;
             document.getElementById('resource-title').innerHTML = translations[lang].resourceTitle;
@@ -1110,6 +1104,8 @@
         // Toggle highlights section on Explore Resources button click
         const exploreBtn = document.getElementById('explore-resources-btn');
         const highlightsSection = document.getElementById('resource-preface');
+        const heroSection = document.getElementById('hero-section');
+        const mainContent = document.querySelector('.main-content');
         let highlightsVisible = false;
         exploreBtn.addEventListener('click', function() {
             highlightsVisible = !highlightsVisible;
@@ -1118,6 +1114,8 @@
                 setTimeout(() => {
                     highlightsSection.style.opacity = '1';
                     highlightsSection.style.maxHeight = '3000px';
+                    if(heroSection) heroSection.style.display = 'none';
+                    if(mainContent) mainContent.style.display = 'none';
                 }, 10);
                 exploreBtn.textContent = 'Hide Resources';
             } else {
@@ -1125,6 +1123,8 @@
                 highlightsSection.style.maxHeight = '0';
                 setTimeout(() => {
                     highlightsSection.style.display = 'none';
+                    if(heroSection) heroSection.style.display = '';
+                    if(mainContent) mainContent.style.display = '';
                 }, 500);
                 exploreBtn.textContent = 'Explore Resources';
             }
