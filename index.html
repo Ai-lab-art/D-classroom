@@ -1164,5 +1164,21 @@
         document.getElementById('page-views-count').textContent = count;
     })();
     </script>
+    <!-- Visitor Counter Toggle Button and Widget -->
+    <button id="show-visitor-counter" style="position:fixed;bottom:24px;right:24px;z-index:4000;background:#2563eb;color:#fff;border:none;border-radius:8px;padding:0.7em 1.5em;font-size:1.08rem;font-weight:700;box-shadow:0 2px 8px rgba(37,99,235,0.10);cursor:pointer;">Show Visitor Counter</button>
+    <div id="visitor-counter-widget" style="display:none;position:fixed;bottom:70px;right:24px;z-index:4000;background:#fffbe6;border:2px solid #ffd700;border-radius:12px;padding:0.7em 1.5em;box-shadow:0 2px 8px rgba(37,99,235,0.10);">
+        <a href="https://www.freecounterstat.com" title="website counter"><img src="https://counter1.optistats.ovh/private/freecounterstat.php?c=96u3swgy2la55bucmlxdb8lfxcx7u8zw" border="0" title="website counter" alt="website counter"></a>
+    </div>
+    <script>
+    // Toggle visitor counter widget
+    const showVisitorBtn = document.getElementById('show-visitor-counter');
+    const visitorWidget = document.getElementById('visitor-counter-widget');
+    let visitorWidgetVisible = false;
+    showVisitorBtn.addEventListener('click', function() {
+        visitorWidgetVisible = !visitorWidgetVisible;
+        visitorWidget.style.display = visitorWidgetVisible ? 'block' : 'none';
+        showVisitorBtn.textContent = visitorWidgetVisible ? 'Hide Visitor Counter' : 'Show Visitor Counter';
+    });
+    </script>
 </body>
 </html> 
