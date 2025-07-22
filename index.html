@@ -487,6 +487,18 @@
 </head>
 <body>
     <header>
+        <!-- Cover image for the website -->
+        <div id="cover-image-container" style="width:100%;display:flex;justify-content:center;align-items:center;position:fixed;top:0;left:0;z-index:3000;height:200px;pointer-events:none;">
+            <img src="d classroom website logo.jpg.jpg" alt="D classroom website cover logo" style="width:180px;height:180px;object-fit:cover;border-radius:50%;pointer-events:auto;">
+        </div>
+        <style>
+        body { margin-top: 210px !important; }
+        @media (max-width: 600px) {
+            #cover-image-container { height: 120px !important; }
+            #cover-image-container img { width: 100px !important; height: 100px !important; }
+            body { margin-top: 130px !important; }
+        }
+        </style>
         <div class="hamburger-menu" id="hamburger-menu" style="position:fixed;top:24px;left:18px;z-index:2001;cursor:pointer;width:44px;height:44px;display:flex;flex-direction:column;justify-content:center;align-items:center;background:rgba(255,255,255,0.95);border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,0.10);">
             <span style="display:block;width:28px;height:4px;background:#222;border-radius:2px;margin:3px 0;"></span>
             <span style="display:block;width:28px;height:4px;background:#222;border-radius:2px;margin:3px 0;"></span>
@@ -507,8 +519,6 @@
             </nav>
         </div>
         <div class="container nav-container" style="display:flex;flex-direction:column;align-items:center;position:relative;">
-            <img src="Screenshot 2025-02-27 194654.png" alt="Profile Picture" style="width:88px;height:88px;border-radius:50%;object-fit:cover;box-shadow:0 2px 8px rgba(37,99,235,0.10);margin-bottom:0.5rem;">
-            <span class="dclassroom-title" style="display:block;text-align:center;margin-bottom:0.7rem;">D classroom</span>
             <!-- Main nav bar is now in sidebar -->
         </div>
     </header>
