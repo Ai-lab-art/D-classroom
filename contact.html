@@ -18,8 +18,30 @@
         <div style="text-align:right; margin-bottom:1rem;">
             <a href="index.html" style="background:#2563eb;color:#fff;padding:0.5rem 1.2rem;border-radius:6px;text-decoration:none;font-weight:500;">Go to Main Menu</a>
         </div>
-        <!-- Contact section removed -->
+        <section style="max-width:500px;margin:2em auto;background:#fff;border-radius:12px;box-shadow:0 2px 8px rgba(37,99,235,0.10);padding:2em 1.5em;">
+            <h1 style="color:#2563eb;text-align:center;margin-bottom:1em;">Contact D classroom</h1>
+            <p style="text-align:center;margin-bottom:1.5em;">Use this form to request specific materials or to contribute your own educational resources.</p>
+            <form id="contact-form" style="display:flex;flex-direction:column;gap:1em;">
+                <label for="contact-type" style="font-weight:600;">Purpose:</label>
+                <select id="contact-type" name="contact-type" required style="padding:0.5em;border-radius:6px;border:1px solid #ccc;">
+                    <option value="request">Request Materials</option>
+                    <option value="contribute">Contribute Resources</option>
+                </select>
+                <label for="name" style="font-weight:600;">Your Name:</label>
+                <input type="text" id="name" name="name" required style="padding:0.5em;border-radius:6px;border:1px solid #ccc;">
+                <label for="email" style="font-weight:600;">Your Email:</label>
+                <input type="email" id="email" name="email" required style="padding:0.5em;border-radius:6px;border:1px solid #ccc;">
+                <label for="message" style="font-weight:600;">Message:</label>
+                <textarea id="message" name="message" rows="5" required style="padding:0.5em;border-radius:6px;border:1px solid #ccc;"></textarea>
+                <button type="submit" style="background:#2563eb;color:#fff;font-weight:700;padding:0.7em 1.5em;border:none;border-radius:8px;cursor:pointer;">Send</button>
+            </form>
+            <div id="contact-success" style="display:none;color:green;text-align:center;margin-top:1em;">Thank you! Your message has been sent.</div>
+        </section>
     </main>
+    <div id="lang-switcher" style="font-size:1rem;font-weight:600;position:fixed;top:10px;right:24px;z-index:5000;background:#fff;padding:0.3em 1em;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.08);">
+      <button id="lang-nep" style="background:none;border:none;color:#2563eb;cursor:pointer;" onclick="setLang('np')">नेपाली</button> |
+      <button id="lang-eng" style="background:none;border:none;color:#2563eb;cursor:pointer;" onclick="setLang('en')">English</button>
+    </div>
     <!-- Footer -->
     <footer>
         <div class="container footer-container">
@@ -30,5 +52,24 @@
         </div>
     </footer>
     <script src="script.js"></script>
+    <script>
+    document.getElementById('contact-form').onsubmit = function(e) {
+        e.preventDefault();
+        document.getElementById('contact-success').style.display = 'block';
+        this.reset();
+    };
+    // Full language switcher for all main content (reuse from homepage)
+    const translations = {
+      en: {
+        // Add contact page translations here if needed
+      },
+      np: {
+        // Add contact page translations here if needed
+      }
+    };
+    function setLang(lang) {
+      // Add contact page translation logic here if needed
+    }
+    </script>
 </body>
 </html> 

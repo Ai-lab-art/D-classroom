@@ -8,6 +8,10 @@
 </head>
 <body>
     <!-- Removed the navigation bar so the title menu only appears on the home page -->
+    <div id="lang-switcher" style="font-size:1rem;font-weight:600;position:fixed;top:10px;right:24px;z-index:5000;background:#fff;padding:0.3em 1em;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.08);">
+      <button id="lang-nep" style="background:none;border:none;color:#2563eb;cursor:pointer;" onclick="setLang('np')">नेपाली</button> |
+      <button id="lang-eng" style="background:none;border:none;color:#2563eb;cursor:pointer;" onclick="setLang('en')">English</button>
+    </div>
     <main class="main-content">
         <div style="text-align:right; margin-bottom:1rem;">
             <a href="index.html" style="background:#2563eb;color:#fff;padding:0.5rem 1.2rem;border-radius:6px;text-decoration:none;font-weight:500;">Go to Main Menu</a>
@@ -117,6 +121,18 @@ document.getElementById('resource-form').onsubmit = function(e) {
         this.style.display = 'none';
     }
 };
+    // Full language switcher for all main content (reuse from homepage)
+    const translations = {
+      en: {
+        // Add resources page translations here if needed
+      },
+      np: {
+        // Add resources page translations here if needed
+      }
+    };
+    function setLang(lang) {
+      // Add resources page translation logic here if needed
+    }
 </script>
 </body>
 </html> 

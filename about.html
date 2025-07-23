@@ -7,23 +7,14 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Header with navigation -->
-    <header>
-        <div class="container nav-container">
-            <div class="logo">D classroom</div>
-            <nav id="navbar">
-                <ul class="nav-links">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html" class="active">About</a></li>
-                    <li><a href="resources.html">Resources materials</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-                <div class="menu-toggle" id="menu-toggle" aria-label="Open menu">
-                    <span></span><span></span><span></span>
+    <div id="lang-switcher" style="font-size:1rem;font-weight:600;position:fixed;top:10px;right:24px;z-index:5000;background:#fff;padding:0.3em 1em;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.08);">
+      <button id="lang-nep" style="background:#f0f4ff;border:1px solid #2563eb;color:#2563eb;cursor:pointer;padding:0.3em 1em;border-radius:6px;margin-right:0.3em;transition:background 0.2s;" onclick="setLang('np')" onmouseover="this.style.background='#2563eb';this.style.color='#fff';" onmouseout="this.style.background='#f0f4ff';this.style.color='#2563eb';">नेपाली</button>
+      <button id="lang-eng" style="background:#f0f4ff;border:1px solid #2563eb;color:#2563eb;cursor:pointer;padding:0.3em 1em;border-radius:6px;transition:background 0.2s;" onclick="setLang('en')" onmouseover="this.style.background='#2563eb';this.style.color='#fff';" onmouseout="this.style.background='#f0f4ff';this.style.color='#2563eb';">English</button>
                 </div>
-            </nav>
+    <!-- Cover image for the website -->
+    <div style="width:100%;display:flex;justify-content:center;align-items:center;margin-top:1.2rem;margin-bottom:1.2rem;">
+        <img src="d classroom website logo.jpg.jpg" alt="D classroom website cover logo" style="width:300px;height:300px;object-fit:cover;border-radius:50%;">
         </div>
-    </header>
     <main class="main-content">
         <div style="text-align:right; margin-bottom:1rem;">
             <a href="index.html" style="background:#2563eb;color:#fff;padding:0.5rem 1.2rem;border-radius:6px;text-decoration:none;font-weight:500;">Go to Main Menu</a>
@@ -64,5 +55,19 @@
         </div>
     </footer>
     <script src="script.js"></script>
+    <script>
+    // Full language switcher for all main content (reuse from homepage)
+    const translations = {
+      en: {
+        // Add about page translations here if needed
+      },
+      np: {
+        // Add about page translations here if needed
+      }
+    };
+    function setLang(lang) {
+      // Add about page translation logic here if needed
+    }
+    </script>
 </body>
 </html> 
