@@ -441,8 +441,24 @@ footer {
   color: #FFD700 !important;
   background: #1746a0 !important;
 }
+.main-navbar .dropdown:hover .dropdown-menu,
+.main-navbar .dropdown:focus-within .dropdown-menu {
+  display: block !important;
+}
 .main-navbar .dropdown-menu {
+  display: none;
+  position: absolute;
+  left: 0;
+  top: 100%;
+  min-width: 180px;
   background: #2563eb !important;
+  z-index: 1001;
+  border-radius: 0 0 10px 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+  padding: 0.5em 0.7em;
+}
+.main-navbar .dropdown {
+  position: relative;
 }
 .main-navbar .dropdown-menu li a {
   color: #fff !important;
