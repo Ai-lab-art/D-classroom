@@ -308,6 +308,16 @@ footer {
         margin: 0.5rem 0;
         text-align: center;
     }
+    .dclassroom-logo {
+        width: 48px !important;
+        height: 48px !important;
+        margin-right: 0.7em;
+        border-width: 2px;
+        box-shadow: none;
+    }
+    .dclassroom-title {
+        font-size: 1.5rem !important;
+    }
 }
 @media (max-width: 600px) {
     .container {
