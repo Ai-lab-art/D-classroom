@@ -525,7 +525,9 @@
           </div>
         </div>
         <button id="menu-toggle" class="menu-toggle" aria-label="Open menu">
-          Menu
+          <span></span>
+          <span></span>
+          <span></span>
         </button>
         <div id="lang-switcher" style="font-size:1rem;font-weight:600;position:fixed;top:10px;right:24px;z-index:5000;background:#fff;padding:0.3em 1em;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.08);">
           <button id="lang-nep" style="background:none;border:none;color:#2563eb;cursor:pointer;">नेपाली</button> |
@@ -1052,68 +1054,7 @@
         });
         
     
-            en: {
-                heroTitle: 'Welcome to D classroom',
-                heroDesc: 'Your source for school education materials, official resources, and updates. Access textbooks, curriculum, exam resources, and more—empowering students and teachers.',
-                resourceTitle: 'Highlights of Resource Materials',
-                resourceDesc: 'Explore our top recommended digital resources for students and teachers in Nepal.',
-                announcementsTitle: 'Latest Announcements',
-                announcementsList: [
-                    'Get educational materials in <a href="resources.html">Resource Materials</a> section.',
-                    'SEE exam model questions and past papers now available.',
-                    'Stay tuned for updates on curriculum changes and teacher training programs.',
-                    'EDD Koshi Province',
-                    'EDD Madhesh Province',
-                    'EDD Bagamati Province',
-                    'EDD Gandaki Province',
-                    'EDD Lumbini Province',
-                    'EDD Karnali Province',
-                    'EDD Sudurpashchim Province'
-                ],
-                langBtn: 'नेपाली',
-                menu: [
-                    'About Us',
-                    'Notice',
-                    'Resources Materials',
-                    'Governmental Websites'
-                ],
-                resourceHeroTitle: 'Resource Materials',
-                resourceHeroDesc: 'Access top educational resources for students and teachers. Explore digital textbooks, creative content, and official learning materials to empower your learning journey.',
-                resourceHeroBtn: 'Explore Resources'
-            },
-            np: {
-                heroTitle: 'डी कक्षामा स्वागत छ',
-                heroDesc: 'तपाईंको शैक्षिक सामग्री, सरकारी स्रोतहरू, र अद्यावधिकहरूको स्रोत। पाठ्यपुस्तक, पाठ्यक्रम, परीक्षा सामग्री, र थप पहुँच गर्नुहोस्—विद्यार्थी र शिक्षकहरूलाई सशक्त बनाउँदै।',
-                resourceTitle: 'स्रोत सामग्रीका मुख्य आकर्षणहरू',
-                resourceDesc: 'नेपालका विद्यार्थी र शिक्षकहरूका लागि हाम्रो शीर्ष सिफारिस गरिएका डिजिटल स्रोतहरू अन्वेषण गर्नुहोस्।',
-                announcementsTitle: 'नवीनतम सूचना',
-                announcementsList: [
-                    '<a href="resources.html">स्रोत सामग्री</a> खण्डमा शैक्षिक सामग्री प्राप्त गर्नुहोस्।',
-                    'एसईई परीक्षा मोडेल प्रश्नपत्र र विगतका प्रश्नपत्रहरू उपलब्ध छन्।',
-                    'पाठ्यक्रम परिवर्तन र शिक्षक तालिम कार्यक्रमहरूको अद्यावधिकको लागि प्रतीक्षा गर्नुहोस्।',
-                    'EDD Koshi Province',
-                    'EDD Madhesh Province',
-                    'EDD Bagamati Province',
-                    'EDD Gandaki Province',
-                    'EDD Lumbini Province',
-                    'EDD Karnali Province',
-                    'EDD Sudurpashchim Province'
-                ],
-                langBtn: 'English',
-                menu: [
-                    'हाम्रो बारेमा',
-                    'सूचना',
-                    'स्रोत सामग्री',
-                    'सरकारी वेबसाइटहरू'
-                ],
-                resourceHeroTitle: 'स्रोत सामग्री',
-                resourceHeroDesc: 'विद्यार्थी र शिक्षकहरूका लागि शीर्ष शैक्षिक स्रोतहरूमा पहुँच गर्नुहोस्। डिजिटल पाठ्यपुस्तक, सिर्जनात्मक सामग्री, र आधिकारिक शैक्षिक सामग्रीहरू अन्वेषण गर्नुहोस्।',
-                resourceHeroBtn: 'स्रोतहरू हेर्नुहोस्'
-            }
-        };
-        langToggle.addEventListener('click', () => {
-            langIndex = (langIndex + 1) % langOrder.length;
-            const lang = langOrder[langIndex];
+            
             document.getElementById('hero-title').innerHTML = translations[lang].heroTitle;
             document.getElementById('hero-desc').innerHTML = translations[lang].heroDesc;
             document.getElementById('resource-title').innerHTML = translations[lang].resourceTitle;
