@@ -63,6 +63,9 @@ nav {
     border-radius: 2px;
     display: block;
 }
+.menu-toggle.open span {
+    background: #fff !important;
+}
 
 /* Dropdown Navigation Styles */
 .dropdown {
