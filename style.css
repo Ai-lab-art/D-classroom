@@ -261,22 +261,27 @@ footer {
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        width: 40px;
-        height: 40px;
-        background: none;
+        width: 44px;
+        height: 44px;
+        background: #2563eb !important;
         border: none;
+        border-radius: 50%;
         cursor: pointer;
         z-index: 6000;
         margin-left: auto;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.10);
     }
     .menu-toggle span {
         display: block;
         width: 28px;
         height: 4px;
-        background: #fff;
+        background: #fff !important;
         border-radius: 2px;
         margin: 3px 0;
         transition: all 0.3s;
+    }
+    .menu-toggle.open span {
+        background: #fff !important;
     }
     .nav-links {
         display: none !important;
