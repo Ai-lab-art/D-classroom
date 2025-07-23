@@ -224,6 +224,22 @@ footer {
 }
 
 /* Responsive Styles */
+@media (max-width: 900px) {
+    main, .main-content, .container {
+        flex-direction: column !important;
+        max-width: 100vw !important;
+        width: 100vw !important;
+        margin: 0 !important;
+        padding: 0.5rem !important;
+        box-sizing: border-box;
+    }
+    aside, .sidebar {
+        max-width: 100vw !important;
+        width: 100vw !important;
+        margin: 0 !important;
+        padding: 0.5rem !important;
+    }
+}
 @media (max-width: 800px) {
     .main-content {
         padding: 1rem;
@@ -288,21 +304,41 @@ footer {
         max-width: 100%;
         height: auto;
     }
+    .resources-grid {
+        grid-template-columns: 1fr !important;
+        gap: 1rem !important;
+    }
+    .resource-card {
+        min-width: 0 !important;
+        max-width: 100vw !important;
+        width: 100% !important;
+        height: auto !important;
+        padding: 0.7rem !important;
+    }
+    .hero-content h1, .hero-content p, .resource-hero-title, .resource-hero-desc {
+        font-size: 1.1rem !important;
+        padding: 0 0.2em !important;
+    }
+    .footer-container {
+        padding: 0.5rem !important;
+    }
+    .contact-form, .notice-container, .gallery-list {
+        padding: 0.7rem !important;
+    }
 }
 @media (max-width: 400px) {
-    .main-content, .container {
-        padding: 0.2rem 0.1rem;
+    .main-content, .container, .contact-form, .notice-container, .gallery-list {
+        padding: 0.2rem 0.1rem !important;
     }
     .hero-content h1 {
         font-size: 0.95rem;
     }
     .resource-card, .contact-form {
-        padding: 0.5rem;
-        font-size: 0.95rem;
+        font-size: 0.95rem !important;
     }
     button, input, textarea {
-        font-size: 0.95rem;
-        padding: 0.5rem 0.7rem;
+        font-size: 0.95rem !important;
+        padding: 0.5rem 0.7rem !important;
     }
 } 
 

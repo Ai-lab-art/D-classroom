@@ -487,51 +487,26 @@
 </head>
 <body>
     <!-- PSC.gov.np style redesign: Navigation, Hero, Tabbed Content, Sidebar -->
-    <header style="position:fixed;top:0;left:0;width:100%;z-index:4000;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,0.08);padding:0 0 0.5em 0;">
-      <div style="display:flex;align-items:center;justify-content:space-between;max-width:1200px;margin:0 auto;padding:0.5em 1em;">
+    <header class="site-header">
+      <div class="container nav-container">
         <div style="display:flex;align-items:center;gap:1em;">
-          <img src="d classroom website logo.jpg.jpg" alt="PSC Logo" style="width:56px;height:56px;border-radius:50%;object-fit:cover;">
-          <div style="font-size:1.5rem;font-weight:900;color:#2563eb;line-height:1.1;">D classroom<br><span style="font-size:1.1rem;font-weight:600;color:#444;">A learning Platform.</span></div>
+          <img src="d classroom website logo.jpg.jpg" alt="PSC Logo" class="nav-profile-pic">
+          <div class="logo">D classroom<br><span style="font-size:1.1rem;font-weight:600;color:#444;">A learning Platform.</span></div>
         </div>
         <div id="lang-switcher" style="font-size:1rem;font-weight:600;position:fixed;top:10px;right:24px;z-index:5000;background:#fff;padding:0.3em 1em;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.08);">
           <button id="lang-nep" style="background:none;border:none;color:#2563eb;cursor:pointer;" onclick="setLang('np')">नेपाली</button> |
           <button id="lang-eng" style="background:none;border:none;color:#2563eb;cursor:pointer;" onclick="setLang('en')">English</button>
         </div>
-        </div>
-      <nav style="background:#2563eb;">
-        <ul style="display:flex;gap:2em;list-style:none;margin:0;padding:0.5em 1em;max-width:1200px;margin:0 auto;">
-          <li><a href="index.html" style="color:#fff;text-decoration:none;font-weight:600;">Home</a></li>
-          <li><a href="about.html" style="color:#fff;text-decoration:none;font-weight:600;">About Us</a></li>
-          <li><a href="notice.html" style="color:#fff;text-decoration:none;font-weight:600;">Notices</a></li>
-          <li><a href="resources.html" style="color:#fff;text-decoration:none;font-weight:600;">Resource Materials</a></li>
-          <li style="position:relative;">
-            <a href="javascript:void(0);" style="color:#fff;text-decoration:none;font-weight:600;cursor:default;">Downloads ▼</a>
-            <ul style="display:none;position:absolute;top:100%;left:0;background:#2563eb;padding:0.5em 0.7em;border-radius:0 0 10px 10px;box-shadow:0 2px 8px rgba(0,0,0,0.10);min-width:260px;z-index:1001;list-style:none;">
-              <li><a href="http://202.45.146.138/catalog/opac_css/index.php?lvl=cmspage&pageid=6&id_rubrique=105" target="_blank" style="color:#fff;text-decoration:none;display:block;padding:0.3em 0;">CDC Library Textbooks</a></li>
-              <li><a href="https://moecdc.gov.np/downloads" target="_blank" style="color:#fff;text-decoration:none;display:block;padding:0.3em 0;">CDC (moecdc.gov.np) Downloads</a></li>
-              <li><a href="https://moecdc.gov.np/textbook" target="_blank" style="color:#fff;text-decoration:none;display:block;padding:0.3em 0;">CDC Textbooks</a></li>
-              <li><a href="https://moecdc.gov.np/curriculum" target="_blank" style="color:#fff;text-decoration:none;display:block;padding:0.3em 0;">CDC Curriculum</a></li>
-              <li><a href="https://neb.gov.np/downloads" target="_blank" style="color:#fff;text-decoration:none;display:block;padding:0.3em 0;">NEB (neb.gov.np) Downloads</a></li>
-              <li><a href="https://neb.gov.np/syllabus" target="_blank" style="color:#fff;text-decoration:none;display:block;padding:0.3em 0;">NEB Syllabus</a></li>
-              <li><a href="https://neb.gov.np/publication" target="_blank" style="color:#fff;text-decoration:none;display:block;padding:0.3em 0;">NEB Publications</a></li>
-            </ul>
-          </li>
-          <li><a href="contact.html" style="color:#fff;text-decoration:none;font-weight:600;">Contacts</a></li>
-          <li style="position:relative;">
-            <a href="#" style="color:#fff;text-decoration:none;font-weight:600;">Governmental Websites ▼</a>
-            <ul style="display:none;position:absolute;top:100%;left:0;background:#2563eb;padding:0.5em 0.7em;border-radius:0 0 10px 10px;box-shadow:0 2px 8px rgba(0,0,0,0.10);min-width:260px;z-index:1001;list-style:none;">
-              <li><a href="https://edd.koshi.gov.np/" target="_blank" style="color:#fff;text-decoration:none;display:block;padding:0.3em 0;">EDD Koshi Province</a></li>
-              <li><a href="https://edd.madhesh.gov.np/" target="_blank" style="color:#fff;text-decoration:none;display:block;padding:0.3em 0;">EDD Madhesh Province</a></li>
-              <li><a href="https://edd.bagamati.gov.np/" target="_blank" style="color:#fff;text-decoration:none;display:block;padding:0.3em 0;">EDD Bagamati Province</a></li>
-              <li><a href="https://edd.gandaki.gov.np/" target="_blank" style="color:#fff;text-decoration:none;display:block;padding:0.3em 0;">EDD Gandaki Province</a></li>
-              <li><a href="https://esdd.lumbini.gov.np/" target="_blank" style="color:#fff;text-decoration:none;display:block;padding:0.3em 0;">EDD Lumbini Province</a></li>
-              <li><a href="https://edd.karnali.gov.np/" target="_blank" style="color:#fff;text-decoration:none;display:block;padding:0.3em 0;">EDD Karnali Province</a></li>
-              <li><a href="https://edd.sudurpashchim.gov.np/" target="_blank" style="color:#fff;text-decoration:none;display:block;padding:0.3em 0;">EDD Sudurpashchim Province</a></li>
-              <li><a href="https://tsc.gov.np/" target="_blank" style="color:#fff;text-decoration:none;display:block;padding:0.3em 0;">Teacher Service Commission (TSC)</a></li>
-              <li><a href="https://moe.gov.np/" target="_blank" style="color:#fff;text-decoration:none;display:block;padding:0.3em 0;">Ministry of Education, Science and Technology</a></li>
-              <li><a href="https://nepal.gov.np/" target="_blank" style="color:#fff;text-decoration:none;display:block;padding:0.3em 0;">Government of Nepal Portal</a></li>
-            </ul>
-          </li>
+      </div>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="notice.html">Notices</a></li>
+          <li><a href="resources.html">Resource Materials</a></li>
+          <li><a href="#">Downloads ▼</a></li>
+          <li><a href="contact.html">Contacts</a></li>
+          <li><a href="#">Governmental Websites ▼</a></li>
         </ul>
       </nav>
     </header>
@@ -548,11 +523,7 @@
         <div style="background:#fff;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,0.08);padding:1.2em;">
           <div id="psc-tabs" style="display:flex;gap:1.5em;margin-bottom:1em;">
             <button id="highlighted-resources-tab" class="psc-tab-btn" style="background:#2563eb;color:#fff;border:none;border-radius:6px 6px 0 0;padding:0.6em 1.5em;font-size:1.08rem;font-weight:700;cursor:pointer;">Highlighted Resources</button>
-            <button class="psc-tab-btn" style="background:#f0f4ff;color:#2563eb;border:none;border-radius:6px 6px 0 0;padding:0.6em 1.5em;font-size:1.08rem;font-weight:700;cursor:pointer;">Results</button>
-            <button class="psc-tab-btn" style="background:#f0f4ff;color:#2563eb;border:none;border-radius:6px 6px 0 0;padding:0.6em 1.5em;font-size:1.08rem;font-weight:700;cursor:pointer;">Recommendations</button>
-            <button class="psc-tab-btn" style="background:#f0f4ff;color:#2563eb;border:none;border-radius:6px 6px 0 0;padding:0.6em 1.5em;font-size:1.08rem;font-weight:700;cursor:pointer;">Exam Centers</button>
-            <button class="psc-tab-btn" style="background:#f0f4ff;color:#2563eb;border:none;border-radius:6px 6px 0 0;padding:0.6em 1.5em;font-size:1.08rem;font-weight:700;cursor:pointer;">Schedules</button>
-        </div>
+          </div>
           <div id="psc-tab-content" style="min-height:180px;">
             <!-- Highlighted Resources content (resource cards grid) -->
             <section class="resource-preface" id="resource-preface" style="display:block;opacity:1;max-height:none;overflow:visible;transition:none;">
@@ -602,38 +573,10 @@
       <!-- Sidebar -->
       <aside style="flex:1 1 260px;max-width:320px;min-width:220px;display:flex;flex-direction:column;gap:1.5em;">
         <div style="background:#fff;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,0.08);padding:1em 1.2em;">
-          <label for="office-select" style="font-weight:700;color:#2563eb;">Select Office:</label>
-          <select id="office-select" style="width:100%;margin-top:0.5em;padding:0.5em;border-radius:6px;border:1px solid #ddd;">
-            <option>Central Office</option>
-            <option>Kathmandu Office</option>
-            <option>Pokhara Office</option>
-            <option>Biratnagar Office</option>
-            <option>Butwal Office</option>
-            <option>Dhangadhi Office</option>
-            <option>Other...</option>
-          </select>
-        </div>
-        <div style="background:#f0f4ff;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,0.08);padding:1em 1.2em;">
-          <div style="font-weight:700;color:#2563eb;margin-bottom:0.5em;">PSC Today</div>
-          <ul style="margin:0;padding:0 0 0 1.2em;font-size:0.98rem;">
-            <li>Total Advertisements: 1457</li>
-            <li>Total Posts: 3294</li>
-            <li>Today's Events: 0</li>
-            </ul>
-            </div>
-        <div style="background:#fff;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,0.08);padding:1em 1.2em;">
           <div style="font-weight:700;color:#2563eb;margin-bottom:0.5em;">Calendar</div>
           <iframe src="https://www.hamropatro.com/widgets/calender-small.php" frameborder="0" scrolling="no" marginwidth="0" marginheight="0" style="border:none;overflow:hidden;width:100%;height:180px;border-radius:8px;background:#fff;" allowtransparency="true"></iframe>
         </div>
-        <div style="background:#fff;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,0.08);padding:1em 1.2em;">
-          <div style="font-weight:700;color:#2563eb;margin-bottom:0.5em;">Contact Info</div>
-          <ul style="margin:0;padding:0 0 0 1.2em;font-size:0.98rem;">
-            <li>Phone: 01-4771402</li>
-            <li>Email: info@psc.gov.np</li>
-            <li>Location: Kamalpokhari, Kathmandu</li>
-          </ul>
-        </div>
-            </aside>
+      </aside>
     </main>
     <style>
         /* Sidebar menu: gray background and white text on hover */
