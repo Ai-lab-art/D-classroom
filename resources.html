@@ -17,9 +17,9 @@
             <a href="index.html" style="background:#2563eb;color:#fff;padding:0.5rem 1.2rem;border-radius:6px;text-decoration:none;font-weight:500;">Go to Main Menu</a>
         </div>
         <form id="resource-form" style="display:none; margin-bottom:2rem;">
-            <input type="text" id="resource-title" placeholder="Title" required style="width:100%;padding:0.7rem;margin-bottom:0.7rem;font-size:1.1rem;border:1px solid #bcd0ee;border-radius:5px;">
-            <input type="text" id="resource-desc" placeholder="Description" required style="width:100%;padding:0.7rem;margin-bottom:0.7rem;font-size:1.1rem;border:1px solid #bcd0ee;border-radius:5px;">
-            <input type="url" id="resource-link" placeholder="Link (URL)" required style="width:100%;padding:0.7rem;margin-bottom:0.7rem;font-size:1.1rem;border:1px solid #bcd0ee;border-radius:5px;">
+            <input type="text" id="resource-title" placeholder="Title" required minlength="3" maxlength="100" style="width:100%;padding:0.7rem;margin-bottom:0.7rem;font-size:1.1rem;border:1px solid #bcd0ee;border-radius:5px;">
+            <input type="text" id="resource-desc" placeholder="Description" required minlength="10" maxlength="500" style="width:100%;padding:0.7rem;margin-bottom:0.7rem;font-size:1.1rem;border:1px solid #bcd0ee;border-radius:5px;">
+            <input type="url" id="resource-link" placeholder="Link (URL)" required pattern="https?://.*" style="width:100%;padding:0.7rem;margin-bottom:0.7rem;font-size:1.1rem;border:1px solid #bcd0ee;border-radius:5px;">
             <button type="submit" style="background:#2563eb;color:#fff;border:none;padding:0.7rem 2rem;border-radius:5px;font-size:1rem;cursor:pointer;margin-top:0.5rem;">Add Resource</button>
         </form>
         <h1>शैक्षिक स्रोतहरू (Resources materials)</h1>
@@ -106,16 +106,47 @@ document.getElementById('resource-form').onsubmit = function(e) {
     var title = document.getElementById('resource-title').value.trim();
     var desc = document.getElementById('resource-desc').value.trim();
     var link = document.getElementById('resource-link').value.trim();
+    
+    // Enhanced validation
+    if (!title || title.length < 3 || title.length > 100) {
+        alert('Title must be between 3 and 100 characters.');
+        return;
+    }
+    if (!desc || desc.length < 10 || desc.length > 500) {
+        alert('Description must be between 10 and 500 characters.');
+        return;
+    }
+    
+    // URL validation
+    try {
+        const url = new URL(link);
+        if (!['http:', 'https:'].includes(url.protocol)) {
+            throw new Error('Invalid protocol');
+        }
+    } catch (error) {
+        alert('Please enter a valid URL starting with http:// or https://');
+        return;
+    }
+    
     if (title && desc && link) {
         var grid = document.querySelector('.resources-grid');
         var card = document.createElement('div');
         card.className = 'resource-card';
         card.style.position = 'relative';
-        card.innerHTML = `
-            <h3>${title}</h3>
-            <p>${desc}</p>
-            <a href="${link}" target="_blank">Visit Link</a>
-        `;
+        // Create elements safely to prevent XSS
+        const h3 = document.createElement('h3');
+        h3.textContent = title;
+        const p = document.createElement('p');
+        p.textContent = desc;
+        const a = document.createElement('a');
+        a.textContent = 'Visit Link';
+        a.href = link;
+        a.target = '_blank';
+        a.rel = 'noopener noreferrer'; // Security improvement
+        
+        card.appendChild(h3);
+        card.appendChild(p);
+        card.appendChild(a);
         grid.appendChild(card);
         this.reset();
         this.style.display = 'none';

@@ -866,7 +866,12 @@
                 if (!response.ok) throw new Error('Network response was not ok');
                 const notices = await response.json();
                 if (Array.isArray(notices) && notices.length > 0) {
-                    noticeList.innerHTML = notices.map(n => `<li>${n}</li>`).join('');
+                    noticeList.innerHTML = '';
+                    notices.forEach(notice => {
+                        const li = document.createElement('li');
+                        li.textContent = notice; // Safe text content instead of innerHTML
+                        noticeList.appendChild(li);
+                    });
                 } else {
                     noticeList.innerHTML = '<li>No new notices at this time.</li>';
                 }
@@ -875,8 +880,16 @@
             }
         }
         fetchNotices();
-        // Optionally, refresh every 5 minutes
-        setInterval(fetchNotices, 5 * 60 * 1000);
+        // Optionally, refresh every 5 minutes - store interval ID for cleanup
+        let noticeInterval = setInterval(fetchNotices, 5 * 60 * 1000);
+        
+        // Cleanup interval when page is unloaded to prevent memory leaks
+        window.addEventListener('beforeunload', function() {
+            if (noticeInterval) {
+                clearInterval(noticeInterval);
+                noticeInterval = null;
+            }
+        });
     </script>
     <script>
         // Kathmandu Analog Clock styled like the provided image
@@ -1112,13 +1125,18 @@
         langToggle.addEventListener('click', () => {
             langIndex = (langIndex + 1) % langOrder.length;
             const lang = langOrder[langIndex];
-            document.getElementById('hero-title').innerHTML = translations[lang].heroTitle;
-            document.getElementById('hero-desc').innerHTML = translations[lang].heroDesc;
-            document.getElementById('resource-title').innerHTML = translations[lang].resourceTitle;
-            document.getElementById('resource-desc').innerHTML = translations[lang].resourceDesc;
-            document.getElementById('announcements-title').innerHTML = translations[lang].announcementsTitle;
+            document.getElementById('hero-title').textContent = translations[lang].heroTitle;
+            document.getElementById('hero-desc').textContent = translations[lang].heroDesc;
+            document.getElementById('resource-title').textContent = translations[lang].resourceTitle;
+            document.getElementById('resource-desc').textContent = translations[lang].resourceDesc;
+            document.getElementById('announcements-title').textContent = translations[lang].announcementsTitle;
             const annList = document.getElementById('announcements-list');
-            annList.innerHTML = translations[lang].announcementsList.map(item => `<li>${item}</li>`).join('');
+            annList.innerHTML = '';
+            translations[lang].announcementsList.forEach(item => {
+                const li = document.createElement('li');
+                li.textContent = item; // Safe text content instead of innerHTML
+                annList.appendChild(li);
+            });
             document.getElementById('lang-toggle-label').textContent = translations[lang].langBtn;
             // Resource hero section
             document.querySelector('.resource-hero-title').textContent = translations[lang].resourceHeroTitle;

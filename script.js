@@ -24,16 +24,17 @@ if (menuToggle && navLinks) {
 }
 
 // Collapsible FAQ/section functionality (for About or Resources page)
-document.querySelectorAll('.collapsible').forEach(btn => {
-    btn.addEventListener('click', function() {
-        this.classList.toggle('active');
-        const content = this.nextElementSibling;
-        if (content.style.maxHeight) {
+// Use event delegation to avoid memory leaks and handle dynamic content
+document.addEventListener('click', function(e) {
+    if (e.target.classList.contains('collapsible')) {
+        e.target.classList.toggle('active');
+        const content = e.target.nextElementSibling;
+        if (content && content.style.maxHeight) {
             content.style.maxHeight = null;
-        } else {
+        } else if (content) {
             content.style.maxHeight = content.scrollHeight + 'px';
         }
-    });
+    }
 });
 
 // Contact form (no backend, just a simple alert)
