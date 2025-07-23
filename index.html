@@ -494,8 +494,8 @@
           <div class="logo">D classroom<br><span style="font-size:1.1rem;font-weight:600;color:#444;">A learning Platform.</span></div>
         </div>
         <div id="lang-switcher" style="font-size:1rem;font-weight:600;position:fixed;top:10px;right:24px;z-index:5000;background:#fff;padding:0.3em 1em;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.08);">
-          <button id="lang-nep" style="background:none;border:none;color:#2563eb;cursor:pointer;" onclick="setLang('np')">नेपाली</button> |
-          <button id="lang-eng" style="background:none;border:none;color:#2563eb;cursor:pointer;" onclick="setLang('en')">English</button>
+          <button id="lang-nep" style="background:none;border:none;color:#2563eb;cursor:pointer;">नेपाली</button> |
+          <button id="lang-eng" style="background:none;border:none;color:#2563eb;cursor:pointer;">English</button>
         </div>
       </div>
       <nav>
@@ -504,9 +504,34 @@
           <li><a href="about.html">About Us</a></li>
           <li><a href="notice.html">Notices</a></li>
           <li><a href="resources.html">Resource Materials</a></li>
-          <li><a href="#">Downloads ▼</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle">Downloads ▼</a>
+            <ul class="dropdown-menu">
+              <li><a href="http://202.45.146.138/catalog/opac_css/index.php?lvl=cmspage&pageid=6&id_rubrique=105" target="_blank">CDC Library Textbooks</a></li>
+              <li><a href="https://moecdc.gov.np/downloads" target="_blank">CDC (moecdc.gov.np) Downloads</a></li>
+              <li><a href="https://moecdc.gov.np/textbook" target="_blank">CDC Textbooks</a></li>
+              <li><a href="https://moecdc.gov.np/curriculum" target="_blank">CDC Curriculum</a></li>
+              <li><a href="https://neb.gov.np/downloads" target="_blank">NEB (neb.gov.np) Downloads</a></li>
+              <li><a href="https://neb.gov.np/syllabus" target="_blank">NEB Syllabus</a></li>
+              <li><a href="https://neb.gov.np/publication" target="_blank">NEB Publications</a></li>
+            </ul>
+          </li>
           <li><a href="contact.html">Contacts</a></li>
-          <li><a href="#">Governmental Websites ▼</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle">Governmental Websites ▼</a>
+            <ul class="dropdown-menu">
+              <li><a href="https://edd.koshi.gov.np/" target="_blank">EDD Koshi Province</a></li>
+              <li><a href="https://edd.madhesh.gov.np/" target="_blank">EDD Madhesh Province</a></li>
+              <li><a href="https://edd.bagamati.gov.np/" target="_blank">EDD Bagamati Province</a></li>
+              <li><a href="https://edd.gandaki.gov.np/" target="_blank">EDD Gandaki Province</a></li>
+              <li><a href="https://esdd.lumbini.gov.np/" target="_blank">EDD Lumbini Province</a></li>
+              <li><a href="https://edd.karnali.gov.np/" target="_blank">EDD Karnali Province</a></li>
+              <li><a href="https://edd.sudurpashchim.gov.np/" target="_blank">EDD Sudurpashchim Province</a></li>
+              <li><a href="https://tsc.gov.np/" target="_blank">Teacher Service Commission (TSC)</a></li>
+              <li><a href="https://moe.gov.np/" target="_blank">Ministry of Education, Science and Technology</a></li>
+              <li><a href="https://nepal.gov.np/" target="_blank">Government of Nepal Portal</a></li>
+            </ul>
+          </li>
         </ul>
       </nav>
     </header>
@@ -1357,30 +1382,46 @@
     // Full language switcher for all main content
     const translations = {
       en: {
+        nav: ['Home','About Us','Notices','Resource Materials','Downloads','Contacts','Governmental Websites'],
         heroTitle: 'Welcome to D classroom',
         heroDesc: 'Your source for school education materials, official resources, and updates. Access textbooks, curriculum, exam resources, and more—empowering students and teachers.',
-        nav: ['Home','About Us','Notices','Resource Materials','Downloads','Contacts','Governmental Websites'],
-        // Add more as needed
+        resourceTitle: 'Highlights of Resource Materials',
+        resourceDesc: 'Explore our top recommended digital resources for students and teachers in Nepal.'
       },
       np: {
+        nav: ['गृह पृष्ठ','हाम्रो बारेमा','सूचना','स्रोत सामग्री','डाउनलोड','सम्पर्क','सरकारी वेबसाइटहरू'],
         heroTitle: 'डी कक्षामा स्वागत छ',
         heroDesc: 'तपाईंको शैक्षिक सामग्री, सरकारी स्रोतहरू, र अद्यावधिकहरूको स्रोत। पाठ्यपुस्तक, पाठ्यक्रम, परीक्षा सामग्री, र थप पहुँच गर्नुहोस्—विद्यार्थी र शिक्षकहरूलाई सशक्त बनाउँदै।',
-        nav: ['गृह पृष्ठ','हाम्रो बारेमा','सूचना','स्रोत सामग्री','डाउनलोड','सम्पर्क','सरकारी वेबसाइटहरू'],
-        // Add more as needed
+        resourceTitle: 'स्रोत सामग्रीका मुख्य आकर्षणहरू',
+        resourceDesc: 'नेपालका विद्यार्थी र शिक्षकहरूका लागि हाम्रो शीर्ष सिफारिस गरिएका डिजिटल स्रोतहरू अन्वेषण गर्नुहोस्।'
       }
     };
     function setLang(lang) {
-      // Header title
-      const titleDiv = document.querySelector('header div[style*="font-size:1.5rem"]');
-      titleDiv.innerHTML = 'D classroom<br><span style="font-size:1.1rem;font-weight:600;color:#444;">A learning Platform.</span>';
+      // Navigation
+      document.querySelectorAll('.nav-links > li > a').forEach((a,i)=>{a.textContent=translations[lang].nav[i]||'';});
       // Hero
       document.getElementById('hero-title').textContent = translations[lang].heroTitle;
       document.getElementById('hero-desc').textContent = translations[lang].heroDesc;
-      // Navigation
-      const navItems = translations[lang].nav;
-      document.querySelectorAll('nav ul > li > a').forEach((a,i)=>{a.textContent=navItems[i]||'';});
-      // Add more content updates here as you add IDs to other sections
+      // Resource section
+      if(document.getElementById('resource-title')) document.getElementById('resource-title').textContent = translations[lang].resourceTitle;
+      if(document.getElementById('resource-desc')) document.getElementById('resource-desc').textContent = translations[lang].resourceDesc;
     }
+    document.getElementById('lang-nep').onclick = function() { setLang('np'); };
+    document.getElementById('lang-eng').onclick = function() { setLang('en'); };
+    // Dropdown menu logic for nav
+    function setupDropdowns() {
+      document.querySelectorAll('.dropdown').forEach(drop => {
+        const toggle = drop.querySelector('.dropdown-toggle');
+        const menu = drop.querySelector('.dropdown-menu');
+        if(toggle && menu) {
+          toggle.addEventListener('mouseenter', () => { menu.style.display = 'block'; });
+          toggle.addEventListener('mouseleave', () => { menu.style.display = 'none'; });
+          drop.addEventListener('mouseleave', () => { menu.style.display = 'none'; });
+          toggle.addEventListener('click', e => { e.preventDefault(); menu.style.display = (menu.style.display==='block'?'none':'block'); });
+        }
+      });
+    }
+    document.addEventListener('DOMContentLoaded', setupDropdowns);
     </script>
     <script>
     // Dropdown for Governmental Websites
