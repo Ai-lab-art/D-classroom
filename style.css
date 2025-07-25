@@ -21,8 +21,9 @@ header {
 }
 .nav-container {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start;
     padding: 1.2rem 0;
 }
 .logo {
@@ -39,6 +40,8 @@ nav {
     gap: 2rem;
     margin: 0;
     padding: 0;
+    justify-content: center;
+    align-items: center;
 }
 .nav-links li a {
     color: #fff;
@@ -341,4 +344,54 @@ footer {
   letter-spacing: 2px;
   text-shadow: 0 2px 12px rgba(0,0,0,0.18),0 1px 0 #fffbe6;
   line-height: 1.1;
+} 
+
+/* Responsive styles for mobile visibility */
+body, html {
+  max-width: 100vw;
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
+.container, .main-content, main, header, footer, .footer-container {
+  width: 100%;
+  max-width: 100vw;
+  box-sizing: border-box;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+nav, .nav-links {
+  flex-wrap: wrap;
+}
+.resource-card, .contact-form, .notice-container, .gallery-list {
+  max-width: 100vw;
+  box-sizing: border-box;
+}
+img, .nav-profile-pic {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+button, input, textarea, a {
+  font-size: 1rem;
+  min-height: 44px;
+  min-width: 44px;
+  box-sizing: border-box;
+}
+/* Stack columns on small screens */
+@media (max-width: 700px) {
+  main, .main-content, .container {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 1.2rem !important;
+  }
+  aside, .sidebar {
+    max-width: 100vw !important;
+    width: 100vw !important;
+    margin: 0 !important;
+    padding: 0.5rem !important;
+  }
+  .resources-grid {
+    flex-direction: column !important;
+    gap: 1rem !important;
+  }
 } 
