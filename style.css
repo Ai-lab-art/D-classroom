@@ -394,4 +394,19 @@ button, input, textarea, a {
     flex-direction: column !important;
     gap: 1rem !important;
   }
+  html, body {
+    font-size: 0.92rem;
+  }
+  h1 {
+    font-size: 1.4rem !important;
+  }
+  h2 {
+    font-size: 1.15rem !important;
+  }
+  h3 {
+    font-size: 1rem !important;
+  }
+  p, a, button, input, textarea, .nav-links li a {
+    font-size: 0.98rem !important;
+  }
 } 
