@@ -100,9 +100,52 @@ nav {
 .dropdown-menu li a:hover {
     color: #1746a0;
 }
-.dropdown:hover .dropdown-menu,
-.dropdown:focus-within .dropdown-menu {
-    display: block;
+/* Fix: Only show .dropdown-menu for .dropdown on hover, not submenus */
+.dropdown:hover > .dropdown-menu,
+.dropdown:focus-within > .dropdown-menu {
+  display: block;
+}
+/* Submenu only opens on click (open class) */
+.dropdown-submenu > .dropdown-menu {
+  display: none;
+}
+.dropdown-submenu.open > .dropdown-menu {
+  display: block;
+}
+.dropdown-submenu > a:hover + .dropdown-menu,
+.dropdown-submenu > a:focus + .dropdown-menu {
+  display: block;
+}
+.dropdown-submenu > a:after {
+  content: '▼';
+  font-size: 0.7em;
+  margin-left: 6px;
+  vertical-align: middle;
+  pointer-events: auto;
+}
+.dropdown-submenu > a:hover + .dropdown-menu,
+.dropdown-submenu > a:focus + .dropdown-menu {
+  display: block;
+}
+.dropdown-submenu > .dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -0.5em;
+  display: none;
+  position: absolute;
+  min-width: 180px;
+  z-index: 200;
+  border-radius: 0 8px 8px 8px;
+}
+.dropdown-submenu:hover > .dropdown-menu,
+.dropdown-submenu:focus-within > .dropdown-menu {
+  display: block;
+}
+.dropdown-submenu > a:after {
+  content: '▼';
+  font-size: 0.7em;
+  margin-left: 6px;
+  vertical-align: middle;
 }
 
 /* Hero Section */
@@ -226,199 +269,6 @@ footer {
     color: #c7e0ff;
 }
 
-/* Responsive Styles */
-@media (max-width: 900px) {
-    main, .main-content, .container {
-        flex-direction: column !important;
-        max-width: 100vw !important;
-        width: 100vw !important;
-        margin: 0 !important;
-        padding: 0.5rem !important;
-        box-sizing: border-box;
-    }
-    aside, .sidebar {
-        max-width: 100vw !important;
-        width: 100vw !important;
-        margin: 0 !important;
-        padding: 0.5rem !important;
-    }
-}
-@media (max-width: 800px) {
-    .main-content {
-        padding: 1rem;
-    }
-    .nav-links {
-        gap: 1rem;
-    }
-    .dropdown-menu {
-        position: static;
-        box-shadow: none;
-        min-width: 100%;
-        border-radius: 0;
-    }
-    .menu-toggle {
-        display: flex !important;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        width: 100vw;
-        height: 48px;
-        background: #2563eb !important;
-        border: none;
-        border-radius: 12px;
-        cursor: pointer;
-        z-index: 6000;
-        margin-left: 0;
-        margin-right: 0;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.10);
-        position: relative;
-        left: 0;
-        right: 0;
-        padding: 0;
-    }
-    .menu-toggle span {
-        display: block;
-        width: 32px;
-        height: 6px;
-        background: #fff !important;
-        border-radius: 3px;
-        margin: 4px 0;
-        font-weight: bold;
-        box-shadow: 0 1px 2px rgba(0,0,0,0.10);
-    }
-    .menu-toggle.open span {
-        background: #fff !important;
-    }
-    .nav-links {
-        display: none !important;
-        flex-direction: column;
-        position: absolute;
-        top: 70px;
-        left: 0;
-        width: 100vw;
-        background: #2563eb;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.10);
-        z-index: 5000;
-        padding: 1.2rem 0 1.2rem 0;
-        border-radius: 0 0 12px 12px;
-    }
-    .nav-links.open {
-        display: flex !important;
-    }
-    .nav-links li {
-        margin: 0.5rem 0;
-        text-align: center;
-    }
-    .dclassroom-logo {
-        width: 48px !important;
-        height: 48px !important;
-        margin-right: 0;
-        margin-bottom: 0.5em;
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-    }
-    .dclassroom-title {
-        font-size: 1.5rem !important;
-        text-align: center;
-    }
-    .dclassroom-float.color-cycle {
-        text-align: center;
-    }
-    .header-logo-title-row {
-        flex-direction: column !important;
-        align-items: center !important;
-        gap: 0 !important;
-    }
-}
-@media (max-width: 600px) {
-    .container {
-        width: 98%;
-        padding: 0 0.5rem;
-    }
-    .nav-container {
-        flex-direction: column;
-        align-items: flex-start;
-        padding-left: 0.7rem;
-        padding-right: 0.7rem;
-        box-sizing: border-box;
-    }
-    .nav-links {
-        width: 94vw;
-        min-width: 0;
-        font-size: 1.05rem;
-        padding-left: 0.5rem;
-        padding-right: 0.5rem;
-        margin-left: 0.2rem;
-        margin-right: 0.2rem;
-        border-radius: 8px;
-    }
-    .nav-links li {
-        margin-bottom: 0.3rem;
-    }
-    .dropdown-menu {
-        left: 8px;
-        right: 8px;
-        min-width: 90vw;
-        border-radius: 8px;
-    }
-    .menu-toggle {
-        width: 38px;
-        height: 38px;
-        margin-top: 0.5rem;
-        margin-bottom: 0.5rem;
-        margin-left: 0.2rem;
-    }
-    .menu-toggle span {
-        width: 30px;
-        height: 4px;
-    }
-    button, input, textarea {
-        font-size: 1.05rem;
-        padding: 0.7rem 1rem;
-    }
-    img, .nav-profile-pic {
-        max-width: 100%;
-        height: auto;
-    }
-    .resources-grid {
-        grid-template-columns: 1fr !important;
-        gap: 1rem !important;
-    }
-    .resource-card {
-        min-width: 0 !important;
-        max-width: 100vw !important;
-        width: 100% !important;
-        height: auto !important;
-        padding: 0.7rem !important;
-    }
-    .hero-content h1, .hero-content p, .resource-hero-title, .resource-hero-desc {
-        font-size: 1.1rem !important;
-        padding: 0 0.2em !important;
-    }
-    .footer-container {
-        padding: 0.5rem !important;
-    }
-    .contact-form, .notice-container, .gallery-list {
-        padding: 0.7rem !important;
-    }
-}
-@media (max-width: 400px) {
-    .main-content, .container, .contact-form, .notice-container, .gallery-list {
-        padding: 0.2rem 0.1rem !important;
-    }
-    .hero-content h1 {
-        font-size: 0.95rem;
-    }
-    .resource-card, .contact-form {
-        font-size: 0.95rem !important;
-    }
-    button, input, textarea {
-        font-size: 0.95rem !important;
-        padding: 0.5rem 0.7rem !important;
-    }
-} 
-
 .nav-profile-pic {
     width: 44px;
     height: 44px;
@@ -431,11 +281,17 @@ footer {
 
 .main-navbar, nav.main-navbar {
   background: #2563eb !important;
+  min-height: 60px;
+  font-size: 1rem;
 }
 .main-navbar .nav-links li a,
 .main-navbar .nav-links li a:visited,
 .main-navbar .nav-links li a:active {
   color: #fff !important;
+  font-size: 0.98em;
+  padding: 0.55em 1em !important;
+  border-radius: 8px;
+  font-weight: 600;
 }
 .main-navbar .nav-links li a:hover,
 .main-navbar .nav-links li a:focus {

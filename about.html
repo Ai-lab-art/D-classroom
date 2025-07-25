@@ -17,7 +17,7 @@
         </div>
     <main class="main-content">
         <div style="text-align:right; margin-bottom:1rem;">
-            <a href="index.html" style="background:#2563eb;color:#fff;padding:0.5rem 1.2rem;border-radius:6px;text-decoration:none;font-weight:500;">Go to Main Menu</a>
+            <a href="index.html" id="main-menu-btn" style="background:#2563eb;color:#fff;padding:0.4em 1em;border-radius:6px;text-decoration:none;font-weight:500;font-size:1rem;">Go to Main Menu</a>
         </div>
         <!-- Profile Picture -->
         <div style="text-align:center; margin-bottom: 1.5rem;">
@@ -25,23 +25,23 @@
         </div>
         <!-- About Section -->
         <section>
-            <h1>About D classroom</h1>
-            <p>D classroom is dedicated to supporting school education by providing high-quality educational materials and resources. Our mission is to empower students and teachers with accessible notes, guides, and tools for effective learning across various school subjects.</p>
+            <h1 id="about-title">About D classroom</h1>
+            <p id="about-desc">D classroom is dedicated to supporting school education by providing high-quality educational materials and resources. Our mission is to empower students and teachers with accessible notes, guides, and tools for effective learning across various school subjects.</p>
         </section>
         <!-- Collapsible FAQ Section -->
         <section>
-            <h2>Frequently Asked Questions</h2>
-            <button class="collapsible">What subjects do you cover?</button>
+            <h2 id="faq-title">Frequently Asked Questions</h2>
+            <button class="collapsible" id="faq-q1">What subjects do you cover?</button>
             <div class="collapsible-content">
-                <p>We offer resources for mathematics, science, English, social studies, and more, suitable for different school levels.</p>
+                <p id="faq-a1">We offer resources for mathematics, science, English, social studies, and more, suitable for different school levels.</p>
             </div>
-            <button class="collapsible">How can I access educational materials?</button>
+            <button class="collapsible" id="faq-q2">How can I access educational materials?</button>
             <div class="collapsible-content">
-                <p>Visit the <a href="resources.html">Resources materials</a> page to find downloadable notes, guides, and helpful links for school education.</p>
+                <p id="faq-a2">Visit the <a href="resources.html" id="resources-link">Resources materials</a> page to find downloadable notes, guides, and helpful links for school education.</p>
             </div>
-            <button class="collapsible">Can I contribute or request materials?</button>
+            <button class="collapsible" id="faq-q3">Can I contribute or request materials?</button>
             <div class="collapsible-content">
-                <p>Yes! Use the <a href="contact.html">Contact</a> page to request specific materials or to contribute your own educational resources.</p>
+                <p id="faq-a3">Yes! Use the <a href="contact.html" id="contact-link">Contact</a> page to request specific materials or to contribute your own educational resources.</p>
             </div>
         </section>
     </main>
@@ -59,15 +59,44 @@
     // Full language switcher for all main content (reuse from homepage)
     const translations = {
       en: {
-        // Add about page translations here if needed
+        'about-title': 'About D classroom',
+        'about-desc': 'D classroom is dedicated to supporting school education by providing high-quality educational materials and resources. Our mission is to empower students and teachers with accessible notes, guides, and tools for effective learning across various school subjects.',
+        'faq-title': 'Frequently Asked Questions',
+        'faq-q1': 'What subjects do you cover?',
+        'faq-a1': 'We offer resources for mathematics, science, English, social studies, and more, suitable for different school levels.',
+        'faq-q2': 'How can I access educational materials?',
+        'faq-a2': 'Visit the <a href="resources.html" id="resources-link">Resources materials</a> page to find downloadable notes, guides, and helpful links for school education.',
+        'faq-q3': 'Can I contribute or request materials?',
+        'faq-a3': 'Yes! Use the <a href="contact.html" id="contact-link">Contact</a> page to request specific materials or to contribute your own educational resources.',
+        'main-menu-btn': 'Go to Main Menu',
       },
       np: {
-        // Add about page translations here if needed
+        'about-title': 'D classroom को बारेमा',
+        'about-desc': 'D classroom विद्यालय शिक्षालाई सहयोग पुर्‍याउन उच्च गुणस्तरका शैक्षिक सामग्री र स्रोतहरू प्रदान गर्न समर्पित छ। हाम्रो उद्देश्य विद्यार्थी र शिक्षकलाई विभिन्न विषयहरूमा प्रभावकारी सिकाइका लागि पहुँचयोग्य नोट्स, गाइडहरू, र उपकरणहरू उपलब्ध गराउनु हो।',
+        'faq-title': 'प्रायः सोधिने प्रश्नहरू',
+        'faq-q1': 'तपाईंहरूले कुन विषयहरू समेट्नुहुन्छ?',
+        'faq-a1': 'हामी विद्यालय तहको अनिवार्य विषयहरु: नेपालीगणित, विज्ञान, अंग्रेजी, सामाजिक अध्ययन लगायत विद्यालय तहका लागि विभिन्न शैक्षिक स्रोतहरू प्रदान गर्छौं।',
+        'faq-q2': 'शैक्षिक सामग्री कसरी प्राप्त गर्न सकिन्छ?',
+        'faq-a2': 'विद्यालय शिक्षाका लागि डाउनलोड गर्ने नोट्स, गाइडहरू, र उपयोगी लिङ्कहरू <a href="resources.html" id="resources-link">स्रोत सामग्री</a> पृष्ठमा भेट्न सकिन्छ।',
+        'faq-q3': 'के म सामग्री अनुरोध वा योगदान गर्न सक्छु?',
+        'faq-a3': 'हो! <a href="contact.html" id="contact-link">सम्पर्क</a> पृष्ठ प्रयोग गरी तपाईंले विशेष सामग्री अनुरोध गर्न वा आफ्नै शैक्षिक स्रोतहरू योगदान गर्न सक्नुहुन्छ।',
+        'main-menu-btn': 'मुख्य मेनुमा जानुहोस्',
       }
     };
     function setLang(lang) {
-      // Add about page translation logic here if needed
+      for (const id in translations[lang]) {
+        const el = document.getElementById(id);
+        if (el) {
+          if (el.tagName === 'A' || el.tagName === 'BUTTON') {
+            el.innerHTML = translations[lang][id];
+          } else {
+            el.innerHTML = translations[lang][id];
+          }
+        }
+      }
     }
+    // Optionally, set default language on load
+    // setLang('en');
     </script>
 </body>
 </html> 
