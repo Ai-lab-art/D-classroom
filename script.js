@@ -44,7 +44,7 @@ if (contactForm) {
         alert('Thank you for your message! (Form submission is for demo only.)');
         contactForm.reset();
     });
-}
+} 
 
 document.addEventListener('DOMContentLoaded', function() {
   var submenuToggle = document.querySelector('.dropdown-submenu > a');
