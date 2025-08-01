@@ -137,3 +137,97 @@ function initLangSwitcher() {
 document.addEventListener('DOMContentLoaded', function() {
   initLangSwitcher();
 }); 
+
+// --- Visitor Counter Functionality ---
+function initVisitorCounter() {
+  // Get current visitor count from localStorage
+  let visitorCount = localStorage.getItem('visitorCount') || 0;
+  
+  // Increment count for this visit
+  visitorCount = parseInt(visitorCount) + 1;
+  localStorage.setItem('visitorCount', visitorCount);
+  
+  // Update the display
+  const visitorCountElement = document.getElementById('visitor-count');
+  if (visitorCountElement) {
+    visitorCountElement.textContent = visitorCount.toLocaleString();
+  }
+  
+  // Add click functionality to show detailed stats
+  const visitorCounter = document.getElementById('visitor-counter');
+  if (visitorCounter) {
+    visitorCounter.addEventListener('click', showVisitorStats);
+    visitorCounter.style.cursor = 'pointer';
+  }
+}
+
+function showVisitorStats() {
+  const visitorCount = localStorage.getItem('visitorCount') || 0;
+  const firstVisit = localStorage.getItem('firstVisit') || new Date().toLocaleDateString();
+  
+  // Create modal
+  const modal = document.createElement('div');
+  modal.style.cssText = `
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+  `;
+  
+  const modalContent = document.createElement('div');
+  modalContent.style.cssText = `
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+  `;
+  
+  modalContent.innerHTML = `
+    <h3 style="color: #2563eb; margin-bottom: 1rem; font-size: 1.5rem;">Visitor Statistics</h3>
+    <div style="margin-bottom: 1rem;">
+      <p style="font-size: 2rem; font-weight: bold; color: #2563eb; margin: 0;">${parseInt(visitorCount).toLocaleString()}</p>
+      <p style="color: #666; margin: 0;">Total Visitors</p>
+    </div>
+    <div style="margin-bottom: 1.5rem;">
+      <p style="color: #666; margin: 0;">First Visit: ${firstVisit}</p>
+    </div>
+    <button onclick="this.parentElement.parentElement.remove()" style="
+      background: #2563eb;
+      color: white;
+      border: none;
+      padding: 0.7em 1.5em;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+    ">Close</button>
+  `;
+  
+  modal.appendChild(modalContent);
+  document.body.appendChild(modal);
+  
+  // Close modal when clicking outside
+  modal.addEventListener('click', function(e) {
+    if (e.target === modal) {
+      modal.remove();
+    }
+  });
+}
+
+// Initialize visitor counter when page loads
+document.addEventListener('DOMContentLoaded', function() {
+  initVisitorCounter();
+  
+  // Set first visit date if not already set
+  if (!localStorage.getItem('firstVisit')) {
+    localStorage.setItem('firstVisit', new Date().toLocaleDateString());
+  }
+}); 
