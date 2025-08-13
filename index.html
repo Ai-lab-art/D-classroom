@@ -658,9 +658,15 @@
       </div>
       <!-- Sidebar -->
       <aside style="flex:1 1 260px;max-width:320px;min-width:220px;display:flex;flex-direction:column;gap:1.5em;">
-        <div style="background:#fff;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,0.08);padding:1em 1.2em;">
+        <div style="background:#fff;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,0.08);padding:1em 1.2em;margin-bottom:1.5em;">
           <div style="font-weight:700;color:#2563eb;margin-bottom:0.5em;">Calendar</div>
           <iframe src="https://www.hamropatro.com/widgets/calender-small.php" frameborder="0" scrolling="no" marginwidth="0" marginheight="0" style="border:none;overflow:hidden;width:100%;height:180px;border-radius:8px;background:#fff;" allowtransparency="true"></iframe>
+        </div>
+        <div style="background:#fff;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,0.08);padding:1em 1.2em;">
+          <div style="font-weight:700;color:#2563eb;margin-bottom:0.8em;">Nepali Date</div>
+          <div id="nepali-date" style="font-size:1.1rem;text-align:center;padding:0.5em;background:#f8f9fa;border-radius:8px;font-weight:500;">
+            Loading Nepali date...
+          </div>
         </div>
       </aside>
     </main>
@@ -826,6 +832,34 @@
         </div>
     </div>
     <script src="script.js"></script>
+    <script>
+        // Function to fetch and display Nepali date
+        function updateNepaliDate() {
+            const now = new Date();
+            const year = now.getFullYear();
+            const month = String(now.getMonth() + 1).padStart(2, '0');
+            const day = String(now.getDate()).padStart(2, '0');
+            
+            // Using Hamro Patro's API to get Nepali date
+            fetch(`https://nepalidate.susontech.com.np/date/ad/to-bs?year=${year}&month=${month}&day=${day}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data && data.bs) {
+                        const nepaliDate = `${data.bs.np_year} ${data.bs.np_month_name} ${data.bs.day}, ${data.bs.week_day_name}`;
+                        document.getElementById('nepali-date').textContent = nepaliDate;
+                    } else {
+                        document.getElementById('nepali-date').textContent = 'Unable to load Nepali date';
+                    }
+                })
+                .catch(error => {
+                    console.error('Error fetching Nepali date:', error);
+                    document.getElementById('nepali-date').textContent = 'Error loading date';
+                });
+        }
+
+        // Update date on page load
+        document.addEventListener('DOMContentLoaded', updateNepaliDate);
+    </script>
     
     <script>
         document.getElementById('add-image-input').addEventListener('change', function(event) {
